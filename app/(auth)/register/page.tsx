@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = "force-dynamic"
+
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -51,6 +53,7 @@ export default function RegisterPage() {
   async function onSubmit(data: RegisterFormValues) {
     setIsLoading(true)
     try {
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : '')
       const { error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
@@ -58,7 +61,7 @@ export default function RegisterPage() {
           data: {
             full_name: data.full_name,
           },
-          emailRedirectTo: `${window.location.origin}/auth/confirm`,
+          emailRedirectTo: `${baseUrl}/auth/confirm`,
         },
       })
 
