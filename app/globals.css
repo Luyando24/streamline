@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme (Tailwind v4 CSS-based config) ===== */
+@theme {
+  /* Brand Colors */
+  --color-brand-teal: #00D639;
+  --color-brand-teal-light: #00ea3f;
+  --color-brand-green-deep: #009929;
+  --color-brand-green-deep-light: #00b330;
+  --color-brand-green-pale: #E8F9ED;
+  --color-brand-navy: #1A2B3C;
+  --color-brand-navy-light: #253D55;
+
+  /* Gradients */
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+
+  /* Animations */
+  --animate-in: fade-in 0.5s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ===== CSS Variables for theming ===== */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --primary: 165 76% 25%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 215 39% 17%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 165 76% 25%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --primary: 165 76% 25%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 215 39% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 165 76% 25%;
+}
+
+/* ===== Base styles ===== */
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* ===== Reusable component classes ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--color-brand-teal);
+  color: white;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.15s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-brand-teal-light);
+}
+.btn-primary:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--color-brand-navy);
+  color: white;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.15s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--color-brand-navy-light);
+}
+.btn-secondary:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 20px;
+}
