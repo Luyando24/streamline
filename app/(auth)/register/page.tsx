@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { createClient } from "@/lib/supabase/client"
 import { toast } from "sonner"
-import { Loader2, Mail, Lock, User, ChevronRight, Check } from "lucide-react"
+import { Loader2, Mail, Lock, User, ChevronRight, Check, Eye, EyeOff, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
@@ -25,6 +25,14 @@ export default function RegisterPage() {
   const supabase = createClient()
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState(1)
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleGeneratePassword = () => {
+    const generated = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8)
+    form.setValue("password", generated, { shouldValidate: true })
+    setShowPassword(true)
+    toast.success("Secure password generated!")
+  }
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -174,16 +182,32 @@ export default function RegisterPage() {
                   </div>
                   <input
                     {...form.register("password")}
-                    type="password"
-                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
+                    type={showPassword ? "text" : "password"}
+                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-12 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
                     placeholder="Minimum 8 characters"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-brand-teal transition-colors"
+                  >
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
                 </div>
                 {form.formState.errors.password && (
                   <p className="text-xs text-red-400 mt-1 ml-1">{form.formState.errors.password.message}</p>
                 )}
               </div>
-              <div className="p-4 rounded-2xl bg-brand-teal/5 border border-brand-teal/20 text-[11px] text-brand-teal leading-relaxed font-medium">
+              
+              <button
+                type="button"
+                onClick={handleGeneratePassword}
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-brand-teal/20 bg-brand-teal/5 text-[11px] font-black uppercase tracking-widest text-brand-teal hover:bg-brand-teal/10 transition-all border-dashed"
+              >
+                <Sparkles className="h-3.5 w-3.5" /> Magic Generate Password
+              </button>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-[11px] text-slate-400 leading-relaxed font-medium">
                 Make sure your password is unique and contains at least 8 characters for your security.
               </div>
             </motion.div>

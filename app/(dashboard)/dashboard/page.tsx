@@ -248,7 +248,6 @@ function DashboardContent({ data }: { data: any }) {
                   subtitle={`By ${log.profiles?.full_name || 'System'}`}
                   time={new Date(log.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   type={log.action.toLowerCase().includes('create') ? 'team' : 'finance'}
-                  suppressHydrationWarning
                 />
               )) : (
                 <p className="text-[10px] text-slate-400 italic">No recent activity found</p>
