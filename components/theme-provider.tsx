@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
+import { type ThemeProviderProps } from "next-themes"
 
 // Filter out the "Encountered a script tag" warning in development.
 // This is a known false positive caused by next-themes injecting a script
