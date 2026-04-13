@@ -24,6 +24,8 @@ export default function LoginPage() {
   const router = useRouter()
   const supabase = createClient()
   const [isLoading, setIsLoading] = useState(false)
+  const [isUnverified, setIsUnverified] = useState(false)
+  const [isResending, setIsResending] = useState(false)
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -42,6 +44,9 @@ export default function LoginPage() {
       })
 
       if (error) {
+        if (error.message.toLowerCase().includes("email not confirmed")) {
+          setIsUnverified(true)
+        }
         toast.error(error.message)
         return
       }
@@ -53,6 +58,34 @@ export default function LoginPage() {
       toast.error("An unexpected error occurred")
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  async function handleResendEmail() {
+    setIsResending(true)
+    try {
+      const email = form.getValues("email")
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : '')
+      
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email,
+        options: {
+          emailRedirectTo: `${baseUrl}/auth/confirm`,
+        },
+      })
+
+      if (error) {
+        toast.error(error.message)
+        return
+      }
+
+      toast.success("Verification email resent! Please check your inbox.")
+      setIsUnverified(false)
+    } catch (error) {
+      toast.error("Failed to resend email")
+    } finally {
+      setIsResending(false)
     }
   }
 
@@ -126,7 +159,23 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 space-y-4">
+            {isUnverified && (
+              <div className="p-4 rounded-2xl bg-brand-teal/5 border border-brand-teal/20 animate-in fade-in slide-in-from-top-2 duration-300">
+                <p className="text-xs text-brand-teal font-medium leading-relaxed mb-3">
+                  Your email hasn't been verified yet. Check your inbox or click below to get a new link.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleResendEmail}
+                  disabled={isResending}
+                  className="w-full py-2 px-4 rounded-xl bg-brand-teal text-black text-[11px] font-black uppercase tracking-widest hover:bg-brand-teal-light transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isResending ? <Loader2 className="h-3 w-3 animate-spin" /> : "Resend Verification Link"}
+                </button>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={isLoading}
