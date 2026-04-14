@@ -22,6 +22,8 @@ import { toast } from "sonner"
 import { createClient } from "@/lib/supabase/client"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
+import { initializeDefaultAccounts } from "@/lib/actions/accounting"
+import { initializeDefaultLeaveTypes } from "@/lib/actions/leave"
 
 const STEPS = [
   { id: 1, name: "Identity", desc: "Name", icon: Building2 },
@@ -250,6 +252,11 @@ export default function OnboardingWizard() {
           .insert(moduleInserts)
 
         if (modulesError) throw modulesError
+
+        // 5. Initialize Accounting Module if selected
+        if (selectedModules.includes('finance-accounting')) {
+          await initializeDefaultAccounts(org.id)
+        }
       }
 
       toast.success("Welcome aboard! Your ecosystem is ready.")
