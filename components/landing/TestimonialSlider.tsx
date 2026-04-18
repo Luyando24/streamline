@@ -39,7 +39,7 @@ export function TestimonialSlider() {
           "{TESTIMONIALS[currentIndex].quote}"
         </p>
         <div className="flex flex-col items-center">
-          <p className="text-base sm:text-[17px] font-bold text-brand-teal">{TESTIMONIALS[currentIndex].author}</p>
+          <p className="text-base sm:text-[17px] font-bold text-brand-blue">{TESTIMONIALS[currentIndex].author}</p>
           <p className="text-sm sm:text-[15px] font-bold text-slate-500">{TESTIMONIALS[currentIndex].role}</p>
         </div>
       </div>

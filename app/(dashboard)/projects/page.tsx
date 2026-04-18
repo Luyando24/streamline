@@ -43,7 +43,7 @@ export default async function ProjectDashboardPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-4">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <Zap className="h-3 w-3" /> Professional Service Delivery
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Projects</h1>
@@ -66,7 +66,7 @@ export default async function ProjectDashboardPage() {
         {stats.map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
+            <div key={s.label} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
               <div 
                 className={cn(
                   "absolute top-0 right-0 h-24 w-24 rounded-full -mr-12 -mt-12 opacity-5 transition-transform group-hover:scale-150 duration-700",
@@ -100,13 +100,13 @@ export default async function ProjectDashboardPage() {
         {/* Sidebar Delivery Radar */}
         <div className="space-y-8 animate-in slide-in-from-right duration-700">
            <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group border border-white/5">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Delivery Efficiency</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Delivery Efficiency</h3>
               
               <div className="space-y-10 mb-10 border-l-2 border-white/5 pl-8 ml-2">
                  <div className="relative">
-                    <div className="absolute -left-[37px] top-1/2 -translate-y-1/2 h-4 w-4 rounded-full bg-brand-green-deep shadow-[0_0_10px_rgba(34,197,94,1)]" />
+                    <div className="absolute -left-[37px] top-1/2 -translate-y-1/2 h-4 w-4 rounded-full bg-brand-blue-deep shadow-[0_0_10px_rgba(34,197,94,1)]" />
                     <div className="text-[11px] font-black uppercase tracking-widest">Billable velocity</div>
                     <div className="text-[10px] opacity-40 mt-1">Increasing at 52 billable hrs / wk</div>
                  </div>
@@ -118,13 +118,13 @@ export default async function ProjectDashboardPage() {
               </div>
 
               <Link href="/projects/timesheets" className="w-full py-5 bg-white/5 border border-white/10 rounded-[24px] text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-white/10 shadow-xl transition-all flex items-center justify-center gap-3">
-                Log Professional Session <Sparkles className="h-4 w-4 text-brand-green-deep" />
+                Log Professional Session <Sparkles className="h-4 w-4 text-brand-blue-deep" />
               </Link>
            </div>
 
            <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm space-y-6">
               <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 flex items-center gap-2">
-                 <Timer className="h-4 w-4 text-brand-green-deep" /> Burn Intensity
+                 <Timer className="h-4 w-4 text-brand-blue-deep" /> Burn Intensity
               </h3>
               <div className="space-y-4">
                  <div className="flex items-center justify-between group cursor-pointer p-1">

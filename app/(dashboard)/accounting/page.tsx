@@ -66,7 +66,7 @@ export default async function AccountingPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <Sparkles className="h-3 w-3" /> Double-Entry Core
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Finance & Accounting</h1>
@@ -81,7 +81,7 @@ export default async function AccountingPage() {
             href="/accounting/journals/new"
             className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg hover:shadow-brand-navy/20 active:scale-[0.98]"
           >
-            <Plus className="h-4 w-4 text-brand-green-deep" /> New Transaction
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> New Transaction
           </Link>
         </div>
       </div>
@@ -91,7 +91,7 @@ export default async function AccountingPage() {
         {metrics.map((m) => {
           const Icon = m.icon
           return (
-            <div key={m.label} className="group relative p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div key={m.label} className="group relative p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
               <div className="flex justify-between items-start mb-6">
                 <div className={cn(
                   "h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-500 items-center justify-center",
@@ -121,7 +121,7 @@ export default async function AccountingPage() {
         {/* Core Sections List */}
         <div className="lg:col-span-2 space-y-6">
           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm relative overflow-hidden group">
-            <div className="absolute top-0 right-0 h-40 w-40 bg-brand-green-pale rounded-full -mr-20 -mt-20 opacity-50 group-hover:scale-110 transition-transform duration-700" />
+            <div className="absolute top-0 right-0 h-40 w-40 bg-brand-blue-pale rounded-full -mr-20 -mt-20 opacity-50 group-hover:scale-110 transition-transform duration-700" />
             
             <div className="relative z-10 space-y-6">
               <div className="flex items-center justify-between">
@@ -133,28 +133,28 @@ export default async function AccountingPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Link href="/accounting/ledger" className="group/item p-6 rounded-[28px] border-2 border-slate-200 hover:border-brand-green-deep/20 hover:bg-brand-green-pale/30 transition-all">
+                <Link href="/accounting/ledger" className="group/item p-6 rounded-[28px] border-2 border-slate-200 hover:border-brand-blue-deep/20 hover:bg-brand-blue-pale/30 transition-all">
                   <div className="flex items-center gap-4 mb-3">
-                    <div className="h-10 w-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-lg group-hover/item:bg-brand-green-deep group-hover/item:scale-110 transition-all">
+                    <div className="h-10 w-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-lg group-hover/item:bg-brand-blue-deep group-hover/item:scale-110 transition-all">
                       <Receipt className="h-5 w-5" />
                     </div>
                     <span className="font-black text-brand-navy">General Ledger</span>
                   </div>
                   <p className="text-[10px] text-slate-700 font-bold leading-relaxed mb-4">Complete chronological record of all balanced journal entries.</p>
-                  <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-green-deep">
+                  <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-blue-deep">
                     View Ledger <ChevronRight className="h-3 w-3 ml-1 group-hover/item:translate-x-1 transition-transform" />
                   </div>
                 </Link>
 
-                <Link href="/accounting/reports" className="group/item p-6 rounded-[28px] border-2 border-slate-200 hover:border-brand-green-deep/20 hover:bg-brand-green-pale/30 transition-all">
+                <Link href="/accounting/reports" className="group/item p-6 rounded-[28px] border-2 border-slate-200 hover:border-brand-blue-deep/20 hover:bg-brand-blue-pale/30 transition-all">
                   <div className="flex items-center gap-4 mb-3">
-                    <div className="h-10 w-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-lg group-hover/item:bg-brand-green-deep group-hover/item:scale-110 transition-all">
+                    <div className="h-10 w-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-lg group-hover/item:bg-brand-blue-deep group-hover/item:scale-110 transition-all">
                       <BarChart3 className="h-5 w-5" />
                     </div>
                     <span className="font-black text-brand-navy">Profit & Loss</span>
                   </div>
                   <p className="text-[10px] text-slate-700 font-bold leading-relaxed mb-4">Revenue and expense statements for ZRA tax readiness.</p>
-                  <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-green-deep">
+                  <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-blue-deep">
                     Generate Report <ChevronRight className="h-3 w-3 ml-1 group-hover/item:translate-x-1 transition-transform" />
                   </div>
                 </Link>
@@ -176,9 +176,9 @@ export default async function AccountingPage() {
         {/* Sidebar: Chart of Accounts Snippet */}
         <div className="space-y-6">
            <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Chart of Accounts</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-6">Chart of Accounts</h3>
               
               <div className="space-y-4 mb-8">
                  {accounts.slice(0, 6).map(acc => (
@@ -195,7 +195,7 @@ export default async function AccountingPage() {
                  ))}
               </div>
 
-              <Link href="/accounting/accounts" className="flex items-center justify-center gap-2 w-full py-4 bg-brand-green-deep rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-brand-green-deep-light transition-all shadow-lg active:scale-95">
+              <Link href="/accounting/accounts" className="flex items-center justify-center gap-2 w-full py-4 bg-brand-blue-deep rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-brand-blue-deep-light transition-all shadow-lg active:scale-95">
                  Manage Accounts <ArrowRight className="h-3 w-3" />
               </Link>
            </div>
@@ -210,7 +210,7 @@ export default async function AccountingPage() {
                      <span className="font-black text-brand-navy">92%</span>
                    </div>
                    <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
-                     <div className="h-full bg-brand-green-deep rounded-full" style={{ width: '92%' }} />
+                     <div className="h-full bg-brand-blue-deep rounded-full" style={{ width: '92%' }} />
                    </div>
                  </div>
                  

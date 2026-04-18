@@ -58,7 +58,7 @@ export default async function LedgerPage() {
             href="/accounting/journals/new" 
             className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]"
           >
-            <Plus className="h-4 w-4 text-brand-green-deep" /> New Entry
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> New Entry
           </Link>
         </div>
       </div>
@@ -67,11 +67,11 @@ export default async function LedgerPage() {
       <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
         <div className="flex items-center gap-4">
            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-blue-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search descriptions, refs..." 
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
               />
            </div>
            <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-white hover:border-slate-300 transition-all">
@@ -98,7 +98,7 @@ export default async function LedgerPage() {
                      <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">{new Date(journal.date).toLocaleDateString('en-GB')}</span>
                         <span className="h-1 w-1 rounded-full bg-slate-200" />
-                        <span className="text-[10px] text-brand-green-deep font-black uppercase tracking-widest">Ref: {journal.reference_no || 'N/A'}</span>
+                        <span className="text-[10px] text-brand-blue-deep font-black uppercase tracking-widest">Ref: {journal.reference_no || 'N/A'}</span>
                      </div>
                   </div>
                </div>
@@ -157,7 +157,7 @@ export default async function LedgerPage() {
              <p className="text-sm font-bold text-slate-600 italic">No ledger entries found for this organization.</p>
              <Link 
                href="/accounting/journals/new" 
-               className="text-xs font-black uppercase tracking-widest text-brand-green-deep flex items-center gap-2 hover:gap-3 transition-all"
+               className="text-xs font-black uppercase tracking-widest text-brand-blue-deep flex items-center gap-2 hover:gap-3 transition-all"
              >
                Post Your First Journal <ArrowRightLeft className="h-3 w-3" />
              </Link>
@@ -166,12 +166,12 @@ export default async function LedgerPage() {
       </div>
 
       {/* Safety Reminder */}
-      <div className="p-8 bg-brand-green-pale border-2 border-brand-green-deep/10 rounded-2xl flex items-start gap-5">
+      <div className="p-8 bg-brand-blue-pale border-2 border-brand-blue-deep/10 rounded-2xl flex items-start gap-5">
          <div className="h-10 w-10 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-            <Sparkles className="h-5 w-5 text-brand-green-deep" />
+            <Sparkles className="h-5 w-5 text-brand-blue-deep" />
          </div>
          <div className="space-y-1">
-            <h4 className="text-[11px] font-black uppercase tracking-widest text-brand-green-deep">Industrial Integrity</h4>
+            <h4 className="text-[11px] font-black uppercase tracking-widest text-brand-blue-deep">Industrial Integrity</h4>
             <p className="text-[10px] text-brand-navy/60 font-medium leading-relaxed max-w-2xl">
                Every entry shown here has been validated for balance. Modifying a ledger entry directly is prohibited; audit-compliant corrections should be made via adjustment journals.
             </p>

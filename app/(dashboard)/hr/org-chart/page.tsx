@@ -68,7 +68,7 @@ export default async function OrgChartPage() {
              <Filter className="h-4 w-4" /> Focus Department
           </button>
           <button className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10">
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Update Hierarchy
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> Update Hierarchy
           </button>
         </div>
       </div>
@@ -95,24 +95,24 @@ export default async function OrgChartPage() {
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-fit bg-brand-navy text-white px-10 py-6 rounded-2xl shadow-2xl shadow-brand-navy/20 flex items-center gap-16 backdrop-blur-xl border border-white/10 z-50">
          <div className="flex items-center gap-4">
             <div className="h-10 w-10 rounded-2xl bg-white/5 flex items-center justify-center">
-               <ShieldCheck className="h-5 w-5 text-brand-green-deep" />
+               <ShieldCheck className="h-5 w-5 text-brand-blue-deep" />
             </div>
             <div>
                <div className="text-[10px] font-black uppercase tracking-widest opacity-40">Governance Check</div>
-               <div className="text-lg font-black tracking-tight text-brand-green-deep">Verified</div>
+               <div className="text-lg font-black tracking-tight text-brand-blue-deep">Verified</div>
             </div>
          </div>
          <div className="h-10 w-px bg-white/10" />
          <div className="flex items-center gap-4">
             <div className="h-10 w-10 rounded-2xl bg-white/5 flex items-center justify-center">
-               <Layers className="h-5 w-5 text-brand-green-deep" />
+               <Layers className="h-5 w-5 text-brand-blue-deep" />
             </div>
             <div>
                <div className="text-[10px] font-black uppercase tracking-widest opacity-40">Span of Control</div>
                <div className="text-lg font-black tracking-tight">Level 4 Max</div>
             </div>
          </div>
-         <button className="flex items-center gap-2 px-6 py-3 bg-brand-green-deep rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-green-deep-light transition-all shadow-lg active:scale-95">
+         <button className="flex items-center gap-2 px-6 py-3 bg-brand-blue-deep rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue-deep-light transition-all shadow-lg active:scale-95">
            Export Chart <ChevronRight className="h-3 w-3" />
          </button>
       </div>
@@ -125,7 +125,7 @@ function OrgTreeNode({ node }: { node: any }) {
     <div className="flex flex-col items-center relative gap-16">
       {/* Node Content */}
       <div className="relative group cursor-pointer">
-         <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm hover:border-brand-green-deep/30 hover:shadow-2xl transition-all duration-500 w-72 relative z-10 overflow-hidden">
+         <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm hover:border-brand-blue-deep/30 hover:shadow-2xl transition-all duration-500 w-72 relative z-10 overflow-hidden">
             <div className="absolute top-0 right-0 h-16 w-16 bg-slate-50/80 rounded-full -mr-8 -mt-8 opacity-40 group-hover:scale-150 transition-transform duration-700" />
             <div className="flex items-center gap-4 mb-4">
                <div className="h-12 w-12 rounded-2xl bg-slate-100 flex items-center justify-center overflow-hidden border-2 border-white shadow-sm font-black text-brand-navy bg-slate-100">
@@ -143,8 +143,8 @@ function OrgTreeNode({ node }: { node: any }) {
             
             <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                <div className="text-[8px] font-black uppercase tracking-widest text-slate-300">Level Node</div>
-               <div className="p-1.5 bg-brand-green-pale rounded-lg">
-                  <ChevronRight className="h-3 w-3 text-brand-green-deep" />
+               <div className="p-1.5 bg-brand-blue-pale rounded-lg">
+                  <ChevronRight className="h-3 w-3 text-brand-blue-deep" />
                </div>
             </div>
          </div>

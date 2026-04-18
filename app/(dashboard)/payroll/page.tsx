@@ -52,7 +52,7 @@ export default async function PayrollPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <Zap className="h-3 w-3" /> Statutory Compliance
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Payroll Management</h1>
@@ -67,7 +67,7 @@ export default async function PayrollPage() {
             <Users className="h-4 w-4" /> Setup Employees
           </Link>
           <button className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]">
-            <Play className="h-4 w-4 text-brand-green-deep fill-brand-green-deep" /> Process April Payroll
+            <Play className="h-4 w-4 text-brand-blue-deep fill-brand-blue-deep" /> Process April Payroll
           </button>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default async function PayrollPage() {
         {stats.map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className="group p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div key={s.label} className="group p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
               <div className="flex justify-between items-start mb-6">
                 <div className={cn(
                   "h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-500",
@@ -101,7 +101,7 @@ export default async function PayrollPage() {
         {/* Main Process Area */}
         <div className="lg:col-span-2 space-y-8">
            <div className="p-10 bg-white border-2 border-slate-200 rounded-2xl shadow-sm relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-64 w-64 bg-brand-green-pale rounded-full -mr-32 -mt-32 opacity-30 group-hover:scale-110 transition-transform duration-1000" />
+              <div className="absolute top-0 right-0 h-64 w-64 bg-brand-blue-pale rounded-full -mr-32 -mt-32 opacity-30 group-hover:scale-110 transition-transform duration-1000" />
               
               <div className="relative z-10 grid md:grid-cols-[1.5fr_1fr] gap-12 items-center">
                  <div className="space-y-6">
@@ -126,7 +126,7 @@ export default async function PayrollPage() {
                     </div>
 
                     <button className="group/btn flex items-center justify-center gap-3 px-8 py-4 bg-brand-navy text-white rounded-[24px] text-xs font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-brand-navy/10 active:scale-[0.98]">
-                       Start April Run <ChevronRight className="h-4 w-4 text-brand-green-deep group-hover/btn:translate-x-1 transition-transform" />
+                       Start April Run <ChevronRight className="h-4 w-4 text-brand-blue-deep group-hover/btn:translate-x-1 transition-transform" />
                     </button>
                  </div>
 
@@ -168,9 +168,9 @@ export default async function PayrollPage() {
         {/* Sidebar */}
         <div className="space-y-6">
            <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Accounting Sync</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-6">Accounting Sync</h3>
               <p className="text-xs font-medium opacity-60 leading-relaxed mb-8">
                  When you finalize a payroll run, Streamline automatically posts the salary expenses and tax payables to your general ledger.
               </p>
@@ -178,7 +178,7 @@ export default async function PayrollPage() {
               <div className="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-4 mb-8">
                  <div className="flex justify-between items-center">
                     <span className="text-[10px] font-bold opacity-60">Status</span>
-                    <span className="flex items-center gap-1.5 text-[10px] font-black text-brand-green-deep">
+                    <span className="flex items-center gap-1.5 text-[10px] font-black text-brand-blue-deep">
                        <CheckCircle2 className="h-3 w-3" /> Connected
                     </span>
                  </div>
@@ -188,7 +188,7 @@ export default async function PayrollPage() {
                  </div>
               </div>
 
-              <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-widest text-brand-green-pale">
+              <div className="flex items-center gap-3 text-[9px] font-black uppercase tracking-widest text-brand-blue-pale">
                  <ShieldCheck className="h-4 w-4" /> Balanced Entry Guaranteed
               </div>
            </div>
@@ -202,7 +202,7 @@ export default async function PayrollPage() {
                        <span className="font-black text-brand-navy">~78%</span>
                     </div>
                     <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
-                       <div className="h-full bg-brand-green-deep rounded-full" style={{ width: '78%' }} />
+                       <div className="h-full bg-brand-blue-deep rounded-full" style={{ width: '78%' }} />
                     </div>
                  </div>
                  <div>

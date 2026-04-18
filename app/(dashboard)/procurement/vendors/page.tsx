@@ -142,7 +142,7 @@ export default function VendorRegistryPage() {
           onClick={() => setShowAdd(true)}
           className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]"
         >
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Register New Vendor
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Register New Vendor
         </button>
       </div>
 
@@ -150,13 +150,13 @@ export default function VendorRegistryPage() {
       <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
         <div className="flex items-center gap-4">
            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-blue-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search vendors..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
               />
            </div>
            <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-white transition-all">
@@ -173,16 +173,16 @@ export default function VendorRegistryPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {isLoading ? (
           <div className="col-span-full py-32 flex flex-col items-center justify-center space-y-4">
-             <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+             <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Synchronizing Supplier Database...</p>
           </div>
         ) : filtered.length > 0 ? filtered.map((v) => (
-          <div key={v.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
-            <div className="absolute top-0 right-0 h-32 w-32 bg-slate-50/80 rounded-full -mr-16 -mt-16 group-hover:bg-brand-green-pale transition-colors duration-500" />
+          <div key={v.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
+            <div className="absolute top-0 right-0 h-32 w-32 bg-slate-50/80 rounded-full -mr-16 -mt-16 group-hover:bg-brand-blue-pale transition-colors duration-500" />
             
             <div className="relative z-10 space-y-6">
                <div className="flex justify-between items-start">
-                  <div className="h-14 w-14 rounded-2xl bg-brand-navy text-white flex items-center justify-center text-lg font-black shadow-lg shadow-brand-navy/10 group-hover:scale-110 group-hover:bg-brand-green-deep transition-all duration-500">
+                  <div className="h-14 w-14 rounded-2xl bg-brand-navy text-white flex items-center justify-center text-lg font-black shadow-lg shadow-brand-navy/10 group-hover:scale-110 group-hover:bg-brand-blue-deep transition-all duration-500">
                      {v.name[0]}
                   </div>
                    <div className="flex gap-2">
@@ -199,7 +199,7 @@ export default function VendorRegistryPage() {
                </div>
 
                <div>
-                  <h3 className="text-xl font-black text-brand-navy mb-1 group-hover:text-brand-green-deep transition-colors">{v.name}</h3>
+                  <h3 className="text-xl font-black text-brand-navy mb-1 group-hover:text-brand-blue-deep transition-colors">{v.name}</h3>
                   <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
                      <Target className="h-3.5 w-3.5 text-slate-300" /> {v.contact_person || "Multiple Contacts"}
                   </p>
@@ -218,7 +218,7 @@ export default function VendorRegistryPage() {
                   <div className="text-[9px] font-black uppercase tracking-widest text-slate-300">Supplier Rating</div>
                   <div className="flex gap-1">
                      {[1,2,3,4,5].map(i => (
-                       <div key={i} className="h-1.5 w-1.5 rounded-full bg-brand-green-deep" />
+                       <div key={i} className="h-1.5 w-1.5 rounded-full bg-brand-blue-deep" />
                      ))}
                   </div>
                </div>
@@ -251,16 +251,16 @@ export default function VendorRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Registered Business Name</label>
-                   <input name="name" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="name" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Contact Person</label>
-                      <input name="contact_person" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="contact_person" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                     <div className="space-y-2">
                        <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Tax TPIN</label>
-                       <input name="tpin" required pattern="[0-9]{10}" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                       <input name="tpin" required pattern="[0-9]{10}" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                     </div>
                 </div>
              </div>
@@ -271,16 +271,16 @@ export default function VendorRegistryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Email Address</label>
-                   <input name="email" type="email" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="email" type="email" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Phone Number</label>
-                   <input name="phone" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="phone" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
              <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Business Address</label>
-                <textarea name="address" rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                <textarea name="address" rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
              </div>
           </div>
 
@@ -289,11 +289,11 @@ export default function VendorRegistryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Institution Name</label>
-                   <input name="bank_name" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="bank_name" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Account Number</label>
-                   <input name="bank_account_no" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="bank_account_no" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
           </div>
@@ -325,16 +325,16 @@ export default function VendorRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Registered Business Name</label>
-                   <input name="name" defaultValue={selectedVendor?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="name" defaultValue={selectedVendor?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Contact Person</label>
-                      <input name="contact_person" defaultValue={selectedVendor?.contact_person} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="contact_person" defaultValue={selectedVendor?.contact_person} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Tax TPIN</label>
-                      <input name="tpin" defaultValue={selectedVendor?.tpin} required pattern="[0-9]{10}" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="tpin" defaultValue={selectedVendor?.tpin} required pattern="[0-9]{10}" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                 </div>
              </div>
@@ -345,16 +345,16 @@ export default function VendorRegistryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Email Address</label>
-                   <input name="email" type="email" defaultValue={selectedVendor?.email} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="email" type="email" defaultValue={selectedVendor?.email} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Phone Number</label>
-                   <input name="phone" defaultValue={selectedVendor?.phone} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="phone" defaultValue={selectedVendor?.phone} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
              <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Business Address</label>
-                <textarea name="address" defaultValue={selectedVendor?.address} rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                <textarea name="address" defaultValue={selectedVendor?.address} rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
              </div>
           </div>
 
@@ -363,11 +363,11 @@ export default function VendorRegistryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Institution Name</label>
-                   <input name="bank_name" defaultValue={selectedVendor?.bank_name} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="bank_name" defaultValue={selectedVendor?.bank_name} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Account Number</label>
-                   <input name="bank_account_no" defaultValue={selectedVendor?.bank_account_no} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="bank_account_no" defaultValue={selectedVendor?.bank_account_no} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
           </div>

@@ -49,7 +49,7 @@ export default async function WarehouseRegistryPage() {
         </div>
 
         <button className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10">
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Provision New Facility
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Provision New Facility
         </button>
       </div>
 
@@ -59,8 +59,8 @@ export default async function WarehouseRegistryPage() {
            {warehouses.length > 0 ? (
              <div className="grid sm:grid-cols-2 gap-6">
                 {warehouses.map((w) => (
-                  <div key={w.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
-                     <div className="absolute top-0 right-0 h-32 w-32 bg-slate-50/80 rounded-full -mr-16 -mt-16 group-hover:bg-brand-green-pale transition-colors duration-500" />
+                  <div key={w.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+                     <div className="absolute top-0 right-0 h-32 w-32 bg-slate-50/80 rounded-full -mr-16 -mt-16 group-hover:bg-brand-blue-pale transition-colors duration-500" />
                      
                      <div className="relative z-10 space-y-6">
                         <div className="flex justify-between items-start">
@@ -73,7 +73,7 @@ export default async function WarehouseRegistryPage() {
                         </div>
 
                         <div>
-                           <h3 className="text-xl font-black text-brand-navy mb-1 group-hover:text-brand-green-deep transition-colors">{w.name}</h3>
+                           <h3 className="text-xl font-black text-brand-navy mb-1 group-hover:text-brand-blue-deep transition-colors">{w.name}</h3>
                            <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
                               <MapPin className="h-3.5 w-3.5 text-slate-300" /> {w.location_info || "Regional Logistics Center"}
                            </p>
@@ -113,14 +113,14 @@ export default async function WarehouseRegistryPage() {
         {/* Global Logistics Sidebar */}
         <div className="space-y-8">
            <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Supply Chain Risk</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Supply Chain Risk</h3>
               
               <div className="space-y-8 mb-10">
                  <div className="flex gap-4">
                     <div className="h-8 w-8 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
-                       <Truck className="h-4 w-4 text-brand-green-deep" />
+                       <Truck className="h-4 w-4 text-brand-blue-deep" />
                     </div>
                     <div>
                        <div className="text-[11px] font-black uppercase tracking-widest">In-Transit Status</div>
@@ -130,7 +130,7 @@ export default async function WarehouseRegistryPage() {
 
                  <div className="flex gap-4">
                     <div className="h-8 w-8 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
-                       <ShieldCheck className="h-4 w-4 text-brand-green-deep" />
+                       <ShieldCheck className="h-4 w-4 text-brand-blue-deep" />
                     </div>
                     <div>
                        <div className="text-[11px] font-black uppercase tracking-widest">Insurance Audit</div>
@@ -140,7 +140,7 @@ export default async function WarehouseRegistryPage() {
               </div>
 
               <div className="p-5 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
-                 <Zap className="h-4 w-4 text-brand-green-deep" />
+                 <Zap className="h-4 w-4 text-brand-blue-deep" />
                  <span className="text-[10px] font-bold opacity-60">Real-time Node Monitoring Active</span>
               </div>
            </div>

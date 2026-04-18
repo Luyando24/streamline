@@ -54,7 +54,7 @@ export function RegisterAssetButton() {
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10"
       >
-        <Plus className="h-4 w-4 text-brand-green-deep" /> Register Asset
+        <Plus className="h-4 w-4 text-brand-blue-deep" /> Register Asset
       </button>
 
       <IndustrialModal
@@ -71,16 +71,16 @@ export function RegisterAssetButton() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Official Asset Designation</label>
-                   <input name="name" required placeholder="e.g. Industrial Server Rack" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="name" required placeholder="e.g. Industrial Server Rack" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Industrial Asset Tag</label>
-                      <input name="asset_tag" required placeholder="TAG-XXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="asset_tag" required placeholder="TAG-XXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Asset Classification</label>
-                      <select name="category_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                      <select name="category_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                          <option value="">Select Category...</option>
                          {categories.map(cat => (
                            <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -96,16 +96,16 @@ export function RegisterAssetButton() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Acquisition Cost (ZMW)</label>
-                   <input name="purchase_cost" type="number" required placeholder="0.00" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="purchase_cost" type="number" required placeholder="0.00" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Acquisition Date</label>
-                   <input name="purchase_date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="purchase_date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
              <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Physical Location</label>
-                <input name="location" required placeholder="Fulfillment Center A, Slot 12" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                <input name="location" required placeholder="Fulfillment Center A, Slot 12" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
              </div>
            </div>
 

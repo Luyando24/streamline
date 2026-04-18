@@ -30,7 +30,7 @@ export default async function LeavePortalPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <CalendarClock className="h-3 w-3" /> Self-Service Portal
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Time & Absence</h1>
@@ -45,7 +45,7 @@ export default async function LeavePortalPage() {
             <Calendar className="h-4 w-4" /> Absence Calendar
           </Link>
           <button className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]">
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Request Leave
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> Request Leave
           </button>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default async function LeavePortalPage() {
       {/* Balance Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {balances.length > 0 ? balances.map((b: any) => (
-          <div key={b.id} className="group relative p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden">
+          <div key={b.id} className="group relative p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden">
             <div 
               className="absolute top-0 right-0 h-24 w-24 rounded-full -mr-12 -mt-12 opacity-10 transition-transform group-hover:scale-150 duration-700"
               style={{ backgroundColor: b.leave_types.color || '#22c55e' }}
@@ -101,7 +101,7 @@ export default async function LeavePortalPage() {
            <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
               <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
                  <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                    <History className="h-5 w-5 text-brand-green-deep" /> Recent Requests
+                    <History className="h-5 w-5 text-brand-blue-deep" /> Recent Requests
                  </h2>
                  <button className="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors">View All History</button>
               </div>
@@ -156,14 +156,14 @@ export default async function LeavePortalPage() {
         {/* Info & Guide Sidebar */}
         <div className="space-y-8">
            <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Leave Guidelines</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Leave Guidelines</h3>
               
               <div className="space-y-8">
                  <div className="flex gap-5">
                     <div className="h-8 w-8 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
-                       <AlertCircle className="h-4 w-4 text-brand-green-deep" />
+                       <AlertCircle className="h-4 w-4 text-brand-blue-deep" />
                     </div>
                     <div className="space-y-1">
                        <h4 className="text-[11px] font-black uppercase tracking-widest">Advance Notice</h4>
@@ -173,7 +173,7 @@ export default async function LeavePortalPage() {
 
                  <div className="flex gap-5">
                     <div className="h-8 w-8 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
-                       <CheckCircle2 className="h-4 w-4 text-brand-green-deep" />
+                       <CheckCircle2 className="h-4 w-4 text-brand-blue-deep" />
                     </div>
                     <div className="space-y-1">
                        <h4 className="text-[11px] font-black uppercase tracking-widest">Sick Leave</h4>
@@ -182,7 +182,7 @@ export default async function LeavePortalPage() {
                  </div>
               </div>
 
-              <button className="w-full mt-10 py-4 bg-brand-green-deep rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-brand-green-deep-light shadow-xl transition-all shadow-brand-green-deep/20 active:scale-95">
+              <button className="w-full mt-10 py-4 bg-brand-blue-deep rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-brand-blue-deep-light shadow-xl transition-all shadow-brand-blue-deep/20 active:scale-95">
                  Download Policy PDF
               </button>
            </div>
@@ -195,14 +195,14 @@ export default async function LeavePortalPage() {
                        <div className="text-xs font-black text-brand-navy">Labour Day</div>
                        <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">May 1, 2026</div>
                     </div>
-                    <span className="text-[9px] font-black text-brand-green-deep bg-brand-green-pale px-2 py-0.5 rounded">PUBLIC</span>
+                    <span className="text-[9px] font-black text-brand-blue-deep bg-brand-blue-pale px-2 py-0.5 rounded">PUBLIC</span>
                  </div>
                  <div className="flex items-center justify-between">
                     <div>
                        <div className="text-xs font-black text-brand-navy">Africa Day</div>
                        <div className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">May 25, 2026</div>
                     </div>
-                    <span className="text-[9px] font-black text-brand-green-deep bg-brand-green-pale px-2 py-0.5 rounded">PUBLIC</span>
+                    <span className="text-[9px] font-black text-brand-blue-deep bg-brand-blue-pale px-2 py-0.5 rounded">PUBLIC</span>
                  </div>
               </div>
            </div>

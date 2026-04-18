@@ -10,7 +10,7 @@ export default function BillingPage() {
         <div className="rounded-2xl border bg-white p-8 shadow-sm">
            <h3 className="text-lg font-bold text-brand-navy mb-4">Current Plan</h3>
            <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-50/80 border border-slate-200 mb-6">
-             <div className="h-12 w-12 rounded-lg bg-brand-teal flex items-center justify-center text-white font-bold text-xl">S</div>
+             <div className="h-12 w-12 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-xl">S</div>
              <div>
                <div className="text-sm font-bold text-brand-navy">Small Enterprise Tier</div>
                <div className="text-xs text-slate-700">6–15 Users • ZMW 300/mo</div>
@@ -25,7 +25,7 @@ export default function BillingPage() {
              </div>
              <div className="flex justify-between text-sm">
                <span className="text-slate-700">Estimated Amount</span>
-               <span className="font-bold text-brand-teal">ZMW 4,200</span>
+               <span className="font-bold text-brand-blue">ZMW 4,200</span>
              </div>
            </div>
         </div>

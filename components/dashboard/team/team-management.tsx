@@ -46,7 +46,7 @@ export function TeamManagement({ initialMembers, currentUserRole }: { initialMem
         {isAuthorized && (
           <button 
             onClick={() => setIsAdding(!isAdding)}
-            className="flex items-center gap-2 bg-brand-green-deep text-white px-5 py-2.5 rounded-xl font-black text-sm hover:opacity-90 transition-all shadow-lg shadow-brand-green-deep/20"
+            className="flex items-center gap-2 bg-brand-blue-deep text-white px-5 py-2.5 rounded-xl font-black text-sm hover:opacity-90 transition-all shadow-lg shadow-brand-blue-deep/20"
           >
             {isAdding ? <X className="h-4 w-4" /> : <UserPlus className="h-4 w-4" />}
             {isAdding ? "Close" : "Add Member"}
@@ -56,9 +56,9 @@ export function TeamManagement({ initialMembers, currentUserRole }: { initialMem
 
       {/* Quick Add Form */}
       {isAdding && (
-        <div className="rounded-2xl border border-brand-green-pale bg-brand-green-pale/10 p-6 animate-in slide-in-from-top duration-300">
+        <div className="rounded-2xl border border-brand-blue-pale bg-brand-blue-pale/10 p-6 animate-in slide-in-from-top duration-300">
           <h3 className="text-sm font-bold text-brand-navy mb-4 flex items-center gap-2">
-            <UserPlus className="h-4 w-4 text-brand-green-deep" /> Invite New Member
+            <UserPlus className="h-4 w-4 text-brand-blue-deep" /> Invite New Member
           </h3>
           <form action={async (formData) => {
             try {
@@ -75,28 +75,28 @@ export function TeamManagement({ initialMembers, currentUserRole }: { initialMem
               <label className="text-[10px] uppercase font-black tracking-widest text-slate-400 px-1">Full Name</label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                <input name="fullName" required placeholder="John Doe" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-green-deep/20 bg-white" />
+                <input name="fullName" required placeholder="John Doe" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue-deep/20 bg-white" />
               </div>
             </div>
             <div className="space-y-1.5">
               <label className="text-[10px] uppercase font-black tracking-widest text-slate-400 px-1">Email Address</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                <input name="email" type="email" required placeholder="john@example.com" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-green-deep/20 bg-white" />
+                <input name="email" type="email" required placeholder="john@example.com" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue-deep/20 bg-white" />
               </div>
             </div>
             <div className="space-y-1.5">
               <label className="text-[10px] uppercase font-black tracking-widest text-slate-400 px-1">Password (Optional)</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                <input name="password" type="password" placeholder="Leave empty to auto-generate" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-green-deep/20 bg-white" />
+                <input name="password" type="password" placeholder="Leave empty to auto-generate" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue-deep/20 bg-white" />
               </div>
             </div>
             <div className="space-y-1.5">
               <label className="text-[10px] uppercase font-black tracking-widest text-slate-400 px-1">Assigned Role</label>
               <div className="relative">
                 <Shield className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                <select name="role" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-green-deep/20 bg-white cursor-pointer">
+                <select name="role" className="w-full pl-10 pr-4 py-2 text-sm border rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-brand-blue-deep/20 bg-white cursor-pointer">
                   <option value="member">Member</option>
                   <option value="admin">Admin</option>
                 </select>
@@ -153,7 +153,7 @@ export function TeamManagement({ initialMembers, currentUserRole }: { initialMem
                   ) : (
                     <span className={cn(
                       "text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md",
-                      member.role === 'owner' ? "bg-brand-green-pale text-brand-green-deep border border-brand-green-deep/10" : "bg-slate-100 text-slate-500"
+                      member.role === 'owner' ? "bg-brand-blue-pale text-brand-blue-deep border border-brand-blue-deep/10" : "bg-slate-100 text-slate-500"
                     )}>
                       {member.role}
                     </span>

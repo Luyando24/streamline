@@ -90,10 +90,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8 selection:bg-brand-teal selection:text-black">
+    <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8 selection:bg-brand-blue selection:text-black">
       {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-teal/10 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/10 blur-[120px] rounded-full" />
       </div>
 
       <motion.div 
@@ -103,7 +103,7 @@ export default function LoginPage() {
       >
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
-            <span className="text-3xl font-black tracking-tighter text-brand-teal">Streamline</span>
+            <span className="text-3xl font-black tracking-tighter text-brand-blue">Streamline</span>
           </Link>
           <h2 className="text-[32px] font-black tracking-tight text-white leading-tight">Welcome back</h2>
           <p className="mt-3 text-slate-400 font-medium">
@@ -118,13 +118,13 @@ export default function LoginPage() {
                 Email Address
               </label>
               <div className="relative group">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-teal transition-colors">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-blue transition-colors">
                   <Mail className="h-5 w-5" />
                 </div>
                 <input
                   {...form.register("email")}
                   type="email"
-                  className="block w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
+                  className="block w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all"
                   placeholder="name@company.com"
                 />
               </div>
@@ -138,18 +138,18 @@ export default function LoginPage() {
                 <label htmlFor="password" className="text-[13px] font-bold text-slate-400 uppercase tracking-widest">
                   Password
                 </label>
-                <Link href="#" className="text-xs font-bold text-brand-teal hover:text-brand-teal-light">
+                <Link href="#" className="text-xs font-bold text-brand-blue hover:text-brand-blue-light">
                   Forgot?
                 </Link>
               </div>
               <div className="relative group">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-teal transition-colors">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-blue transition-colors">
                   <Lock className="h-5 w-5" />
                 </div>
                 <input
                   {...form.register("password")}
                   type="password"
-                  className="block w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
+                  className="block w-full rounded-2xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all"
                   placeholder="••••••••"
                 />
               </div>
@@ -161,15 +161,15 @@ export default function LoginPage() {
 
           <div className="pt-2 space-y-4">
             {isUnverified && (
-              <div className="p-4 rounded-2xl bg-brand-teal/5 border border-brand-teal/20 animate-in fade-in slide-in-from-top-2 duration-300">
-                <p className="text-xs text-brand-teal font-medium leading-relaxed mb-3">
+              <div className="p-4 rounded-2xl bg-brand-blue/5 border border-brand-blue/20 animate-in fade-in slide-in-from-top-2 duration-300">
+                <p className="text-xs text-brand-blue font-medium leading-relaxed mb-3">
                   Your email hasn't been verified yet. Check your inbox or click below to get a new link.
                 </p>
                 <button
                   type="button"
                   onClick={handleResendEmail}
                   disabled={isResending}
-                  className="w-full py-2 px-4 rounded-xl bg-brand-teal text-black text-[11px] font-black uppercase tracking-widest hover:bg-brand-teal-light transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2 px-4 rounded-xl bg-brand-blue text-black text-[11px] font-black uppercase tracking-widest hover:bg-brand-blue-light transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isResending ? <Loader2 className="h-3 w-3 animate-spin" /> : "Resend Verification Link"}
                 </button>
@@ -179,7 +179,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative flex w-full justify-center rounded-2xl bg-brand-teal py-4 px-4 text-sm font-bold text-black hover:bg-brand-teal-light focus:outline-none focus:ring-2 focus:ring-brand-teal focus:ring-offset-2 focus:ring-offset-black transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(0,214,57,0.3)] hover:shadow-[0_0_30px_rgba(0,214,57,0.5)] active:scale-[0.98]"
+              className="group relative flex w-full justify-center rounded-2xl bg-brand-blue py-4 px-4 text-sm font-bold text-black hover:bg-brand-blue-light focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2 focus:ring-offset-black transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(0,214,57,0.3)] hover:shadow-[0_0_30px_rgba(0,214,57,0.5)] active:scale-[0.98]"
             >
               {isLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -193,7 +193,7 @@ export default function LoginPage() {
 
           <div className="text-center text-sm pt-4">
             <span className="text-slate-500">Don't have an account? </span>
-            <Link href="/register" className="font-bold text-brand-teal hover:text-brand-teal-light transition-colors">
+            <Link href="/register" className="font-bold text-brand-blue hover:text-brand-blue-light transition-colors">
               Get started
             </Link>
           </div>

@@ -78,7 +78,7 @@ export function Sidebar({ userRole }: { userRole: string }) {
       <div className="flex h-full flex-col px-3 py-4">
         {/* Logo */}
         <div className="mb-10 flex items-center gap-3 px-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green-deep p-1.5 shadow-lg shadow-brand-green-deep/20">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue-deep p-1.5 shadow-lg shadow-brand-blue-deep/20">
             <Image 
               src="/logo.png" 
               alt="Streamline" 
@@ -101,18 +101,18 @@ export function Sidebar({ userRole }: { userRole: string }) {
                 className={cn(
                   "group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold transition-all",
                   isActive 
-                    ? "bg-brand-green-pale text-brand-green-deep shadow-sm" 
+                    ? "bg-brand-blue-pale text-brand-blue-deep shadow-sm" 
                     : "text-slate-500 hover:bg-slate-50 hover:text-brand-navy"
                 )}
               >
                 <div className="flex items-center gap-3">
                   <item.icon className={cn(
                     "h-5 w-5 transition-colors",
-                    isActive ? "text-brand-green-deep" : "text-slate-400 group-hover:text-brand-green-deep"
+                    isActive ? "text-brand-blue-deep" : "text-slate-400 group-hover:text-brand-blue-deep"
                   )} />
                   {item.name}
                 </div>
-                {isActive && <div className="h-1.5 w-1.5 rounded-full bg-brand-green-deep" />}
+                {isActive && <div className="h-1.5 w-1.5 rounded-full bg-brand-blue-deep" />}
               </Link>
             )
           })}
@@ -122,14 +122,14 @@ export function Sidebar({ userRole }: { userRole: string }) {
         <div className="mt-auto px-2 pb-4">
           <div className="rounded-2xl bg-slate-50 p-5 border border-slate-200">
             <div className="mb-2 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-navy">
-              <Sparkles className="h-3.5 w-3.5 text-brand-green-deep" /> 22 Days Left
+              <Sparkles className="h-3.5 w-3.5 text-brand-blue-deep" /> 22 Days Left
             </div>
             <p className="text-[11px] text-slate-500 leading-relaxed mb-4 font-bold">
               Your organization is currently on a premium trial.
             </p>
             <Link 
               href="/billing" 
-              className="block w-full rounded-xl bg-brand-green-deep py-2.5 text-center text-[11px] font-black text-white hover:bg-brand-green-deep-light transition-all shadow-[0_4px_12px_-2px_rgba(34,197,94,0.3)]"
+              className="block w-full rounded-xl bg-brand-blue-deep py-2.5 text-center text-[11px] font-black text-white hover:bg-brand-blue-deep-light transition-all shadow-[0_4px_12px_-2px_rgba(34,197,94,0.3)]"
             >
               UPGRADE NOW
             </Link>

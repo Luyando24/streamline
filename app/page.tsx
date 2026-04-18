@@ -24,7 +24,7 @@ import { createClient } from "@/lib/supabase/server"
 
 const InfinityLoopBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-30 select-none">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] opacity-20 text-brand-teal">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] opacity-20 text-brand-blue">
       <svg 
         viewBox="0 0 1000 500" 
         className="w-full h-auto origin-center animate-[spin_60s_linear_infinite]"
@@ -36,7 +36,7 @@ const InfinityLoopBackground = () => (
       </svg>
     </div>
     
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1200px] opacity-10 text-brand-teal">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1200px] opacity-10 text-brand-blue">
       <svg 
         viewBox="0 0 1000 500" 
         className="w-full h-auto origin-center animate-[spin_90s_linear_infinite_reverse]"
@@ -50,7 +50,7 @@ const InfinityLoopBackground = () => (
     </div>
 
     {/* Ethereal Glow */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-brand-teal opacity-[0.07] blur-[100px] rounded-full animate-pulse" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-brand-blue opacity-[0.07] blur-[100px] rounded-full animate-pulse" />
   </div>
 )
 
@@ -81,7 +81,7 @@ export default async function LandingPage() {
   const getStartedLink = user ? dashboardLink : "/register"
 
   return (
-    <div className="flex min-h-screen flex-col font-sans bg-black text-white selection:bg-brand-teal selection:text-white overflow-x-hidden">
+    <div className="flex min-h-screen flex-col font-sans bg-black text-white selection:bg-brand-blue selection:text-white overflow-x-hidden">
       {/* ========== TOP PROMO BANNER ========== */}
       <Link href={getStartedLink} className="bg-[#e6ffe6] text-black py-2.5 px-4 text-center text-sm font-semibold flex items-center justify-center gap-1 hover:underline cursor-pointer">
         <span>Get started with 30 days free on Streamline Small Business</span>
@@ -94,12 +94,12 @@ export default async function LandingPage() {
           {/* Left Nav */}
           <div className="flex items-center gap-10">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-[28px] font-black tracking-tighter text-brand-teal">Streamline</span>
+              <span className="text-[28px] font-black tracking-tighter text-brand-blue">Streamline</span>
             </Link>
             <nav className="hidden lg:flex items-center gap-8">
               <Link href="/explore" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Products & Solutions</Link>
               <Link href="#accountants" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Accountants</Link>
-              <Link href="/jobs" className="text-[15px] font-black text-brand-teal hover:text-white transition-colors flex items-center gap-1 group">
+              <Link href="/jobs" className="text-[15px] font-black text-brand-blue hover:text-white transition-colors flex items-center gap-1 group">
                 Jobs <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="#support" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Support</Link>
@@ -118,7 +118,7 @@ export default async function LandingPage() {
                 </Link>
                 <Link 
                   href="/register" 
-                  className="inline-flex items-center justify-center rounded-full bg-brand-teal px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-teal-light transition-colors"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-blue px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-blue-light transition-colors"
                 >
                   Get started
                 </Link>
@@ -126,7 +126,7 @@ export default async function LandingPage() {
             ) : (
               <Link 
                 href={dashboardLink}
-                className="inline-flex items-center justify-center rounded-full bg-brand-teal px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-teal-light transition-colors"
+                className="inline-flex items-center justify-center rounded-full bg-brand-blue px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-blue-light transition-colors"
               >
                 {hasOrg ? "Go to Dashboard" : "Complete Setup"}
               </Link>
@@ -173,17 +173,17 @@ export default async function LandingPage() {
                   <div className="absolute top-4 left-0 w-full h-[2px] bg-slate-300 -z-10" />
                   
                   <div className="flex flex-col items-center gap-3 bg-[#f2f2f2] pr-2">
-                    <div className="h-8 w-8 rounded-full bg-brand-teal text-black flex items-center justify-center shadow-md"><Check className="h-5 w-5" /></div>
+                    <div className="h-8 w-8 rounded-full bg-brand-blue text-black flex items-center justify-center shadow-md"><Check className="h-5 w-5" /></div>
                     <span className="text-[14px] font-bold text-black">Created</span>
                   </div>
                   
                   <div className="flex flex-col items-center gap-3 bg-[#f2f2f2] px-2">
-                    <div className="h-8 w-8 rounded-full bg-brand-teal text-black flex items-center justify-center shadow-md"><Check className="h-5 w-5" /></div>
+                    <div className="h-8 w-8 rounded-full bg-brand-blue text-black flex items-center justify-center shadow-md"><Check className="h-5 w-5" /></div>
                     <span className="text-[14px] font-bold text-black">Sent</span>
                   </div>
                   
                   <div className="flex flex-col items-center gap-3 bg-[#f2f2f2] px-2">
-                    <div className="h-8 w-8 rounded-full bg-brand-teal text-black flex items-center justify-center shadow-md"><Check className="h-5 w-5" /></div>
+                    <div className="h-8 w-8 rounded-full bg-brand-blue text-black flex items-center justify-center shadow-md"><Check className="h-5 w-5" /></div>
                     <span className="text-[14px] font-bold text-black">Viewed</span>
                   </div>
                   
@@ -222,7 +222,7 @@ export default async function LandingPage() {
                      <span>ZMW 48,200</span>
                    </div>
                    <div className="h-3.5 w-full rounded-full bg-slate-200 overflow-hidden">
-                     <div className="h-full rounded-full bg-brand-teal w-[85%]" />
+                     <div className="h-full rounded-full bg-brand-blue w-[85%]" />
                    </div>
                  </div>
                  
@@ -241,7 +241,7 @@ export default async function LandingPage() {
                  <div>
                    <div className="flex justify-between text-[14px] font-bold text-black mb-2">
                      <span>Net Profit</span>
-                     <span className="text-brand-teal">ZMW 25,800</span>
+                     <span className="text-brand-blue">ZMW 25,800</span>
                    </div>
                    <div className="h-3.5 w-full rounded-full bg-slate-200 overflow-hidden">
                      <div className="h-full rounded-full bg-slate-800 w-[55%]" />
@@ -272,12 +272,12 @@ export default async function LandingPage() {
               {MODULES_SHOWCASE.map((m, index) => (
                 <Reveal key={m.name} delay={index * 0.1}>
                   <div className="flex flex-col rounded-[24px] bg-[#141414] border border-white/10 p-10 hover:-translate-y-3 hover:shadow-[0_10px_40px_-10px_rgba(0,214,57,0.2)] transition-all duration-500 group">
-                    <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#00D639]/10 text-brand-teal group-hover:bg-brand-teal group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-[0_0_0_rgba(0,214,57,0)] group-hover:shadow-[0_0_20px_rgba(0,214,57,0.6)]">
+                    <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#00D639]/10 text-brand-blue group-hover:bg-brand-blue group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-[0_0_0_rgba(0,214,57,0)] group-hover:shadow-[0_0_20px_rgba(0,214,57,0.6)]">
                       {m.icon}
                     </div>
                     <h3 className="mb-3 text-[24px] font-black text-white tracking-tight">{m.name}</h3>
                     <p className="text-[16px] text-slate-400 flex-1 mb-8">{m.desc}</p>
-                    <Link href="/explore" className="mt-auto font-bold text-white hover:text-brand-teal flex items-center gap-1">
+                    <Link href="/explore" className="mt-auto font-bold text-white hover:text-brand-blue flex items-center gap-1">
                       Learn more <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -305,10 +305,10 @@ export default async function LandingPage() {
               </p>
               <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-20 opacity-80 mix-blend-screen">
                  {/* Monochromatic white logos representation */}
-                 <div className="text-lg sm:text-[28px] font-black text-white tracking-widest uppercase hover:text-brand-teal transition-colors">Africorp</div>
-                 <div className="text-lg sm:text-[28px] font-black text-white tracking-tighter uppercase italic hover:text-brand-teal transition-colors">Zambeef</div>
-                 <div className="text-lg sm:text-[28px] font-black text-white tracking-widest lowercase hover:text-brand-teal transition-colors">TRADEKINGS</div>
-                 <div className="text-lg sm:text-[28px] font-bold text-white tracking-normal uppercase relative group hover:text-brand-teal transition-colors"><span className="text-2xl sm:text-3xl">P</span>roSec</div>
+                 <div className="text-lg sm:text-[28px] font-black text-white tracking-widest uppercase hover:text-brand-blue transition-colors">Africorp</div>
+                 <div className="text-lg sm:text-[28px] font-black text-white tracking-tighter uppercase italic hover:text-brand-blue transition-colors">Zambeef</div>
+                 <div className="text-lg sm:text-[28px] font-black text-white tracking-widest lowercase hover:text-brand-blue transition-colors">TRADEKINGS</div>
+                 <div className="text-lg sm:text-[28px] font-bold text-white tracking-normal uppercase relative group hover:text-brand-blue transition-colors"><span className="text-2xl sm:text-3xl">P</span>roSec</div>
               </div>
             </div>
           </section>
@@ -320,7 +320,7 @@ export default async function LandingPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-[56px] font-black tracking-tight text-white mb-4 md:mb-6">Meet our customers</h2>
               <Link 
                 href="#"
-                className="inline-flex items-center justify-center text-base sm:text-[17px] font-bold text-brand-teal hover:underline mb-8"
+                className="inline-flex items-center justify-center text-base sm:text-[17px] font-bold text-brand-blue hover:underline mb-8"
               >
                 Read Customer Stories <ChevronRight className="ml-1 h-5 w-5" />
               </Link>
@@ -337,7 +337,7 @@ export default async function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-20 text-[15px]">
             <div className="col-span-2 lg:col-span-2 pr-8">
                <Link href="/" className="inline-block mb-8">
-                 <span className="text-[28px] font-black tracking-tighter text-brand-teal">Streamline</span>
+                 <span className="text-[28px] font-black tracking-tighter text-brand-blue">Streamline</span>
                </Link>
                <p className="text-slate-400 leading-relaxed mb-6">
                  Streamline provides the modular technology and human support to help your African business flow. Start your self-service ERP journey today.
@@ -364,7 +364,7 @@ export default async function LandingPage() {
             <div className="flex flex-col gap-4">
               <h4 className="font-bold text-white mb-2">Company</h4>
               <Link href="#" className="text-slate-400 hover:text-white transition-colors">About Streamline</Link>
-              <Link href="/jobs" className="text-brand-teal font-black hover:text-white transition-colors">Careers & Jobs</Link>
+              <Link href="/jobs" className="text-brand-blue font-black hover:text-white transition-colors">Careers & Jobs</Link>
               <Link href="#" className="text-slate-400 hover:text-white transition-colors">Press</Link>
               <Link href="#" className="text-slate-400 hover:text-white transition-colors">Partner Program</Link>
             </div>

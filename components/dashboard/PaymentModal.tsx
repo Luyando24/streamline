@@ -109,9 +109,9 @@ export function PaymentModal({
                   <div className="flex justify-between items-end">
                     <div className="flex flex-col">
                       <span className="text-[10px] uppercase font-black text-slate-400 tracking-widest">Total to Pay ({billingCycle})</span>
-                      <span className="text-2xl font-black text-brand-green-deep">ZMW {total.toLocaleString()}</span>
+                      <span className="text-2xl font-black text-brand-blue-deep">ZMW {total.toLocaleString()}</span>
                     </div>
-                    <ShieldCheck className="h-5 w-5 text-brand-green-deep opacity-50 mb-1" />
+                    <ShieldCheck className="h-5 w-5 text-brand-blue-deep opacity-50 mb-1" />
                   </div>
                 </div>
 
@@ -119,7 +119,7 @@ export function PaymentModal({
                   onClick={() => setStep('payment')}
                   className="w-full flex items-center justify-center gap-2 rounded-2xl bg-brand-navy py-4 text-sm font-black text-white hover:bg-brand-navy/90 transition-all shadow-xl"
                 >
-                  Continue to Payment <ChevronRight className="h-4 w-4 text-brand-green-deep" />
+                  Continue to Payment <ChevronRight className="h-4 w-4 text-brand-blue-deep" />
                 </button>
               </motion.div>
             )}
@@ -136,12 +136,12 @@ export function PaymentModal({
                   onClick={() => setPaymentMethod('card')}
                   className={cn(
                     "w-full flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
-                    paymentMethod === 'card' ? "border-brand-green-deep bg-brand-green-pale" : "border-slate-100 hover:border-slate-200"
+                    paymentMethod === 'card' ? "border-brand-blue-deep bg-brand-blue-pale" : "border-slate-100 hover:border-slate-200"
                   )}
                 >
                   <div className={cn(
                     "h-12 w-12 rounded-xl flex items-center justify-center",
-                    paymentMethod === 'card' ? "bg-brand-green-deep text-white" : "bg-slate-50 text-slate-400"
+                    paymentMethod === 'card' ? "bg-brand-blue-deep text-white" : "bg-slate-50 text-slate-400"
                   )}>
                     <CreditCard className="h-6 w-6" />
                   </div>
@@ -155,12 +155,12 @@ export function PaymentModal({
                   onClick={() => setPaymentMethod('momo')}
                   className={cn(
                     "w-full flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
-                    paymentMethod === 'momo' ? "border-brand-green-deep bg-brand-green-pale" : "border-slate-100 hover:border-slate-200"
+                    paymentMethod === 'momo' ? "border-brand-blue-deep bg-brand-blue-pale" : "border-slate-100 hover:border-slate-200"
                   )}
                 >
                   <div className={cn(
                     "h-12 w-12 rounded-xl flex items-center justify-center",
-                    paymentMethod === 'momo' ? "bg-brand-green-deep text-white" : "bg-slate-50 text-slate-400"
+                    paymentMethod === 'momo' ? "bg-brand-blue-deep text-white" : "bg-slate-50 text-slate-400"
                   )}>
                     <Smartphone className="h-6 w-6" />
                   </div>
@@ -173,7 +173,7 @@ export function PaymentModal({
                 <button 
                   onClick={handlePayment}
                   disabled={!paymentMethod}
-                  className="w-full mt-4 flex items-center justify-center gap-2 rounded-2xl bg-brand-green-deep py-4 text-sm font-black text-white hover:bg-brand-green-deep/90 transition-all shadow-xl disabled:opacity-50 disabled:grayscale"
+                  className="w-full mt-4 flex items-center justify-center gap-2 rounded-2xl bg-brand-blue-deep py-4 text-sm font-black text-white hover:bg-brand-blue-deep/90 transition-all shadow-xl disabled:opacity-50 disabled:grayscale"
                 >
                   Complete Secure Payment
                 </button>
@@ -188,9 +188,9 @@ export function PaymentModal({
                 className="py-12 flex flex-col items-center justify-center gap-6"
               >
                 <div className="relative">
-                   <Loader2 className="h-16 w-16 text-brand-green-deep animate-spin" />
+                   <Loader2 className="h-16 w-16 text-brand-blue-deep animate-spin" />
                    <div className="absolute inset-0 flex items-center justify-center">
-                     <ShieldCheck className="h-6 w-6 text-brand-green-deep opacity-50" />
+                     <ShieldCheck className="h-6 w-6 text-brand-blue-deep opacity-50" />
                    </div>
                 </div>
                 <div className="text-center">
@@ -207,8 +207,8 @@ export function PaymentModal({
                 animate={{ opacity: 1, scale: 1 }}
                 className="py-8 flex flex-col items-center justify-center gap-6 text-center"
               >
-                <div className="h-20 w-20 rounded-full bg-brand-green-pale flex items-center justify-center">
-                  <CheckCircle2 className="h-12 w-12 text-brand-green-deep" />
+                <div className="h-20 w-20 rounded-full bg-brand-blue-pale flex items-center justify-center">
+                  <CheckCircle2 className="h-12 w-12 text-brand-blue-deep" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-black text-brand-navy">Modules Activated!</h3>

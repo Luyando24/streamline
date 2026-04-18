@@ -97,13 +97,13 @@ export default function EmployeePayrollPage() {
       <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
         <div className="flex items-center gap-4">
            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-blue-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search staff..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
               />
            </div>
         </div>
@@ -117,11 +117,11 @@ export default function EmployeePayrollPage() {
       <div className="grid gap-4">
         {isLoading ? (
           <div className="py-20 flex flex-col items-center justify-center space-y-4">
-             <Loader2 className="h-8 w-8 animate-spin text-brand-green-deep" />
+             <Loader2 className="h-8 w-8 animate-spin text-brand-blue-deep" />
              <p className="text-xs font-black uppercase tracking-widest text-slate-600">Synchronizing team Data...</p>
           </div>
         ) : filtered.map((e) => (
-          <div key={e.profile_id} className="group p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-lg transition-all flex items-center justify-between gap-6">
+          <div key={e.profile_id} className="group p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-lg transition-all flex items-center justify-between gap-6">
             <div className="flex items-center gap-6">
                <div className="h-14 w-14 rounded-[22px] bg-slate-50/80 flex items-center justify-center text-brand-navy font-black text-xs shadow-inner">
                   {e.profiles.full_name.split(' ').map((n: string) => n[0]).join('')}
@@ -174,7 +174,7 @@ export default function EmployeePayrollPage() {
                       type="number" 
                       step="0.01"
                       defaultValue={selectedProfile.employee_profiles?.basic_salary || 0}
-                      className="w-full pl-11 pr-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all shadow-sm bg-slate-50"
+                      className="w-full pl-11 pr-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-black text-sm transition-all shadow-sm bg-slate-50"
                     />
                   </div>
                 </div>
@@ -187,19 +187,19 @@ export default function EmployeePayrollPage() {
               <div className="grid grid-cols-2 gap-4">
                  <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-600 pl-1">ZRA TPIN</label>
-                    <input name="tpin" defaultValue={selectedProfile.employee_profiles?.tpin || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs bg-slate-50" />
+                    <input name="tpin" defaultValue={selectedProfile.employee_profiles?.tpin || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs bg-slate-50" />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-600 pl-1">NAPSA Number</label>
-                    <input name="napsa_no" defaultValue={selectedProfile.employee_profiles?.napsa_no || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs bg-slate-50" />
+                    <input name="napsa_no" defaultValue={selectedProfile.employee_profiles?.napsa_no || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs bg-slate-50" />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-600 pl-1">NHIMA Number</label>
-                    <input name="nhima_no" defaultValue={selectedProfile.employee_profiles?.nhima_no || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs bg-slate-50" />
+                    <input name="nhima_no" defaultValue={selectedProfile.employee_profiles?.nhima_no || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs bg-slate-50" />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-600 pl-1">NRC Number</label>
-                    <input name="nrc_no" defaultValue={selectedProfile.employee_profiles?.nrc_no || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs bg-slate-50" />
+                    <input name="nrc_no" defaultValue={selectedProfile.employee_profiles?.nrc_no || ""} className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs bg-slate-50" />
                  </div>
               </div>
             </div>
@@ -212,21 +212,21 @@ export default function EmployeePayrollPage() {
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-600 pl-1">Bank Name</label>
                     <div className="relative">
                       <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-300" />
-                      <input name="bank_name" defaultValue={selectedProfile.employee_profiles?.bank_name || ""} className="w-full pl-10 pr-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs bg-slate-50" />
+                      <input name="bank_name" defaultValue={selectedProfile.employee_profiles?.bank_name || ""} className="w-full pl-10 pr-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs bg-slate-50" />
                     </div>
                  </div>
                  <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-600 pl-1">Account Number</label>
                     <div className="relative">
                       <CreditCard className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-300" />
-                      <input name="account_no" defaultValue={selectedProfile.employee_profiles?.account_no || ""} className="w-full pl-10 pr-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs bg-slate-50" />
+                      <input name="account_no" defaultValue={selectedProfile.employee_profiles?.account_no || ""} className="w-full pl-10 pr-5 py-3.5 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs bg-slate-50" />
                     </div>
                  </div>
               </div>
             </div>
 
             <div className="flex items-center gap-2 pt-6">
-              <input type="checkbox" name="is_active" defaultChecked={selectedProfile.employee_profiles?.is_active ?? true} id="is_active" className="h-5 w-5 rounded border-slate-200 text-brand-green-deep focus:ring-brand-green-deep" />
+              <input type="checkbox" name="is_active" defaultChecked={selectedProfile.employee_profiles?.is_active ?? true} id="is_active" className="h-5 w-5 rounded border-slate-200 text-brand-blue-deep focus:ring-brand-blue-deep" />
               <label htmlFor="is_active" className="text-xs font-bold text-brand-navy">Active on Payroll</label>
             </div>
 

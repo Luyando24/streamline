@@ -74,17 +74,17 @@ export function AssetMaster({ initialAssets }: { initialAssets: any[] }) {
     <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
       <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
         <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-          <LayoutGrid className="h-5 w-5 text-brand-green-deep" /> Capital Registry
+          <LayoutGrid className="h-5 w-5 text-brand-blue-deep" /> Capital Registry
         </h2>
         <div className="flex gap-2">
           <div className="relative group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 group-focus-within:text-brand-green-deep transition-colors" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 group-focus-within:text-brand-blue-deep transition-colors" />
             <input 
               type="text" 
               placeholder="Filter by Tag/Name..." 
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="pl-9 pr-4 py-2 text-[10px] border border-slate-200 rounded-xl focus:outline-none focus:border-brand-green-deep w-48 font-bold transition-all bg-white"
+              className="pl-9 pr-4 py-2 text-[10px] border border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue-deep w-48 font-bold transition-all bg-white"
             />
           </div>
         </div>
@@ -106,7 +106,7 @@ export function AssetMaster({ initialAssets }: { initialAssets: any[] }) {
                       <span className="h-1 w-1 rounded-full bg-slate-200" />
                       <span className={cn(
                         "text-[10px] font-black uppercase tracking-widest",
-                        asset.status === 'active' ? "text-brand-green-deep" : "text-orange-600"
+                        asset.status === 'active' ? "text-brand-blue-deep" : "text-orange-600"
                       )}>
                         {asset.status}
                       </span>
@@ -170,16 +170,16 @@ export function AssetMaster({ initialAssets }: { initialAssets: any[] }) {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Official Designation</label>
-                   <input name="name" defaultValue={selectedAsset?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="name" defaultValue={selectedAsset?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Industrial Asset Tag</label>
-                      <input name="asset_tag" defaultValue={selectedAsset?.asset_tag} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="asset_tag" defaultValue={selectedAsset?.asset_tag} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Deployment Status</label>
-                      <select name="status" defaultValue={selectedAsset?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                      <select name="status" defaultValue={selectedAsset?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                          <option value="active">Active Service</option>
                          <option value="maintenance">In Maintenance</option>
                          <option value="retired">Retired / Surplus</option>
@@ -194,11 +194,11 @@ export function AssetMaster({ initialAssets }: { initialAssets: any[] }) {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Historical Cost (ZMW)</label>
-                   <input name="purchase_cost" type="number" defaultValue={selectedAsset?.purchase_cost} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="purchase_cost" type="number" defaultValue={selectedAsset?.purchase_cost} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Deployment Location</label>
-                   <input name="location" defaultValue={selectedAsset?.location} placeholder="e.g. Lusaka HQ" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="location" defaultValue={selectedAsset?.location} placeholder="e.g. Lusaka HQ" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
            </div>

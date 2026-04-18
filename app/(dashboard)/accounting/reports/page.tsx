@@ -69,7 +69,7 @@ export default function AccountingReportsPage() {
             <Printer className="h-5 w-5" />
           </button>
           <button className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]">
-            <Download className="h-4 w-4 text-brand-green-deep" /> Export Analysis
+            <Download className="h-4 w-4 text-brand-blue-deep" /> Export Analysis
           </button>
         </div>
       </div>
@@ -83,7 +83,7 @@ export default function AccountingReportsPage() {
                 type="date" 
                 value={period.start}
                 onChange={e => setPeriod({...period, start: e.target.value})}
-                className="px-4 py-2 border-2 border-slate-100 rounded-xl text-xs font-bold focus:border-brand-green-deep focus:outline-none transition-all"
+                className="px-4 py-2 border-2 border-slate-100 rounded-xl text-xs font-bold focus:border-brand-blue-deep focus:outline-none transition-all"
               />
            </div>
            <div className="flex flex-col gap-1.5 pt-4 text-slate-300">
@@ -95,7 +95,7 @@ export default function AccountingReportsPage() {
                 type="date" 
                 value={period.end}
                 onChange={e => setPeriod({...period, end: e.target.value})}
-                className="px-4 py-2 border-2 border-slate-100 rounded-xl text-xs font-bold focus:border-brand-green-deep focus:outline-none transition-all"
+                className="px-4 py-2 border-2 border-slate-100 rounded-xl text-xs font-bold focus:border-brand-blue-deep focus:outline-none transition-all"
               />
            </div>
         </div>
@@ -109,7 +109,7 @@ export default function AccountingReportsPage() {
       {/* Report Content */}
       {isLoading ? (
         <div className="flex flex-col items-center justify-center py-40 space-y-4">
-           <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+           <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
            <p className="text-xs font-black uppercase tracking-widest text-slate-400">Processing Ledger Data...</p>
         </div>
       ) : report ? (
@@ -201,7 +201,7 @@ export default function AccountingReportsPage() {
                        </div>
                        <div className={cn(
                          "h-20 w-20 rounded-[32px] flex items-center justify-center text-white shadow-2xl",
-                         report.net_profit >= 0 ? "bg-brand-green-deep shadow-emerald-200" : "bg-red-500 shadow-red-200"
+                         report.net_profit >= 0 ? "bg-brand-blue-deep shadow-emerald-200" : "bg-red-500 shadow-red-200"
                        )}>
                           {report.net_profit >= 0 ? <TrendingUp className="h-10 w-10" /> : <TrendingDown className="h-10 w-10" />}
                        </div>
@@ -220,11 +220,11 @@ export default function AccountingReportsPage() {
                  <div className="flex items-center gap-6">
                     <div className="text-center">
                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-1">Equity Value</span>
-                       <span className={`text-2xl font-black ${report.net_profit >= 0 ? "text-brand-green-deep" : "text-red-400"}`}>
+                       <span className={`text-2xl font-black ${report.net_profit >= 0 ? "text-brand-blue-deep" : "text-red-400"}`}>
                          Market Ready
                        </span>
                     </div>
-                    <button className="px-6 py-4 bg-brand-green-deep text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-brand-green-deep-light transition-all shadow-lg shadow-brand-green-deep/20">
+                    <button className="px-6 py-4 bg-brand-blue-deep text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-brand-blue-deep-light transition-all shadow-lg shadow-brand-blue-deep/20">
                        Full Balance Sheet <ChevronRight className="h-4 w-4 inline" />
                     </button>
                  </div>
@@ -235,7 +235,7 @@ export default function AccountingReportsPage() {
            <div className="space-y-8">
               <div className="p-8 bg-white border-2 border-slate-200 rounded-[28px] shadow-sm">
                  <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6 flex items-center gap-2">
-                   <Sparkles className="h-4 w-4 text-brand-green-deep" /> Zambian Tax Pulse
+                   <Sparkles className="h-4 w-4 text-brand-blue-deep" /> Zambian Tax Pulse
                  </h4>
                  <div className="space-y-6">
                     <div className="p-5 bg-slate-50 rounded-2xl space-y-1">
@@ -247,7 +247,7 @@ export default function AccountingReportsPage() {
                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Audit Confidence</span>
                        <div className="text-lg font-black text-brand-navy">98.4%</div>
                        <div className="h-1.5 w-full bg-slate-200 rounded-full mt-2">
-                          <div className="h-full bg-brand-green-deep rounded-full w-[98.4%]" />
+                          <div className="h-full bg-brand-blue-deep rounded-full w-[98.4%]" />
                        </div>
                     </div>
                  </div>
@@ -255,12 +255,12 @@ export default function AccountingReportsPage() {
 
               <div className="p-10 bg-emerald-600 rounded-[28px] text-white overflow-hidden relative group">
                  <div className="absolute top-0 right-0 h-40 w-40 bg-white/10 rounded-full -mr-20 -mt-20 group-hover:scale-150 transition-transform duration-1000" />
-                 <PieChart className="h-10 w-10 mb-6 text-brand-green-pale" />
+                 <PieChart className="h-10 w-10 mb-6 text-brand-blue-pale" />
                  <h4 className="text-xl font-black mb-4 leading-tight">Monthly Close Guidance</h4>
                  <p className="text-white/80 text-[11px] font-bold leading-relaxed mb-8">
                     Your current burn rate suggests a healthy runway. Ensure all petty cash reconciliations are completed before EOM.
                  </p>
-                 <Link href="/accounting/ledger" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-green-pale hover:text-white transition-colors">
+                 <Link href="/accounting/ledger" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-blue-pale hover:text-white transition-colors">
                     Review Ledger <ArrowRightLeft className="h-3 w-3" />
                  </Link>
               </div>

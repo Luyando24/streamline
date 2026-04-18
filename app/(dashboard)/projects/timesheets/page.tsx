@@ -110,7 +110,7 @@ export default function TimesheetHubPage() {
           onClick={() => setShowAdd(true)}
           className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10"
         >
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Log New Session
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Log New Session
         </button>
       </div>
 
@@ -133,12 +133,12 @@ export default function TimesheetHubPage() {
             <History className="h-6 w-6 text-orange-500 opacity-20 relative z-10" />
          </div>
          <div className="p-8 bg-brand-navy rounded-2xl flex items-center justify-between text-white group overflow-hidden relative">
-            <div className="absolute top-0 right-0 h-16 w-16 bg-brand-green-deep rounded-full -mr-8 -mt-8 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+            <div className="absolute top-0 right-0 h-16 w-16 bg-brand-blue-deep rounded-full -mr-8 -mt-8 opacity-20 group-hover:scale-150 transition-transform duration-700" />
             <div>
-               <div className="text-[10px] font-black uppercase tracking-widest text-brand-green-pale mb-1">Efficiency Node</div>
-               <div className="text-2xl font-black text-brand-green-deep">94.2% <span className="text-[10px] text-white/40">Utilization</span></div>
+               <div className="text-[10px] font-black uppercase tracking-widest text-brand-blue-pale mb-1">Efficiency Node</div>
+               <div className="text-2xl font-black text-brand-blue-deep">94.2% <span className="text-[10px] text-white/40">Utilization</span></div>
             </div>
-            <Sparkles className="h-6 w-6 text-brand-green-deep opacity-40 relative z-10" />
+            <Sparkles className="h-6 w-6 text-brand-blue-deep opacity-40 relative z-10" />
          </div>
       </div>
 
@@ -147,7 +147,7 @@ export default function TimesheetHubPage() {
         <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
            <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
               <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                 <History className="h-5 w-5 text-brand-green-deep" /> Session Inventory
+                 <History className="h-5 w-5 text-brand-blue-deep" /> Session Inventory
               </h2>
               <div className="flex gap-2">
                  <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600">
@@ -159,7 +159,7 @@ export default function TimesheetHubPage() {
            <div className="p-4">
               {isLoading ? (
                 <div className="py-32 flex flex-col items-center justify-center space-y-4">
-                   <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+                   <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Synchronizing Timesheet Ledger...</p>
                 </div>
               ) : entries.length > 0 ? (
@@ -178,7 +178,7 @@ export default function TimesheetHubPage() {
                               <div className="flex items-center gap-3">
                                  <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{new Date(e.date).toLocaleDateString()}</span>
                                  <span className="h-1 w-1 rounded-full bg-slate-300" />
-                                 <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">{e.task?.title || "Project Session"}</span>
+                                 <span className="text-[10px] font-black text-brand-blue-deep uppercase tracking-widest">{e.task?.title || "Project Session"}</span>
                               </div>
                            </div>
                         </div>
@@ -234,14 +234,14 @@ export default function TimesheetHubPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Target Project</label>
-                   <select name="project_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                   <select name="project_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                       <option value="">Select organizational workflow</option>
                       {projects.map(p => <option key={p.id} value={p.id}>{p.title}</option>)}
                    </select>
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Deliverable Link (Optional)</label>
-                   <select name="task_id" className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                   <select name="task_id" className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                       <option value="">Link to specific Kanban task</option>
                       {tasks.map(t => <option key={t.id} value={t.id}>{t.title}</option>)}
                    </select>
@@ -254,11 +254,11 @@ export default function TimesheetHubPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Session Date</label>
-                   <input name="date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Session Duration (Hrs)</label>
-                   <input name="hours" type="number" step="0.25" required placeholder="e.g. 1.25" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="hours" type="number" step="0.25" required placeholder="e.g. 1.25" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
              <div className="flex items-center gap-3 p-6 bg-slate-50 border border-slate-100 rounded-2xl">
@@ -274,7 +274,7 @@ export default function TimesheetHubPage() {
              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Activity Narrative</h3>
              <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Description of Work</label>
-                <textarea name="notes" rows={4} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50 placeholder:text-slate-300" placeholder="Detail the professional value delivered in this session..." />
+                <textarea name="notes" rows={4} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50 placeholder:text-slate-300" placeholder="Detail the professional value delivered in this session..." />
              </div>
            </div>
 

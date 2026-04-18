@@ -297,15 +297,15 @@ export default function OnboardingWizard() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-brand-teal selection:text-black font-sans">
+    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 selection:bg-brand-blue selection:text-black font-sans">
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-brand-teal/5 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-brand-blue/5 blur-[120px] rounded-full" />
       </div>
 
       <header className="border-b border-black/5 bg-black py-4 sticky top-0 z-50">
         <div className="max-w-3xl mx-auto px-6 grid grid-cols-3 items-center">
           <div className="flex justify-start">
-            <span className="text-xl font-black tracking-tighter text-brand-teal">Streamline</span>
+            <span className="text-xl font-black tracking-tighter text-brand-blue">Streamline</span>
           </div>
           
           {/* Stepper */}
@@ -315,7 +315,7 @@ export default function OnboardingWizard() {
                 <div key={step.id} className="flex items-center">
                   <div className={cn(
                     "h-1 w-10 rounded-full transition-all duration-700",
-                    currentStep >= step.id ? "bg-brand-teal shadow-[0_0_10px_rgba(0,214,57,0.5)]" : "bg-white/10"
+                    currentStep >= step.id ? "bg-brand-blue shadow-[0_0_10px_rgba(0,214,57,0.5)]" : "bg-white/10"
                   )} />
                 </div>
               ))}
@@ -350,7 +350,7 @@ export default function OnboardingWizard() {
                 {currentStep === 1 && (
                   <>
                     <div className="space-y-4 flex flex-col items-center text-center">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-teal/5 flex items-center justify-center border border-brand-teal/10 text-brand-teal mb-2">
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 text-brand-blue mb-2">
                         <Building2 className="h-8 w-8 sm:h-10 sm:w-10" />
                       </div>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-brand-navy">Business Identity</h2>
@@ -364,7 +364,7 @@ export default function OnboardingWizard() {
                           type="text" 
                           value={orgData.name}
                           onChange={e => setOrgData({...orgData, name: e.target.value})}
-                          className="w-full rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 text-center text-base sm:text-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all shadow-sm"
+                          className="w-full rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 text-center text-base sm:text-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-sm"
                           placeholder="e.g. Copperbelt Enterprises"
                         />
                       </div>
@@ -375,7 +375,7 @@ export default function OnboardingWizard() {
                 {currentStep === 2 && (
                   <>
                     <div className="space-y-4 flex flex-col items-center text-center">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-teal/5 flex items-center justify-center border border-brand-teal/10 text-brand-teal mb-2">
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 text-brand-blue mb-2">
                         <Info className="h-8 w-8 sm:h-10 sm:w-10" />
                       </div>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-brand-navy">Industry Sector</h2>
@@ -392,7 +392,7 @@ export default function OnboardingWizard() {
                               onClick={() => setOrgData({...orgData, industry})}
                               className={cn(
                                 "p-4 sm:p-5 rounded-2xl border text-xs sm:text-sm font-bold transition-all text-center",
-                                orgData.industry === industry ? "bg-brand-teal border-brand-teal text-black shadow-md scale-[1.02]" : "bg-white border-slate-100 text-slate-500 hover:border-slate-300"
+                                orgData.industry === industry ? "bg-brand-blue border-brand-blue text-black shadow-md scale-[1.02]" : "bg-white border-slate-100 text-slate-500 hover:border-slate-300"
                               )}
                             >
                               {industry}
@@ -407,7 +407,7 @@ export default function OnboardingWizard() {
                 {currentStep === 3 && (
                   <div className="space-y-10 flex flex-col items-center">
                     <div className="space-y-4 text-center flex flex-col items-center">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-teal/5 flex items-center justify-center border border-brand-teal/10 text-brand-teal mb-2">
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 text-brand-blue mb-2">
                         <Users className="h-8 w-8 sm:h-10 sm:w-10" />
                       </div>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-brand-navy">Operational Scale</h2>
@@ -421,13 +421,13 @@ export default function OnboardingWizard() {
                           onClick={() => setSelectedTier(tier.id)}
                           className={cn(
                             "flex items-center justify-between p-4 sm:p-6 rounded-[24px] sm:rounded-3xl border-2 transition-all text-left group",
-                            selectedTier === tier.id ? "border-brand-teal bg-brand-teal/5 shadow-lg" : "border-slate-100 bg-white hover:border-slate-200"
+                            selectedTier === tier.id ? "border-brand-blue bg-brand-blue/5 shadow-lg" : "border-slate-100 bg-white hover:border-slate-200"
                           )}
                         >
                           <div className="flex items-center gap-4 sm:gap-5">
                             <div className={cn(
                               "h-10 w-10 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all",
-                              selectedTier === tier.id ? "bg-brand-teal text-black" : "bg-slate-50 text-slate-400 group-hover:bg-brand-teal/5"
+                              selectedTier === tier.id ? "bg-brand-blue text-black" : "bg-slate-50 text-slate-400 group-hover:bg-brand-blue/5"
                             )}>
                               <Users className="h-4 w-4 sm:h-5 sm:w-5" />
                             </div>
@@ -451,7 +451,7 @@ export default function OnboardingWizard() {
                 {currentStep === 4 && (
                   <div className="space-y-10 flex flex-col items-center">
                     <div className="space-y-4 text-center flex flex-col items-center">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-teal/5 flex items-center justify-center border border-brand-teal/10 text-brand-teal mb-2">
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 text-brand-blue mb-2">
                         <Layers className="h-8 w-8 sm:h-10 sm:w-10" />
                       </div>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-brand-navy">Equip Platform</h2>
@@ -465,7 +465,7 @@ export default function OnboardingWizard() {
                           onClick={() => toggleModule(module.id)}
                           className={cn(
                             "group p-6 rounded-[24px] sm:rounded-[32px] border-2 transition-all text-left relative overflow-hidden",
-                            selectedModules.includes(module.id) ? "border-brand-teal bg-brand-teal/5" : "border-slate-100 bg-white hover:border-slate-200"
+                            selectedModules.includes(module.id) ? "border-brand-blue bg-brand-blue/5" : "border-slate-100 bg-white hover:border-slate-200"
                           )}
                         >
                           <div className="flex items-center justify-between mb-4">
@@ -473,7 +473,7 @@ export default function OnboardingWizard() {
                               "text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full",
                               module.category === 'Core' ? "bg-blue-50 text-blue-600" : "bg-purple-50 text-purple-600"
                             )}>{module.category}</span>
-                            {selectedModules.includes(module.id) && <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-brand-teal" />}
+                            {selectedModules.includes(module.id) && <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-brand-blue" />}
                           </div>
                           <div className="text-base sm:text-lg font-black text-brand-navy mb-1">{module.name}</div>
                           <div className="text-xs sm:text-sm font-bold text-slate-400">ZMW {module.price.toLocaleString()} / mo</div>
@@ -486,7 +486,7 @@ export default function OnboardingWizard() {
                 {currentStep === 5 && (
                   <div className="space-y-10 flex flex-col items-center">
                     <div className="space-y-4 text-center flex flex-col items-center">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-teal/5 flex items-center justify-center border border-brand-teal/10 text-brand-teal mb-2">
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 text-brand-blue mb-2">
                         <CreditCard className="h-8 w-8 sm:h-10 sm:w-10" />
                       </div>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-brand-navy">Billing Frequency</h2>
@@ -504,15 +504,15 @@ export default function OnboardingWizard() {
                           onClick={() => setBillingCycle(cycle.id)}
                           className={cn(
                             "flex items-center justify-between p-6 sm:p-8 rounded-[28px] sm:rounded-[36px] border-2 transition-all relative group shadow-sm",
-                            billingCycle === cycle.id ? "border-brand-teal bg-brand-teal/5" : "border-slate-100 bg-white hover:border-slate-200"
+                            billingCycle === cycle.id ? "border-brand-blue bg-brand-blue/5" : "border-slate-100 bg-white hover:border-slate-200"
                           )}
                         >
                           <div className="flex items-center gap-4 sm:gap-6">
                             <div className={cn(
                               "h-6 w-6 sm:h-7 sm:w-7 rounded-full border-2 flex items-center justify-center transition-all",
-                              billingCycle === cycle.id ? "border-brand-teal" : "border-slate-200"
+                              billingCycle === cycle.id ? "border-brand-blue" : "border-slate-200"
                             )}>
-                              {billingCycle === cycle.id && <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-brand-teal shadow-[0_0_15px_rgba(0,183,49,1)]" />}
+                              {billingCycle === cycle.id && <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-brand-blue shadow-[0_0_15px_rgba(0,183,49,1)]" />}
                             </div>
                             <div>
                               <span className="font-black text-brand-navy text-xl sm:text-2xl block">{cycle.name}</span>
@@ -520,7 +520,7 @@ export default function OnboardingWizard() {
                             </div>
                           </div>
                           {cycle.discount && (
-                            <span className="bg-brand-teal/10 text-brand-teal text-[9px] sm:text-[10px] font-black px-3 py-1 sm:px-4 sm:py-1.5 rounded-full uppercase tracking-widest border border-brand-teal/20 shadow-sm">
+                            <span className="bg-brand-blue/10 text-brand-blue text-[9px] sm:text-[10px] font-black px-3 py-1 sm:px-4 sm:py-1.5 rounded-full uppercase tracking-widest border border-brand-blue/20 shadow-sm">
                               -{cycle.discount}%
                             </span>
                           )}
@@ -533,7 +533,7 @@ export default function OnboardingWizard() {
                 {currentStep === 6 && (
                   <div className="space-y-10 flex flex-col items-center">
                     <div className="space-y-4 text-center flex flex-col items-center">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-teal/5 flex items-center justify-center border border-brand-teal/10 text-brand-teal mb-2">
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-[32px] bg-brand-blue/5 flex items-center justify-center border border-brand-blue/10 text-brand-blue mb-2">
                         <CheckCircle2 className="h-8 w-8 sm:h-10 sm:w-10" />
                       </div>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-brand-navy">Summary & Activation</h2>
@@ -541,7 +541,7 @@ export default function OnboardingWizard() {
                     </div>
 
                     <div className="w-full max-w-xl p-6 sm:p-10 bg-white rounded-[32px] sm:rounded-[40px] border border-slate-100 shadow-2xl relative overflow-hidden group mx-4">
-                      <div className="absolute top-0 right-0 h-40 w-40 bg-brand-teal/5 -mr-10 -mt-20 rounded-full blur-3xl group-hover:bg-brand-teal/10 transition-all duration-700" />
+                      <div className="absolute top-0 right-0 h-40 w-40 bg-brand-blue/5 -mr-10 -mt-20 rounded-full blur-3xl group-hover:bg-brand-blue/10 transition-all duration-700" />
                       
                       <div className="space-y-4 sm:space-y-6 relative z-10 text-center">
                         <div className="flex flex-col items-center pb-4 sm:pb-6 border-b border-slate-50">
@@ -584,7 +584,7 @@ export default function OnboardingWizard() {
                   >
                     {isSubmitting ? <Loader2 className="h-5 w-5 sm:h-6 sm:w-6 animate-spin" /> : (
                       <div className="flex items-center gap-2 sm:gap-3">
-                         ACTIVATE BUSINESS ECOSYSTEM <Zap className="h-4 w-4 sm:h-5 sm:w-5 fill-brand-teal text-brand-teal" />
+                         ACTIVATE BUSINESS ECOSYSTEM <Zap className="h-4 w-4 sm:h-5 sm:w-5 fill-brand-blue text-brand-blue" />
                       </div>
                     )}
                   </button>
@@ -593,9 +593,9 @@ export default function OnboardingWizard() {
                 {currentStep >= 2 && currentStep < 6 && (
                   <button
                     onClick={quickLaunch}
-                    className="w-full py-4 rounded-2xl border-2 border-brand-teal/20 text-brand-teal text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-teal/5 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-2xl border-2 border-brand-blue/20 text-brand-blue text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-blue/5 transition-all flex items-center justify-center gap-2"
                   >
-                    Quick Launch with Defaults <Zap className="h-3 w-3 fill-brand-teal" />
+                    Quick Launch with Defaults <Zap className="h-3 w-3 fill-brand-blue" />
                   </button>
                 )}
 

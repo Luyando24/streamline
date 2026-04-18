@@ -67,7 +67,7 @@ export default async function GlobalKanbanPage() {
              <Filter className="h-4 w-4" /> All Projects
           </button>
           <button className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10">
-            <Plus className="h-4 w-4 text-brand-green-deep" /> New Deliverable
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> New Deliverable
           </button>
         </div>
       </div>
@@ -103,7 +103,7 @@ export default async function GlobalKanbanPage() {
                         </div>
                      </div>
 
-                     <h3 className="text-sm font-black text-brand-navy leading-tight mb-2 group-hover:text-brand-green-deep transition-colors line-clamp-2">
+                     <h3 className="text-sm font-black text-brand-navy leading-tight mb-2 group-hover:text-brand-blue-deep transition-colors line-clamp-2">
                         {task.title}
                      </h3>
                      
@@ -145,7 +145,7 @@ export default async function GlobalKanbanPage() {
 
         {/* Global Add Column Simulation */}
         <div className="flex-shrink-0 w-80 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50/80/10 opacity-40 hover:opacity-100 transition-all cursor-pointer group">
-           <Plus className="h-8 w-8 text-slate-300 group-hover:text-brand-green-deep transition-all" />
+           <Plus className="h-8 w-8 text-slate-300 group-hover:text-brand-blue-deep transition-all" />
            <span className="text-[10px] font-black uppercase tracking-widest mt-2 text-slate-600">Custom Stage</span>
         </div>
       </div>

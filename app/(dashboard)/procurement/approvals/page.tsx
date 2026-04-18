@@ -108,7 +108,7 @@ export default async function ProcurementApprovalsPage() {
                             <div className="flex items-center gap-3 mt-1">
                                <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Requested by {r.requestor.full_name}</span>
                                <span className="h-1 w-1 rounded-full bg-slate-200" />
-                               <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">L{r.current_level} Pending</span>
+                               <span className="text-[10px] font-black text-brand-blue-deep uppercase tracking-widest">L{r.current_level} Pending</span>
                             </div>
                          </div>
                       </div>
@@ -125,7 +125,7 @@ export default async function ProcurementApprovalsPage() {
                             <div className="space-y-2">
                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-300">Preferred Supplier</div>
                                <div className="flex items-center gap-3 text-sm font-bold text-slate-600">
-                                  <Building2 className="h-4 w-4 text-brand-green-deep" /> {r.vendor?.name || "N/A"}
+                                  <Building2 className="h-4 w-4 text-brand-blue-deep" /> {r.vendor?.name || "N/A"}
                                </div>
                             </div>
                             <div className="space-y-2 text-right">
@@ -143,7 +143,7 @@ export default async function ProcurementApprovalsPage() {
                                </div>
                                <span className="text-xs font-bold text-slate-700">View detailed items & specifications</span>
                             </div>
-                            <button className="p-2.5 bg-white rounded-xl shadow-sm text-brand-navy hover:text-brand-green-deep transition-all">
+                            <button className="p-2.5 bg-white rounded-xl shadow-sm text-brand-navy hover:text-brand-blue-deep transition-all">
                                <ExternalLink className="h-4 w-4" />
                             </button>
                          </div>
@@ -181,15 +181,15 @@ export default async function ProcurementApprovalsPage() {
         {/* Action Sidebar */}
         <div className="space-y-8 animate-in slide-in-from-right duration-700">
            <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Governance Map</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Governance Map</h3>
               
               <div className="space-y-6 mb-10">
                  <div className="relative pl-8 border-l-2 border-white/10 space-y-8">
                     <div className="relative">
-                       <div className="absolute -left-[37px] top-0 h-4 w-4 rounded-full bg-brand-green-deep shadow-[0_0_10px_rgba(34,197,94,1)]" />
-                       <div className="text-[11px] font-black uppercase text-brand-green-deep">L1: Supervisor</div>
+                       <div className="absolute -left-[37px] top-0 h-4 w-4 rounded-full bg-brand-blue-deep shadow-[0_0_10px_rgba(34,197,94,1)]" />
+                       <div className="text-[11px] font-black uppercase text-brand-blue-deep">L1: Supervisor</div>
                        <div className="text-[10px] opacity-40">Initial Vet & Validity</div>
                     </div>
                     <div className="relative">
@@ -206,14 +206,14 @@ export default async function ProcurementApprovalsPage() {
               </div>
 
               <div className="p-5 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
-                 <ShieldCheck className="h-4 w-4 text-brand-green-deep" />
+                 <ShieldCheck className="h-4 w-4 text-brand-blue-deep" />
                  <span className="text-[10px] font-bold opacity-60 italic">Audit Trial Log Active</span>
               </div>
            </div>
 
            <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
               <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6 flex items-center gap-2">
-                 <Sparkles className="h-4 w-4 text-brand-green-deep" /> Spend Intelligence
+                 <Sparkles className="h-4 w-4 text-brand-blue-deep" /> Spend Intelligence
               </h3>
               <div className="space-y-4">
                  <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200">

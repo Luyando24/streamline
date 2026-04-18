@@ -100,7 +100,7 @@ export default function JobApplicantPoolPage({ params }: { params: Promise<{ id:
 
         <div className="flex items-center gap-3">
           <div className="px-5 py-3 bg-white border-2 border-slate-200 rounded-2xl flex items-center gap-3 shadow-sm">
-             <Users className="h-4 w-4 text-brand-green-deep" />
+             <Users className="h-4 w-4 text-brand-blue-deep" />
              <span className="text-[11px] font-black uppercase tracking-widest text-brand-navy">{applicants.length} Total Applied</span>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function JobApplicantPoolPage({ params }: { params: Promise<{ id:
         <div className="lg:col-span-2 space-y-4">
           {isLoading ? (
             <div className="py-40 flex flex-col items-center justify-center space-y-4 bg-white border-2 border-slate-200 rounded-[40px]">
-              <Loader2 className="h-12 w-12 animate-spin text-brand-green-deep" />
+              <Loader2 className="h-12 w-12 animate-spin text-brand-blue-deep" />
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Synchronizing Talent Matrix...</p>
             </div>
           ) : filtered.length > 0 ? filtered.map((a) => (
@@ -145,7 +145,7 @@ export default function JobApplicantPoolPage({ params }: { params: Promise<{ id:
               onClick={() => setSelectedApplicant(a)}
               className={cn(
                 "group p-8 bg-white border-2 rounded-[32px] transition-all duration-500 cursor-pointer flex items-center justify-between gap-6",
-                selectedApplicant?.id === a.id ? "border-brand-navy shadow-xl scale-[1.01]" : "border-slate-200 hover:border-brand-green-deep/20 hover:shadow-lg"
+                selectedApplicant?.id === a.id ? "border-brand-navy shadow-xl scale-[1.01]" : "border-slate-200 hover:border-brand-blue-deep/20 hover:shadow-lg"
               )}
             >
               <div className="flex items-center gap-8">
@@ -207,7 +207,7 @@ export default function JobApplicantPoolPage({ params }: { params: Promise<{ id:
                     href={selectedApplicant.resume_url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-brand-green-pale text-brand-green-deep rounded-2xl border border-brand-green-deep/20 hover:bg-brand-green-deep hover:text-white transition-all group"
+                    className="flex items-center justify-between p-4 bg-brand-blue-pale text-brand-blue-deep rounded-2xl border border-brand-blue-deep/20 hover:bg-brand-blue-deep hover:text-white transition-all group"
                   >
                     <div className="flex items-center gap-4">
                       <FileText className="h-4 w-4" />
@@ -238,7 +238,7 @@ export default function JobApplicantPoolPage({ params }: { params: Promise<{ id:
                   {selectedApplicant.status === 'hired' && (
                     <Link 
                       href={`/hr/directory?onboard=true&name=${encodeURIComponent(selectedApplicant.full_name)}&email=${encodeURIComponent(selectedApplicant.email)}&phone=${encodeURIComponent(selectedApplicant.phone || '')}`}
-                      className="w-full py-5 bg-brand-green-deep text-white rounded-[24px] text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-brand-green-deep-light transition-all shadow-xl shadow-brand-green-deep/10"
+                      className="w-full py-5 bg-brand-blue-deep text-white rounded-[24px] text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-brand-blue-deep-light transition-all shadow-xl shadow-brand-blue-deep/10"
                     >
                       <UserPlus className="h-4 w-4" /> Initialize Onboarding
                     </Link>

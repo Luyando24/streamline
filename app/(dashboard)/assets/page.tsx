@@ -41,7 +41,7 @@ export default async function AssetDashboardPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-4">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <ShieldCheck className="h-3 w-3" /> Physical Capital Governance
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Fixed Assets</h1>
@@ -64,7 +64,7 @@ export default async function AssetDashboardPage() {
         {stats.map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
+            <div key={s.label} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
               <div 
                 className={cn(
                   "absolute top-0 right-0 h-24 w-24 rounded-full -mr-12 -mt-12 opacity-5 transition-transform group-hover:scale-150 duration-700",
@@ -99,9 +99,9 @@ export default async function AssetDashboardPage() {
         {/* Sidebar Lifecycle Radar */}
         <div className="space-y-8 animate-in slide-in-from-right duration-700">
            <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group border border-white/5">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Asset Liquidity</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Asset Liquidity</h3>
               
               <div className="space-y-10 mb-10 border-l-2 border-white/5 pl-8 ml-2">
                  <div className="relative">
@@ -117,14 +117,14 @@ export default async function AssetDashboardPage() {
               </div>
 
               <div className="p-5 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
-                 <Zap className="h-4 w-4 text-brand-green-deep" />
+                 <Zap className="h-4 w-4 text-brand-blue-deep" />
                  <span className="text-[10px] font-bold opacity-60">System Auto-Depreciation Active</span>
               </div>
            </div>
 
            <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm space-y-6">
               <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 flex items-center gap-2">
-                 <Sparkles className="h-4 w-4 text-brand-green-deep" /> Condition Intel
+                 <Sparkles className="h-4 w-4 text-brand-blue-deep" /> Condition Intel
               </h3>
               <div className="space-y-4">
                  <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200">

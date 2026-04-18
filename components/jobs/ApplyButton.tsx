@@ -122,7 +122,7 @@ export function IndustrialApplyButton({ jobId, orgId, jobTitle }: ApplyButtonPro
       disabled={isSubmitting}
       className={cn(
         "group relative w-full py-6 rounded-[32px] font-black uppercase tracking-[0.2em] text-sm transition-all shadow-2xl overflow-hidden",
-        isSubmitting ? "bg-slate-800 text-slate-400" : "bg-brand-teal text-black hover:bg-white hover:shadow-brand-teal/20"
+        isSubmitting ? "bg-slate-800 text-slate-400" : "bg-brand-blue text-black hover:bg-white hover:shadow-brand-blue/20"
       )}
     >
       <div className="relative z-10 flex items-center justify-center gap-3">

@@ -93,7 +93,7 @@ export default async function AbsenceCalendarPage() {
 
                 <div className="grid gap-4">
                    {items.map((a: any) => (
-                     <div key={a.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 flex items-center justify-between gap-8">
+                     <div key={a.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 flex items-center justify-between gap-8">
                         <div className="flex items-center gap-8">
                            <div className="flex flex-col items-center justify-center p-3 bg-slate-50/80 border border-slate-200 rounded-[20px] w-20 shadow-inner group-hover:bg-brand-navy group-hover:text-white transition-colors duration-500">
                               <span className="text-[10px] font-black uppercase tracking-widest opacity-60">
@@ -145,18 +145,18 @@ export default async function AbsenceCalendarPage() {
         {/* Sidebar Mini-Stats */}
         <div className="space-y-8">
            <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Capacity Radar</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Capacity Radar</h3>
               
               <div className="space-y-8">
                  <div className="space-y-2">
                     <div className="flex justify-between text-[11px] font-bold">
                        <span className="opacity-60">Current Availability</span>
-                       <span className="text-brand-green-deep">94%</span>
+                       <span className="text-brand-blue-deep">94%</span>
                     </div>
                     <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                       <div className="h-full bg-brand-green-deep" style={{ width: '94%' }} />
+                       <div className="h-full bg-brand-blue-deep" style={{ width: '94%' }} />
                     </div>
                  </div>
 
@@ -172,7 +172,7 @@ export default async function AbsenceCalendarPage() {
               </div>
 
               <div className="mt-10 p-5 bg-white/5 rounded-[24px] border border-white/10 flex items-start gap-3">
-                 <Sparkles className="h-4 w-4 text-brand-green-deep mt-0.5" />
+                 <Sparkles className="h-4 w-4 text-brand-blue-deep mt-0.5" />
                  <p className="text-[10px] font-medium opacity-60 leading-relaxed">Intelligence based on all approved leave through June 2026.</p>
               </div>
            </div>

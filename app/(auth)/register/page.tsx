@@ -85,10 +85,10 @@ export default function RegisterPage() {
   ]
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8 selection:bg-brand-teal selection:text-black">
+    <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8 selection:bg-brand-blue selection:text-black">
       {/* Background Decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-teal/10 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/10 blur-[120px] rounded-full" />
       </div>
 
       <motion.div 
@@ -98,7 +98,7 @@ export default function RegisterPage() {
       >
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
-            <span className="text-3xl font-black tracking-tighter text-brand-teal">Streamline</span>
+            <span className="text-3xl font-black tracking-tighter text-brand-blue">Streamline</span>
           </Link>
           
           {/* Progress Indicator */}
@@ -107,7 +107,7 @@ export default function RegisterPage() {
               <div key={i} className="flex items-center">
                 <div className={cn(
                   "h-1.5 w-12 rounded-full transition-all duration-500",
-                  step >= i + 1 ? "bg-brand-teal shadow-[0_0_10px_rgba(0,214,57,0.5)]" : "bg-white/10"
+                  step >= i + 1 ? "bg-brand-blue shadow-[0_0_10px_rgba(0,214,57,0.5)]" : "bg-white/10"
                 )} />
               </div>
             ))}
@@ -133,13 +133,13 @@ export default function RegisterPage() {
                   Full Name
                 </label>
                 <div className="relative group">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-teal transition-colors">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-blue transition-colors">
                     <User className="h-5 w-5" />
                   </div>
                   <input
                     {...form.register("full_name")}
                     type="text"
-                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
+                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all"
                     placeholder="John Doe"
                   />
                 </div>
@@ -153,13 +153,13 @@ export default function RegisterPage() {
                   Email Address
                 </label>
                 <div className="relative group">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-teal transition-colors">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-blue transition-colors">
                     <Mail className="h-5 w-5" />
                   </div>
                   <input
                     {...form.register("email")}
                     type="email"
-                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
+                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all"
                     placeholder="name@company.com"
                   />
                 </div>
@@ -180,19 +180,19 @@ export default function RegisterPage() {
                   Create Password
                 </label>
                 <div className="relative group">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-teal transition-colors">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 group-focus-within:text-brand-blue transition-colors">
                     <Lock className="h-5 w-5" />
                   </div>
                   <input
                     {...form.register("password")}
                     type={showPassword ? "text" : "password"}
-                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-12 text-white placeholder:text-slate-600 focus:border-brand-teal focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all"
+                    className="block w-full rounded-2xl border border-white/5 bg-white/5 py-4 pl-12 pr-12 text-white placeholder:text-slate-600 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all"
                     placeholder="Minimum 8 characters"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-brand-teal transition-colors"
+                    className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-brand-blue transition-colors"
                   >
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
@@ -205,7 +205,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={handleGeneratePassword}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-brand-teal/20 bg-brand-teal/5 text-[11px] font-black uppercase tracking-widest text-brand-teal hover:bg-brand-teal/10 transition-all border-dashed"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-brand-blue/20 bg-brand-blue/5 text-[11px] font-black uppercase tracking-widest text-brand-blue hover:bg-brand-blue/10 transition-all border-dashed"
               >
                 <Sparkles className="h-3.5 w-3.5" /> Magic Generate Password
               </button>
@@ -231,7 +231,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={nextStep}
-                className="group relative flex flex-1 justify-center rounded-2xl bg-brand-teal py-4 px-4 text-sm font-bold text-black hover:bg-brand-teal-light transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(0,214,57,0.3)]"
+                className="group relative flex flex-1 justify-center rounded-2xl bg-brand-blue py-4 px-4 text-sm font-bold text-black hover:bg-brand-blue-light transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(0,214,57,0.3)]"
               >
                 Continue <ChevronRight className="h-4 w-4 ml-2" />
               </button>
@@ -239,7 +239,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative flex flex-1 justify-center rounded-2xl bg-brand-teal py-4 px-4 text-sm font-bold text-black hover:bg-brand-teal-light transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(0,214,57,0.3)] active:scale-[0.98]"
+                className="group relative flex flex-1 justify-center rounded-2xl bg-brand-blue py-4 px-4 text-sm font-bold text-black hover:bg-brand-blue-light transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(0,214,57,0.3)] active:scale-[0.98]"
               >
                 {isLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -254,7 +254,7 @@ export default function RegisterPage() {
 
           <div className="text-center text-sm pt-6">
             <span className="text-slate-500">Already have an account? </span>
-            <Link href="/login" className="font-bold text-brand-teal hover:text-brand-teal-light transition-colors">
+            <Link href="/login" className="font-bold text-brand-blue hover:text-brand-blue-light transition-colors">
               Sign in
             </Link>
           </div>

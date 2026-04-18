@@ -68,7 +68,7 @@ export default function TalentProfilePage() {
   if (isLoading) {
     return (
       <div className="flex h-[80vh] items-center justify-center">
-        <Loader2 className="h-10 w-10 animate-spin text-brand-teal" />
+        <Loader2 className="h-10 w-10 animate-spin text-brand-blue" />
       </div>
     )
   }
@@ -77,10 +77,10 @@ export default function TalentProfilePage() {
     <div className="p-8 max-w-4xl mx-auto space-y-12 pb-40">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
          <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-teal/10 text-brand-teal text-[10px] font-black uppercase tracking-widest border border-brand-teal/20">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-black uppercase tracking-widest border border-brand-blue/20">
                <Fingerprint className="h-3 w-3" /> Identity Hub
             </div>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white italic">Talent <span className="text-brand-teal not-italic">Profile.</span></h1>
+            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white italic">Talent <span className="text-brand-blue not-italic">Profile.</span></h1>
             <p className="text-slate-400 font-medium max-w-xl">
                Manage your professional identity coordinates. These fields are used to automatically populate industrial applications.
             </p>
@@ -138,7 +138,7 @@ export default function TalentProfilePage() {
                     defaultValue={profile?.nrc_number} 
                     required
                     disabled={profile?.profile_locked}
-                    className="w-full bg-white/5 border border-white/10 rounded-3xl py-5 pl-14 pr-6 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all disabled:opacity-50" 
+                    className="w-full bg-white/5 border border-white/10 rounded-3xl py-5 pl-14 pr-6 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all disabled:opacity-50" 
                  />
               </div>
            </div>
@@ -153,7 +153,7 @@ export default function TalentProfilePage() {
                     defaultValue={profile?.date_of_birth} 
                     required
                     disabled={profile?.profile_locked}
-                    className="w-full bg-white/5 border border-white/10 rounded-3xl py-5 pl-14 pr-6 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all disabled:opacity-50 appearance-none" 
+                    className="w-full bg-white/5 border border-white/10 rounded-3xl py-5 pl-14 pr-6 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all disabled:opacity-50 appearance-none" 
                  />
               </div>
            </div>
@@ -169,7 +169,7 @@ export default function TalentProfilePage() {
                     defaultValue={profile?.phone} 
                     required
                     disabled={profile?.profile_locked}
-                    className="w-full bg-white/5 border border-white/10 rounded-3xl py-5 pl-14 pr-6 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all disabled:opacity-50" 
+                    className="w-full bg-white/5 border border-white/10 rounded-3xl py-5 pl-14 pr-6 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-brand-blue transition-all disabled:opacity-50" 
                  />
               </div>
            </div>
@@ -180,7 +180,7 @@ export default function TalentProfilePage() {
               <button 
                 type="submit" 
                 disabled={isSaving}
-                className="group relative px-12 py-5 bg-brand-teal text-black rounded-full text-sm font-black uppercase tracking-widest hover:bg-white transition-all active:scale-[0.98] shadow-2xl flex items-center gap-3"
+                className="group relative px-12 py-5 bg-brand-blue text-black rounded-full text-sm font-black uppercase tracking-widest hover:bg-white transition-all active:scale-[0.98] shadow-2xl flex items-center gap-3"
               >
                  {isSaving ? <Loader2 className="h-5 w-5 animate-spin" /> : <>Archive Identity Coordinates <Sparkles className="h-5 w-5" /></>}
               </button>
@@ -192,8 +192,8 @@ export default function TalentProfilePage() {
         </div>
       </form>
 
-      <div className="p-10 bg-brand-teal/5 border border-brand-teal/10 rounded-[48px] flex flex-col md:flex-row items-center gap-10">
-         <div className="h-20 w-20 rounded-full bg-brand-teal/20 flex items-center justify-center text-brand-teal flex-shrink-0 animate-pulse">
+      <div className="p-10 bg-brand-blue/5 border border-brand-blue/10 rounded-[48px] flex flex-col md:flex-row items-center gap-10">
+         <div className="h-20 w-20 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue flex-shrink-0 animate-pulse">
             <ShieldCheck className="h-10 w-10" />
          </div>
          <div className="space-y-2 text-center md:text-left">

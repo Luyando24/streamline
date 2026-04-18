@@ -119,7 +119,7 @@ export default function ChartOfAccountsPage() {
           onClick={() => setIsModalOpen(true)}
           className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]"
         >
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Add New Account
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Add New Account
         </button>
       </div>
 
@@ -131,7 +131,7 @@ export default function ChartOfAccountsPage() {
             onClick={() => setActiveCategory(cat.id)}
             className={cn(
               "p-4 rounded-2xl border-2 transition-all text-left group",
-              activeCategory === cat.id ? "border-brand-green-deep bg-white shadow-md" : "border-slate-200 bg-slate-50/50 hover:bg-white"
+              activeCategory === cat.id ? "border-brand-blue-deep bg-white shadow-md" : "border-slate-200 bg-slate-50/50 hover:bg-white"
             )}
           >
             <cat.icon className={cn("h-5 w-5 mb-3", cat.color)} />
@@ -147,13 +147,13 @@ export default function ChartOfAccountsPage() {
       <div className="bg-white border-2 border-slate-200 rounded-[32px] shadow-xl overflow-hidden shadow-slate-200/50">
         <div className="p-8 border-b border-slate-200 flex flex-wrap items-center justify-between gap-6">
            <div className="relative group flex-1 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-brand-blue-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search by code or name..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full pl-11 pr-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-xs transition-all bg-slate-50/50 focus:bg-white"
+                className="w-full pl-11 pr-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-xs transition-all bg-slate-50/50 focus:bg-white"
               />
            </div>
            <div className="flex items-center gap-3">
@@ -273,7 +273,7 @@ export default function ChartOfAccountsPage() {
                       placeholder="e.g. 1010"
                       value={formData.code}
                       onChange={e => setFormData({...formData, code: e.target.value})}
-                      className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50/30"
+                      className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50/30"
                     />
                   </div>
                   <div className="space-y-2">
@@ -281,7 +281,7 @@ export default function ChartOfAccountsPage() {
                     <select 
                       value={formData.normal_balance}
                       onChange={e => setFormData({...formData, normal_balance: e.target.value as any})}
-                      className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50/30 appearance-none"
+                      className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50/30 appearance-none"
                     >
                       <option value="debit">DEBIT</option>
                       <option value="credit">CREDIT</option>
@@ -297,7 +297,7 @@ export default function ChartOfAccountsPage() {
                     placeholder="e.g. Office Equipment"
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50/30"
+                    className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50/30"
                   />
                </div>
 
@@ -306,7 +306,7 @@ export default function ChartOfAccountsPage() {
                   <select 
                     value={formData.type}
                     onChange={e => setFormData({...formData, type: e.target.value})}
-                    className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50/30 appearance-none"
+                    className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50/30 appearance-none"
                   >
                     {CATEGORIES.map(c => (
                       <option key={c.id} value={c.id}>{c.name.toUpperCase()}</option>
@@ -321,14 +321,14 @@ export default function ChartOfAccountsPage() {
                     placeholder="Brief purpose of this account..."
                     value={formData.description}
                     onChange={e => setFormData({...formData, description: e.target.value})}
-                    className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50/30 resize-none"
+                    className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50/30 resize-none"
                   />
                </div>
 
                <div className="pt-4">
                   <button 
                     type="submit"
-                    className="w-full py-5 bg-brand-green-deep text-white rounded-[24px] text-[11px] font-black uppercase tracking-widest shadow-xl shadow-brand-green-deep/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="w-full py-5 bg-brand-blue-deep text-white rounded-[24px] text-[11px] font-black uppercase tracking-widest shadow-xl shadow-brand-blue-deep/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
                   >
                     {editingAccount ? "Update Account Details" : "Finalize Account Creation"}
                   </button>

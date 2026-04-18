@@ -59,11 +59,11 @@ export default async function ExploreModulesPage() {
   const { data: { user } } = await supabase.auth.getUser()
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-brand-teal pb-20 overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white selection:bg-brand-blue pb-20 overflow-x-hidden">
       {/* ========== HERO SECTION ========== */}
       <section className="relative pt-32 pb-20 px-6 lg:px-12 text-center overflow-hidden">
         {/* Background Gradients */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[400px] bg-brand-teal opacity-[0.05] blur-[120px] rounded-full -z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[400px] bg-brand-blue opacity-[0.05] blur-[120px] rounded-full -z-10" />
         
         <div className="max-w-4xl mx-auto space-y-8 relative z-10">
           <Reveal direction="down">
@@ -74,7 +74,7 @@ export default async function ExploreModulesPage() {
           
           <Reveal delay={0.1}>
             <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-black tracking-tight leading-[1.05]">
-              Explore the <span className="text-brand-teal">Ecosystem</span>
+              Explore the <span className="text-brand-blue">Ecosystem</span>
             </h1>
           </Reveal>
           
@@ -91,7 +91,7 @@ export default async function ExploreModulesPage() {
       <section className="px-6 lg:px-12 mb-16 relative z-10">
         <div className="max-w-[1200px] mx-auto bg-[#141414] border border-white/10 rounded-3xl p-4 flex flex-col md:flex-row items-center gap-6 shadow-2xl">
            <div className="relative flex-1 group w-full">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 group-focus-within:text-brand-teal transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 group-focus-within:text-brand-blue transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search for a specific module or capability..." 
@@ -100,7 +100,7 @@ export default async function ExploreModulesPage() {
            </div>
            <div className="flex bg-black/40 rounded-2xl p-1.5 border border-white/5 w-full md:w-fit overflow-x-auto whitespace-nowrap scrollbar-hide">
               {["All Modules", "Finance", "HR", "Operations", "Premium"].map((tab, i) => (
-                <button key={tab} className={`px-5 py-2 text-xs font-black rounded-xl transition-all ${i === 0 ? "bg-brand-teal text-black" : "text-slate-400 hover:text-white"}`}>
+                <button key={tab} className={`px-5 py-2 text-xs font-black rounded-xl transition-all ${i === 0 ? "bg-brand-blue text-black" : "text-slate-400 hover:text-white"}`}>
                   {tab}
                 </button>
               ))}
@@ -118,15 +118,15 @@ export default async function ExploreModulesPage() {
 
             return (
               <Reveal key={module.id} delay={index * 0.05} direction="up">
-                <div className="group relative flex flex-col h-full bg-[#141414] border border-white/10 rounded-3xl p-8 hover:border-brand-teal/40 hover:shadow-[0_20px_60px_-15px_rgba(0,214,57,0.15)] transition-all duration-500 overflow-hidden">
+                <div className="group relative flex flex-col h-full bg-[#141414] border border-white/10 rounded-3xl p-8 hover:border-brand-blue/40 hover:shadow-[0_20px_60px_-15px_rgba(0,214,57,0.15)] transition-all duration-500 overflow-hidden">
                   
                   {/* Category & Price Badge */}
                   <div className="flex justify-between items-start mb-10">
-                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-teal/10 text-brand-teal group-hover:bg-brand-teal group-hover:text-black transition-all duration-500 shadow-sm group-hover:scale-110">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue group-hover:bg-brand-blue group-hover:text-black transition-all duration-500 shadow-sm group-hover:scale-110">
                       <Icon className="h-7 w-7" />
                     </div>
                     <div className="flex flex-col items-end gap-2">
-                       <span className="text-[10px] font-black uppercase tracking-widest text-brand-teal border border-brand-teal/20 px-2.5 py-1 rounded-full">
+                       <span className="text-[10px] font-black uppercase tracking-widest text-brand-blue border border-brand-blue/20 px-2.5 py-1 rounded-full">
                          {module.category}
                        </span>
                        <span className="text-sm font-black text-slate-300">
@@ -135,7 +135,7 @@ export default async function ExploreModulesPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white mb-3 group-hover:text-brand-teal transition-colors">
+                  <h3 className="text-2xl font-black text-white mb-3 group-hover:text-brand-blue transition-colors">
                     {module.name}
                   </h3>
                   
@@ -146,7 +146,7 @@ export default async function ExploreModulesPage() {
                   <div className="mt-auto space-y-4">
                      <Link 
                        href={loginUrl}
-                       className="w-full flex items-center justify-center gap-2 py-4 bg-white text-black rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-brand-teal transition-all active:scale-[0.98] shadow-lg shadow-white/5 group/btn"
+                       className="w-full flex items-center justify-center gap-2 py-4 bg-white text-black rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-brand-blue transition-all active:scale-[0.98] shadow-lg shadow-white/5 group/btn"
                      >
                        <span className="relative z-10">{buttonText}</span>
                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
@@ -155,7 +155,7 @@ export default async function ExploreModulesPage() {
                      {!user && (
                        <Link 
                          href="/register" 
-                         className="w-full flex items-center justify-center gap-2 py-3 text-brand-teal text-[11px] font-black uppercase tracking-widest hover:text-white transition-colors"
+                         className="w-full flex items-center justify-center gap-2 py-3 text-brand-blue text-[11px] font-black uppercase tracking-widest hover:text-white transition-colors"
                        >
                          Start 30-Day Free Trial <ChevronRight className="h-3 w-3" />
                        </Link>
@@ -163,7 +163,7 @@ export default async function ExploreModulesPage() {
                   </div>
 
                   {/* Aesthetic Corner Polish */}
-                  <div className="absolute top-0 right-0 h-24 w-24 bg-brand-teal opacity-0 group-hover:opacity-[0.03] blur-[40px] rounded-full transition-opacity duration-700 pointer-events-none" />
+                  <div className="absolute top-0 right-0 h-24 w-24 bg-brand-blue opacity-0 group-hover:opacity-[0.03] blur-[40px] rounded-full transition-opacity duration-700 pointer-events-none" />
                 </div>
               </Reveal>
             )
@@ -174,7 +174,7 @@ export default async function ExploreModulesPage() {
       {/* ========== CTA FOOTER FOOTER ========== */}
       <section className="mt-32 px-6 lg:px-12">
          <Reveal direction="up">
-            <div className="max-w-[1240px] mx-auto bg-brand-teal rounded-[48px] p-12 md:p-20 text-center relative overflow-hidden group">
+            <div className="max-w-[1240px] mx-auto bg-brand-blue rounded-[48px] p-12 md:p-20 text-center relative overflow-hidden group">
                <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 group-hover:opacity-[0.15] transition-opacity duration-700" />
                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[150%] bg-white/20 blur-[120px] rounded-full rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
                

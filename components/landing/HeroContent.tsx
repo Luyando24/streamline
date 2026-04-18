@@ -78,7 +78,7 @@ export function HeroContent({ isLoggedIn, hasOrg }: { isLoggedIn: boolean, hasOr
             {activeTab === tab && (
               <motion.div
                 layoutId="hero-active-pill"
-                className="absolute inset-0 bg-brand-teal rounded-full -z-10 shadow-[0_0_20px_rgba(0,214,57,0.5)]"
+                className="absolute inset-0 bg-brand-blue rounded-full -z-10 shadow-[0_0_20px_rgba(0,214,57,0.5)]"
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               />
             )}
@@ -99,9 +99,9 @@ export function HeroContent({ isLoggedIn, hasOrg }: { isLoggedIn: boolean, hasOr
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="rounded-[32px] bg-[#f2f2f2] text-black p-6 sm:p-10 md:p-14 flex flex-col items-start text-left hover:-translate-y-2 transition-transform relative overflow-hidden group shadow-2xl"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-teal opacity-0 group-hover:opacity-[0.05] blur-[80px] rounded-full transition-opacity duration-700" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue opacity-0 group-hover:opacity-[0.05] blur-[80px] rounded-full transition-opacity duration-700" />
             <div className="text-[11px] sm:text-[13px] font-bold text-slate-600 mb-2 sm:mb-4 tracking-widest uppercase">Small to Medium</div>
-            <h2 className="text-2xl sm:text-3xl md:text-[40px] leading-tight font-black tracking-tight mb-3 sm:mb-4 text-slate-900 group-hover:text-brand-teal transition-colors duration-500">
+            <h2 className="text-2xl sm:text-3xl md:text-[40px] leading-tight font-black tracking-tight mb-3 sm:mb-4 text-slate-900 group-hover:text-brand-blue transition-colors duration-500">
               {TAB_CONTENT[activeTab].base.title}
             </h2>
             <p className="text-base sm:text-[17px] text-slate-700 mb-6 sm:mb-8 max-w-[380px]">
@@ -115,7 +115,7 @@ export function HeroContent({ isLoggedIn, hasOrg }: { isLoggedIn: boolean, hasOr
               className="relative overflow-hidden mt-auto inline-flex items-center justify-center rounded-full bg-black px-6 sm:px-8 py-3 sm:py-4 text-[14px] sm:text-[15px] font-bold text-white transition-all hover:scale-105 active:scale-95 group/btn"
             >
               <span className="relative z-10">Discover {TAB_CONTENT[activeTab].base.title}</span>
-              <div className="absolute inset-0 bg-brand-teal translate-y-[100%] group-hover/btn:translate-y-[0%] transition-transform duration-300 ease-out" />
+              <div className="absolute inset-0 bg-brand-blue translate-y-[100%] group-hover/btn:translate-y-[0%] transition-transform duration-300 ease-out" />
             </Link>
           </motion.div>
 
@@ -144,7 +144,7 @@ export function HeroContent({ isLoggedIn, hasOrg }: { isLoggedIn: boolean, hasOr
               className="relative overflow-hidden mt-auto inline-flex items-center justify-center rounded-full bg-black px-6 sm:px-8 py-3 sm:py-4 text-[14px] sm:text-[15px] font-bold text-white transition-all hover:scale-105 active:scale-95 group/btn"
             >
               <span className="relative z-10">Discover {TAB_CONTENT[activeTab].pro.title}</span>
-              <div className="absolute inset-0 bg-brand-teal translate-y-[100%] group-hover/btn:translate-y-[0%] transition-transform duration-300 ease-out" />
+              <div className="absolute inset-0 bg-brand-blue translate-y-[100%] group-hover/btn:translate-y-[0%] transition-transform duration-300 ease-out" />
             </Link>
           </motion.div>
         </AnimatePresence>

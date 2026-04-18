@@ -110,7 +110,7 @@ export default function NewRequisitionPage() {
             <ArrowLeft className="h-3 w-3" /> Back to Procurement
           </Link>
           <div className="flex items-center gap-3">
-             <div className="h-10 w-10 rounded-xl bg-brand-green-pale flex items-center justify-center text-brand-green-deep">
+             <div className="h-10 w-10 rounded-xl bg-brand-blue-pale flex items-center justify-center text-brand-blue-deep">
                 <ShoppingBag className="h-5 w-5" />
              </div>
              <h1 className="text-3xl font-black tracking-tight text-brand-navy">New Purchase Requisition</h1>
@@ -141,7 +141,7 @@ export default function NewRequisitionPage() {
                 placeholder="e.g. Quarterly Office Stationery Supplies"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all shadow-sm"
+                className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm transition-all shadow-sm"
               />
             </div>
             <div className="space-y-2 flex-1 min-w-[200px]">
@@ -151,7 +151,7 @@ export default function NewRequisitionPage() {
                 <select 
                   value={vendorId}
                   onChange={e => setVendorId(e.target.value)}
-                  className="w-full pl-11 pr-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all appearance-none bg-white shadow-sm"
+                  className="w-full pl-11 pr-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm transition-all appearance-none bg-white shadow-sm"
                 >
                   <option value="">Select Vendor...</option>
                   {vendors.map(v => (
@@ -193,7 +193,7 @@ export default function NewRequisitionPage() {
                         placeholder="Item description..."
                         value={item.description}
                         onChange={e => updateItem(i, 'description', e.target.value)}
-                        className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all bg-white shadow-sm"
+                        className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm transition-all bg-white shadow-sm"
                        />
                     </div>
                     <div className="space-y-1.5">
@@ -202,7 +202,7 @@ export default function NewRequisitionPage() {
                         placeholder="Qty"
                         value={item.quantity}
                         onChange={e => updateItem(i, 'quantity', e.target.value)}
-                        className="w-full px-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all text-center shadow-sm"
+                        className="w-full px-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-black text-sm transition-all text-center shadow-sm"
                        />
                     </div>
                     <div className="space-y-1.5">
@@ -214,7 +214,7 @@ export default function NewRequisitionPage() {
                             placeholder="Unit Price"
                             value={item.unit_price}
                             onChange={e => updateItem(i, 'unit_price', e.target.value)}
-                            className="w-full pl-8 pr-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all shadow-sm"
+                            className="w-full pl-8 pr-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-black text-sm transition-all shadow-sm"
                           />
                        </div>
                     </div>
@@ -229,7 +229,7 @@ export default function NewRequisitionPage() {
 
                <button 
                 onClick={addItem}
-                className="flex items-center gap-3 px-8 py-5 rounded-2xl border-2 border-dashed border-slate-200 text-slate-600 hover:text-brand-green-deep hover:border-brand-green-deep/30 transition-all font-black text-[10px] uppercase tracking-widest w-full justify-center mt-4 group"
+                className="flex items-center gap-3 px-8 py-5 rounded-2xl border-2 border-dashed border-slate-200 text-slate-600 hover:text-brand-blue-deep hover:border-brand-blue-deep/30 transition-all font-black text-[10px] uppercase tracking-widest w-full justify-center mt-4 group"
                >
                  <Plus className="h-5 w-5 group-hover:scale-125 transition-transform" /> Add Purchase Line
                </button>
@@ -240,21 +240,21 @@ export default function NewRequisitionPage() {
         {/* Info Sidebar */}
         <div className="space-y-8 animate-in slide-in-from-right duration-700 delay-200">
            <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Governance Rules</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Governance Rules</h3>
               
               <ul className="space-y-5 text-[11px] font-medium leading-relaxed mb-10 text-slate-300">
                  <li className="flex gap-4">
-                   <div className="h-2 w-2 rounded-full bg-brand-green-deep mt-1 shadow-[0_0_10px_rgba(34,197,94,1)]" />
+                   <div className="h-2 w-2 rounded-full bg-brand-blue-deep mt-1 shadow-[0_0_10px_rgba(34,197,94,1)]" />
                    Requisitions over K10,000 require Director approval (L3).
                  </li>
                  <li className="flex gap-4">
-                   <div className="h-2 w-2 rounded-full bg-brand-green-deep mt-1" />
+                   <div className="h-2 w-2 rounded-full bg-brand-blue-deep mt-1" />
                    Approved requisitions will instantly generate a formal Purchase Order.
                  </li>
                  <li className="flex gap-4">
-                   <div className="h-2 w-2 rounded-full bg-brand-green-deep mt-1" />
+                   <div className="h-2 w-2 rounded-full bg-brand-blue-deep mt-1" />
                    Vendors MUST have a valid TPIN on file before payment.
                  </li>
               </ul>
@@ -262,14 +262,14 @@ export default function NewRequisitionPage() {
               <button 
                 disabled={isSubmitting}
                 onClick={handlePost}
-                className="w-full flex items-center justify-center gap-3 py-5 bg-brand-green-deep rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-white hover:bg-brand-green-deep-light shadow-2xl shadow-brand-green-deep/20 transition-all hover:-translate-y-1 active:scale-[0.98] disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-3 py-5 bg-brand-blue-deep rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-white hover:bg-brand-blue-deep-light shadow-2xl shadow-brand-blue-deep/20 transition-all hover:-translate-y-1 active:scale-[0.98] disabled:opacity-50"
               >
                 {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin" /> : <><Zap className="h-4 w-4" /> Submit for Approval</>}
               </button>
            </div>
 
-           <div className="p-8 bg-brand-green-pale/50 border-2 border-brand-green-deep/10 rounded-2xl shadow-sm space-y-4">
-              <div className="flex items-center gap-3 text-brand-green-deep font-black text-[10px] uppercase tracking-widest">
+           <div className="p-8 bg-brand-blue-pale/50 border-2 border-brand-blue-deep/10 rounded-2xl shadow-sm space-y-4">
+              <div className="flex items-center gap-3 text-brand-blue-deep font-black text-[10px] uppercase tracking-widest">
                  <Sparkles className="h-4 w-4" /> Audit Complience
               </div>
               <p className="text-[10px] font-medium text-slate-700 leading-relaxed italic">

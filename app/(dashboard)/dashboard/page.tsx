@@ -41,7 +41,7 @@ function DashboardContent({ data }: { data: any }) {
       <div className="flex items-end justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-3xl font-extrabold tracking-tight text-brand-navy">Good morning, {data.userName}.</h1>
-          <p className="text-slate-700">Here&apos;s what needs your attention at <span className="text-brand-green-deep font-bold">{data.orgName}</span> today.</p>
+          <p className="text-slate-700">Here&apos;s what needs your attention at <span className="text-brand-blue-deep font-bold">{data.orgName}</span> today.</p>
         </div>
         <div className="hidden md:flex items-center gap-2 text-sm text-slate-600" suppressHydrationWarning>
           <CalendarDays className="h-4 w-4" />
@@ -137,7 +137,7 @@ function DashboardContent({ data }: { data: any }) {
                 </>
               )}
             </div>
-            <button className="w-full mt-4 py-2.5 text-xs font-black text-brand-green-deep hover:bg-brand-green-pale rounded-xl transition-all flex items-center justify-center gap-1 border border-brand-green-deep/10">
+            <button className="w-full mt-4 py-2.5 text-xs font-black text-brand-blue-deep hover:bg-brand-blue-pale rounded-xl transition-all flex items-center justify-center gap-1 border border-brand-blue-deep/10">
               View All Tasks <ChevronRight className="h-3 w-3" />
             </button>
           </div>
@@ -186,7 +186,7 @@ function DashboardContent({ data }: { data: any }) {
                     <div className="w-full flex gap-1 items-end h-[180px]">
                       <div className="flex-1 group relative">
                         <div 
-                          className="w-full rounded-t-md bg-brand-green-deep/20 group-hover:bg-brand-green-deep/40 transition-all" 
+                          className="w-full rounded-t-md bg-brand-blue-deep/20 group-hover:bg-brand-blue-deep/40 transition-all" 
                           style={{ height: `${incomeHeight}%` }}
                         />
                         <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-brand-navy text-white text-[9px] font-bold px-2 py-0.5 rounded shadow whitespace-nowrap z-20">
@@ -210,7 +210,7 @@ function DashboardContent({ data }: { data: any }) {
             </div>
             <div className="flex items-center justify-center gap-6 mt-4 pt-3 border-t">
               <div className="flex items-center gap-2 text-xs">
-                <div className="h-2.5 w-2.5 rounded-sm bg-brand-green-deep/30" />
+                <div className="h-2.5 w-2.5 rounded-sm bg-brand-blue-deep/30" />
                 <span className="text-slate-700 font-bold">Income</span>
               </div>
               <div className="flex items-center gap-2 text-xs">
@@ -262,9 +262,9 @@ function DashboardContent({ data }: { data: any }) {
                 <BarChart3 className="h-3 w-3" /> Financial Health
               </h3>
               <div className="space-y-4">
-                <HealthBar label="Cash Reserves" percent={74} color="bg-brand-teal" />
+                <HealthBar label="Cash Reserves" percent={74} color="bg-brand-blue" />
                 <HealthBar label="Budget Utilization" percent={51} color="bg-blue-400" />
-                <HealthBar label="System Modules" percent={Math.min((data.activeModules / 20) * 100, 100)} color="bg-brand-teal" />
+                <HealthBar label="System Modules" percent={Math.min((data.activeModules / 20) * 100, 100)} color="bg-brand-blue" />
               </div>
             </div>
           )}
@@ -314,7 +314,7 @@ function TaskItem({ title, subtitle, type, urgent }: { title: string; subtitle: 
         <p className="text-sm font-bold text-brand-navy truncate">{title}</p>
         <p className="text-[11px] text-slate-600 mt-0.5">{subtitle}</p>
       </div>
-      <button className="text-[10px] font-black text-brand-green-deep hover:underline shrink-0 mt-1">
+      <button className="text-[10px] font-black text-brand-blue-deep hover:underline shrink-0 mt-1">
         {type === 'approval' ? 'Review' : type === 'overdue' ? 'Follow Up' : 'Process'}
       </button>
     </div>
@@ -343,7 +343,7 @@ function ActivityItem({ title, subtitle, time, type }: { title: string; subtitle
   return (
     <div className="flex items-start gap-3">
       <div className={`mt-0.5 h-2 w-2 rounded-full shrink-0 ${
-        type === 'finance' ? 'bg-brand-green-deep' : 
+        type === 'finance' ? 'bg-brand-blue-deep' : 
         type === 'team' ? 'bg-blue-500' : 
         'bg-orange-500'
       }`} />
@@ -364,7 +364,7 @@ function HealthBar({ label, percent, color }: { label: string; percent: number; 
         <span className="font-bold">{percent}%</span>
       </div>
       <div className="h-1.5 w-full bg-slate-700 rounded-full overflow-hidden">
-        <div className={`h-full rounded-full bg-brand-green-deep`} style={{ width: `${percent}%` }} />
+        <div className={`h-full rounded-full bg-brand-blue-deep`} style={{ width: `${percent}%` }} />
       </div>
     </div>
   )

@@ -149,7 +149,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
   if (isLoading) {
     return (
       <div className="h-[70vh] flex flex-col items-center justify-center space-y-6">
-         <Loader2 className="h-12 w-12 animate-spin text-brand-green-deep" />
+         <Loader2 className="h-12 w-12 animate-spin text-brand-blue-deep" />
          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Decrypting Personnel 360 Data...</p>
       </div>
     )
@@ -188,13 +188,13 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                   </div>
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
                      <div className="flex items-center gap-2 text-slate-600 font-bold text-sm">
-                        <Building2 className="h-4 w-4 text-brand-green-deep opacity-50" /> {employee?.department}
+                        <Building2 className="h-4 w-4 text-brand-blue-deep opacity-50" /> {employee?.department}
                      </div>
                      <div className="flex items-center gap-2 text-slate-600 font-bold text-sm">
-                        <Mail className="h-4 w-4 text-brand-green-deep opacity-50" /> {employee?.profile?.email}
+                        <Mail className="h-4 w-4 text-brand-blue-deep opacity-50" /> {employee?.profile?.email}
                      </div>
                      <div className="flex items-center gap-2 text-slate-600 font-bold text-sm">
-                        <Briefcase className="h-4 w-4 text-brand-green-deep opacity-50" /> {employee?.contract_type}
+                        <Briefcase className="h-4 w-4 text-brand-blue-deep opacity-50" /> {employee?.contract_type}
                      </div>
                   </div>
                </div>
@@ -205,7 +205,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                 onClick={() => setShowReviewForm(true)}
                 className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-brand-navy/10"
                >
-                 <TrendingUp className="h-4 w-4 text-brand-green-deep" /> New Review
+                 <TrendingUp className="h-4 w-4 text-brand-blue-deep" /> New Review
                </button>
                <button 
                   onClick={() => setShowEditProfile(true)}
@@ -230,7 +230,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                 activeTab === t.id ? "bg-white text-brand-navy shadow-sm ring-1 ring-slate-200" : "text-slate-500 hover:text-brand-navy hover:bg-white/50"
               )}
              >
-               <Icon className={cn("h-4 w-4", activeTab === t.id ? "text-brand-green-deep" : "opacity-40")} />
+               <Icon className={cn("h-4 w-4", activeTab === t.id ? "text-brand-blue-deep" : "opacity-40")} />
                {t.label}
              </button>
            )
@@ -244,7 +244,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
               <div className="lg:col-span-2 space-y-10">
                  <div className="p-10 bg-white border-2 border-slate-200 rounded-[32px] space-y-10">
                     <h2 className="text-sm font-black uppercase tracking-[0.2em] text-brand-navy flex items-center gap-3">
-                       <Zap className="h-5 w-5 text-brand-green-deep" /> Industrial Profile
+                       <Zap className="h-5 w-5 text-brand-blue-deep" /> Industrial Profile
                     </h2>
                     <div className="grid sm:grid-cols-2 gap-10">
                        <div className="space-y-1">
@@ -267,7 +267,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                        <div className="space-y-1">
                           <label className="text-[9px] font-black uppercase tracking-widest text-slate-400">Contract Logic</label>
                           <div className="text-sm font-black text-brand-navy uppercase tracking-widest flex items-center gap-2">
-                             <ShieldCheck className="h-4 w-4 text-brand-green-deep" /> {employee.contract_type} Personnel
+                             <ShieldCheck className="h-4 w-4 text-brand-blue-deep" /> {employee.contract_type} Personnel
                           </div>
                        </div>
                     </div>
@@ -276,8 +276,8 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
 
               <div className="space-y-10">
                  <div className="p-10 bg-brand-navy rounded-[40px] text-white shadow-2xl relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 h-24 w-24 bg-brand-green-deep rounded-full -mr-12 -mt-12 opacity-20" />
-                    <h3 className="text-[10px] font-black uppercase tracking-widest text-brand-green-pale mb-6">Engagement metrics</h3>
+                    <div className="absolute top-0 right-0 h-24 w-24 bg-brand-blue-deep rounded-full -mr-12 -mt-12 opacity-20" />
+                    <h3 className="text-[10px] font-black uppercase tracking-widest text-brand-blue-pale mb-6">Engagement metrics</h3>
                     <div className="space-y-6">
                        <div className="flex justify-between items-end">
                           <div className="text-[9px] font-black uppercase tracking-widest opacity-60">Tenure Velocity</div>
@@ -285,7 +285,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                        </div>
                        <div className="flex justify-between items-end">
                           <div className="text-[9px] font-black uppercase tracking-widest opacity-60">Review cycle</div>
-                          <div className="text-xl font-black text-brand-green-deep">On Track</div>
+                          <div className="text-xl font-black text-brand-blue-deep">On Track</div>
                        </div>
                     </div>
                  </div>
@@ -297,19 +297,19 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
            <div className="space-y-10 animate-in slide-in-from-right-4 duration-500">
               <div className="flex items-center justify-between">
                  <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                    <ShieldCheck className="h-6 w-6 text-brand-green-deep" /> Secure Personnel Vault
+                    <ShieldCheck className="h-6 w-6 text-brand-blue-deep" /> Secure Personnel Vault
                  </h2>
                  <button 
                   onClick={() => setShowDocUpload(true)}
-                  className="flex items-center gap-2 px-5 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-brand-navy hover:border-brand-green-deep transition-all"
+                  className="flex items-center gap-2 px-5 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-brand-navy hover:border-brand-blue-deep transition-all"
                  >
-                   <Plus className="h-4 w-4 text-brand-green-deep" /> Secure New Document
+                   <Plus className="h-4 w-4 text-brand-blue-deep" /> Secure New Document
                  </button>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                  {employee.documents?.length > 0 ? employee.documents.map((doc: any) => (
-                   <div key={doc.id} className="group p-8 bg-white border-2 border-slate-200 rounded-[32px] hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500">
+                   <div key={doc.id} className="group p-8 bg-white border-2 border-slate-200 rounded-[32px] hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500">
                       <div className="h-14 w-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:bg-brand-navy group-hover:text-white transition-all">
                          <FileText className="h-7 w-7" />
                       </div>
@@ -320,7 +320,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                          <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
                             Captured: {new Date(doc.created_at).toLocaleDateString()}
                          </div>
-                         <button className="p-2 text-brand-green-deep hover:text-brand-navy transition-all">
+                         <button className="p-2 text-brand-blue-deep hover:text-brand-navy transition-all">
                             <ArrowUpRight className="h-5 w-5" />
                          </button>
                       </div>
@@ -339,13 +339,13 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
            <div className="space-y-10 animate-in slide-in-from-right-4 duration-500">
               <div className="flex items-center justify-between">
                  <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                    <TrendingUp className="h-6 w-6 text-brand-green-deep" /> Talent Growth Log
+                    <TrendingUp className="h-6 w-6 text-brand-blue-deep" /> Talent Growth Log
                  </h2>
                  <button 
                   onClick={() => setShowReviewForm(true)}
-                  className="flex items-center gap-2 px-5 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-brand-navy hover:border-brand-green-deep transition-all"
+                  className="flex items-center gap-2 px-5 py-3 bg-slate-50 border-2 border-slate-200 rounded-2xl text-[10px] font-black uppercase tracking-widest text-brand-navy hover:border-brand-blue-deep transition-all"
                  >
-                   <Award className="h-4 w-4 text-brand-green-deep" /> Perform Audit
+                   <Award className="h-4 w-4 text-brand-blue-deep" /> Perform Audit
                  </button>
               </div>
 
@@ -354,7 +354,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                    <div key={rev.id} className="p-10 bg-white border-2 border-slate-200 rounded-[40px] flex flex-col md:flex-row items-start justify-between gap-10 hover:shadow-xl transition-all duration-500 group">
                       <div className="space-y-6 flex-1">
                          <div className="flex items-center gap-10">
-                            <div className="h-16 w-16 rounded-3xl bg-slate-50 flex items-center justify-center font-black text-2xl text-brand-green-deep border-2 border-slate-100 shadow-sm transition-all group-hover:scale-110">
+                            <div className="h-16 w-16 rounded-3xl bg-slate-50 flex items-center justify-center font-black text-2xl text-brand-blue-deep border-2 border-slate-100 shadow-sm transition-all group-hover:scale-110">
                                {rev.rating}<span className="text-[10px] opacity-40">/5</span>
                             </div>
                             <div>
@@ -364,7 +364,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                                </p>
                             </div>
                          </div>
-                         <div className="space-y-4 max-w-2xl pl-4 border-l-4 border-slate-100 group-hover:border-brand-green-deep transition-colors">
+                         <div className="space-y-4 max-w-2xl pl-4 border-l-4 border-slate-100 group-hover:border-brand-blue-deep transition-colors">
                             <p className="text-sm font-medium text-slate-700 leading-relaxed italic">"{rev.feedback}"</p>
                             <div className="flex items-center gap-3">
                                <Target className="h-4 w-4 text-brand-navy opacity-40" />
@@ -404,7 +404,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
               <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Document Registry Type</label>
-                   <select name="document_type" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none">
+                   <select name="document_type" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none">
                       <option value="NRC / ID">NRC / ID</option>
                       <option value="Employment Contract">Employment Contract</option>
                       <option value="Professional Certificate">Professional Certificate</option>
@@ -414,7 +414,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Secure File URL</label>
-                   <input name="file_url" required placeholder="Cloud archive link..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="file_url" required placeholder="Cloud archive link..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
               </div>
            </div>
@@ -422,11 +422,11 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
            <div className="space-y-6">
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Expiry Audit Date (Optional)</label>
-                 <input name="expiry_date" type="date" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
+                 <input name="expiry_date" type="date" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
               </div>
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Internal Log Notes</label>
-                 <textarea name="notes" placeholder="Official metadata..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm min-h-[120px] bg-slate-50" />
+                 <textarea name="notes" placeholder="Official metadata..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm min-h-[120px] bg-slate-50" />
               </div>
            </div>
 
@@ -455,17 +455,17 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
            <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Audit Start</label>
-                 <input name="period_start" type="date" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
+                 <input name="period_start" type="date" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
               </div>
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Audit End</label>
-                 <input name="period_end" type="date" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
+                 <input name="period_end" type="date" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
               </div>
            </div>
 
            <div className="space-y-2">
              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Industrial Rating (1-5)</label>
-             <select name="rating" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none">
+             <select name="rating" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none">
                 <option value="5">5 — Exceptional Mobility</option>
                 <option value="4">4 — High Performance</option>
                 <option value="3">3 — Operational Parity</option>
@@ -476,12 +476,12 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
 
            <div className="space-y-2">
              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Operational Feedback</label>
-             <textarea name="feedback" required placeholder="Professional assessment..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm min-h-[150px] bg-slate-50" />
+             <textarea name="feedback" required placeholder="Professional assessment..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm min-h-[150px] bg-slate-50" />
            </div>
 
            <div className="space-y-2">
              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Target Growth Goals</label>
-             <input name="goals" placeholder="Next cycle targets..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+             <input name="goals" placeholder="Next cycle targets..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
            </div>
 
            <div className="pt-6">
@@ -510,11 +510,11 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
               <div className="grid grid-cols-2 gap-6">
                  <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Department</label>
-                    <input name="department" defaultValue={employee?.department} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" />
+                    <input name="department" defaultValue={employee?.department} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50" />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Status</label>
-                    <select name="status" defaultValue={employee?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                    <select name="status" defaultValue={employee?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
                        <option value="active">Active</option>
                        <option value="on_leave">On Leave</option>
                        <option value="terminated">Terminated</option>
@@ -524,7 +524,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
               </div>
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Contract Type</label>
-                 <select name="contract_type" defaultValue={employee?.contract_type} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                 <select name="contract_type" defaultValue={employee?.contract_type} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
                     <option value="permanent">Permanent</option>
                     <option value="contract">Fixed Term Contract</option>
                     <option value="intern">Internship</option>
@@ -537,7 +537,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                   name="nrc_number" 
                   pattern="[0-9]{6}/[0-9]{2}/[0-9]{1}"
                   defaultValue={employee?.nrc_number} 
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50" 
                  />
               </div>
            </div>

@@ -118,7 +118,7 @@ export default function HrDirectoryPage() {
           onClick={() => setShowAdd(true)}
           className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10"
         >
-          <UserPlus className="h-4 w-4 text-brand-green-deep" /> Onboard New Employee
+          <UserPlus className="h-4 w-4 text-brand-blue-deep" /> Onboard New Employee
         </button>
       </div>
 
@@ -132,7 +132,7 @@ export default function HrDirectoryPage() {
                 placeholder="Find by name or department..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[350px] font-bold"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-slate-50/80 lg:w-[350px] font-bold"
               />
            </div>
            <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700">
@@ -149,14 +149,14 @@ export default function HrDirectoryPage() {
       <div className="grid gap-4 px-4">
         {isLoading ? (
           <div className="py-32 flex flex-col items-center justify-center space-y-4">
-             <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+             <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Synchronizing Workforce Database...</p>
           </div>
         ) : filtered.length > 0 ? (
            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((e) => (
-                <div key={e.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
-                   <div className="absolute top-0 right-0 h-24 w-24 bg-slate-50/80 rounded-full -mr-12 -mt-12 group-hover:bg-brand-green-pale transition-colors duration-500" />
+                <div key={e.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+                   <div className="absolute top-0 right-0 h-24 w-24 bg-slate-50/80 rounded-full -mr-12 -mt-12 group-hover:bg-brand-blue-pale transition-colors duration-500" />
                    
                    <div className="relative z-10 space-y-6">
                       <div className="flex justify-between items-start">
@@ -176,7 +176,7 @@ export default function HrDirectoryPage() {
                       </div>
 
                       <div>
-                         <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-green-deep transition-colors">{e.profile?.full_name}</h3>
+                         <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-blue-deep transition-colors">{e.profile?.full_name}</h3>
                          <div className="flex items-center gap-2 text-[10px] font-bold text-slate-600 uppercase tracking-widest">
                             <Building2 className="h-3.5 w-3.5 opacity-50" /> {e.department || "No Department"}
                          </div>
@@ -233,7 +233,7 @@ export default function HrDirectoryPage() {
                          const member = teamMembers.find(m => m.id === e.target.value)
                          setSelectedProfileData(member)
                       }}
-                      className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none"
+                      className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none"
                     >
                       <option value="">Select a profile...</option>
                       {teamMembers.map(m => (
@@ -250,7 +250,7 @@ export default function HrDirectoryPage() {
                          pattern="[0-9]{6}/[0-9]{2}/[0-9]{1}"
                          defaultValue={selectedProfileData?.nrc_number || ""}
                          placeholder="123456/78/1" 
-                         className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm" 
+                         className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm" 
                        />
                        <p className="text-[9px] font-black text-slate-400 mt-1 pl-1 italic">Industrial Standard: xxxxxx/yy/z</p>
                       {selectedProfileData?.nrc_number && (
@@ -263,7 +263,7 @@ export default function HrDirectoryPage() {
                         name="date_of_birth" 
                         type="date" 
                         defaultValue={selectedProfileData?.date_of_birth || ""}
-                        className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm cursor-pointer" 
+                        className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm cursor-pointer" 
                       />
                       {selectedProfileData?.date_of_birth && (
                          <p className="text-[9px] font-black text-emerald-600 uppercase tracking-widest pl-1 flex items-center gap-1"><Sparkles className="h-2.5 w-2.5" /> Source: Identity Coordination</p>
@@ -278,11 +278,11 @@ export default function HrDirectoryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Department</label>
-                   <input name="department" required placeholder="Engineering, Sales, etc." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm" />
+                   <input name="department" required placeholder="Engineering, Sales, etc." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Contract Type</label>
-                   <select name="contract_type" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-white appearance-none">
+                   <select name="contract_type" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-white appearance-none">
                       <option value="permanent">Permanent</option>
                       <option value="contract">Fixed Term Contract</option>
                       <option value="intern">Internship</option>
@@ -293,11 +293,11 @@ export default function HrDirectoryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Join Date</label>
-                   <input name="join_date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm cursor-pointer" />
+                   <input name="join_date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm cursor-pointer" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Manager (Reporting Line)</label>
-                   <select name="manager_id" className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none">
+                   <select name="manager_id" className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 shadow-sm appearance-none">
                       <option value="">No manager (Root)</option>
                       {teamMembers.map(m => (
                         <option key={m.id} value={m.id}>{m.full_name}</option>

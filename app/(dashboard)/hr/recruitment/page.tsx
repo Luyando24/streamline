@@ -124,7 +124,7 @@ export default function HrRecruitmentPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <Archive className="h-3 w-3" /> Talent Acquisition Hub
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Recruitment</h1>
@@ -135,13 +135,13 @@ export default function HrRecruitmentPage() {
           onClick={() => setShowAddJob(true)}
           className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-95 shadow-brand-navy/10"
         >
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Publish Vacancy
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Publish Vacancy
         </button>
       </div>
 
       {/* Intelligence Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 shadow-sm">
                   <Briefcase className="h-6 w-6" />
@@ -150,7 +150,7 @@ export default function HrRecruitmentPage() {
                <h3 className="text-2xl font-black text-brand-navy mb-2">{jobs.filter(j => j.status === 'open').length} <span className="text-slate-300 text-sm">Active</span></h3>
             </div>
          </div>
-         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 shadow-sm">
                   <Users className="h-6 w-6" />
@@ -159,7 +159,7 @@ export default function HrRecruitmentPage() {
                <h3 className="text-2xl font-black text-brand-navy mb-2">{totalApplicants} <span className="text-slate-300 text-sm">Applicants</span></h3>
             </div>
          </div>
-         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 shadow-sm">
                   <CheckCircle2 className="h-6 w-6" />
@@ -169,12 +169,12 @@ export default function HrRecruitmentPage() {
             </div>
          </div>
          <div className="group p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 h-24 w-24 bg-brand-green-deep rounded-full -mr-12 -mt-12 opacity-20" />
+            <div className="absolute top-0 right-0 h-24 w-24 bg-brand-blue-deep rounded-full -mr-12 -mt-12 opacity-20" />
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/10">
-                  <Zap className="h-6 w-6 text-brand-green-deep" />
+                  <Zap className="h-6 w-6 text-brand-blue-deep" />
                </div>
-               <p className="text-[10px] font-black uppercase tracking-widest text-brand-green-pale mb-1">Scale Logic</p>
+               <p className="text-[10px] font-black uppercase tracking-widest text-brand-blue-pale mb-1">Scale Logic</p>
                <h3 className="text-2xl font-black text-white mb-2 tracking-tight">Industrial</h3>
             </div>
          </div>
@@ -184,18 +184,18 @@ export default function HrRecruitmentPage() {
       <div className="space-y-8">
          <div className="flex items-center justify-between">
             <h2 className="text-sm font-black uppercase tracking-[0.2em] text-brand-navy flex items-center gap-3">
-               <Briefcase className="h-5 w-5 text-brand-green-deep" /> Vacancy Deck
+               <Briefcase className="h-5 w-5 text-brand-blue-deep" /> Vacancy Deck
             </h2>
          </div>
 
          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {isLoading ? (
                <div className="col-span-full py-32 flex flex-col items-center justify-center space-y-4">
-                  <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+                  <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Loading Talent Pipelines...</p>
                </div>
             ) : jobs.length > 0 ? jobs.map((job) => (
-               <div key={job.id} className="group p-10 bg-white border-2 border-slate-200 rounded-[40px] hover:border-brand-green-deep/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+               <div key={job.id} className="group p-10 bg-white border-2 border-slate-200 rounded-[40px] hover:border-brand-blue-deep/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <div className="flex justify-between items-start">
                         <div className="h-14 w-14 rounded-2xl bg-slate-50 flex items-center justify-center border-2 border-slate-100 group-hover:bg-brand-navy group-hover:text-white transition-all shadow-sm">
@@ -210,7 +210,7 @@ export default function HrRecruitmentPage() {
                      </div>
 
                      <div className="space-y-2">
-                        <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-green-deep transition-colors leading-tight">{job.title}</h3>
+                        <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-blue-deep transition-colors leading-tight">{job.title}</h3>
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] flex items-center gap-2">
                            <Building2 className="h-3.5 w-3.5 opacity-50" /> {job.department}
                         </p>
@@ -264,23 +264,23 @@ export default function HrRecruitmentPage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Vacancy Title</label>
-                   <input name="title" required placeholder="e.g. Senior Logistics Officer" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="title" required placeholder="e.g. Senior Logistics Officer" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Department Registry</label>
-                   <input name="department" required placeholder="e.g. Supply Chain, Engineering" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="department" required placeholder="e.g. Supply Chain, Engineering" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
               </div>
            </div>
 
            <div className="space-y-4">
              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Position Description</label>
-             <textarea name="description" required placeholder="Outline the organizational mission..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm min-h-[150px] bg-slate-50" />
+             <textarea name="description" required placeholder="Outline the organizational mission..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm min-h-[150px] bg-slate-50" />
            </div>
 
            <div className="space-y-4">
              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Technical Requirements</label>
-             <textarea name="requirements" placeholder="Skills, certifications, experience..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm min-h-[120px] bg-slate-50" />
+             <textarea name="requirements" placeholder="Skills, certifications, experience..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm min-h-[120px] bg-slate-50" />
            </div>
 
            <div className="pt-6">
@@ -310,11 +310,11 @@ export default function HrRecruitmentPage() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Vacancy Title</label>
-                   <input name="title" defaultValue={selectedJob?.title} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" />
+                   <input name="title" defaultValue={selectedJob?.title} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Status</label>
-                   <select name="status" defaultValue={selectedJob?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                   <select name="status" defaultValue={selectedJob?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
                       <option value="open">Open</option>
                       <option value="closed">Closed / Internal</option>
                       <option value="on_hold">On Hold</option>
@@ -323,13 +323,13 @@ export default function HrRecruitmentPage() {
               </div>
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Department Registry</label>
-                 <input name="department" defaultValue={selectedJob?.department} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" />
+                 <input name="department" defaultValue={selectedJob?.department} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50" />
               </div>
            </div>
 
            <div className="space-y-4">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Position Description</label>
-              <textarea name="description" defaultValue={selectedJob?.description} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm min-h-[120px] bg-slate-50" />
+              <textarea name="description" defaultValue={selectedJob?.description} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm min-h-[120px] bg-slate-50" />
            </div>
 
            <div className="pt-6 space-y-4">

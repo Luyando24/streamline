@@ -143,7 +143,7 @@ export default function ClientRegistryPage() {
           onClick={() => setShowAdd(true)}
           className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98] shadow-brand-navy/10"
         >
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Onboard New Client
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Onboard New Client
         </button>
       </div>
 
@@ -151,13 +151,13 @@ export default function ClientRegistryPage() {
       <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
         <div className="flex items-center gap-4">
            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-blue-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Find customer..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
               />
            </div>
            <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-white transition-all">
@@ -174,11 +174,11 @@ export default function ClientRegistryPage() {
       <div className="grid gap-4">
         {isLoading ? (
           <div className="py-32 flex flex-col items-center justify-center space-y-4">
-             <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+             <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Synchronizing Relationship Data...</p>
           </div>
         ) : filtered.length > 0 ? filtered.map((c) => (
-          <div key={c.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-2xl transition-all duration-500 overflow-hidden relative flex flex-wrap items-center justify-between gap-8">
+          <div key={c.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-2xl transition-all duration-500 overflow-hidden relative flex flex-wrap items-center justify-between gap-8">
             <div className="flex items-center gap-8">
                <div className="h-16 w-16 rounded-[24px] bg-white border-2 border-slate-200 text-brand-navy flex items-center justify-center text-lg font-black shadow-sm group-hover:scale-110 group-hover:bg-brand-navy group-hover:text-white transition-all duration-500">
                   {c.company_name[0]}
@@ -186,7 +186,7 @@ export default function ClientRegistryPage() {
                
                <div className="space-y-1">
                   <div className="flex items-center gap-3">
-                     <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-green-deep transition-colors">{c.company_name}</h3>
+                     <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-blue-deep transition-colors">{c.company_name}</h3>
                      <span className="px-3 py-0.5 rounded-full bg-slate-50/80 text-slate-600 text-[9px] font-black uppercase tracking-widest border border-slate-200">
                         {c.industry || "General"}
                      </span>
@@ -203,7 +203,7 @@ export default function ClientRegistryPage() {
                <div className="text-right">
                   <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 block mb-1">Lifetime Deals</span>
                   <div className="text-base font-black text-brand-navy flex items-center justify-end gap-2">
-                     <Briefcase className="h-4 w-4 text-brand-green-deep opacity-40" /> {c.deals?.length || 0}
+                     <Briefcase className="h-4 w-4 text-brand-blue-deep opacity-40" /> {c.deals?.length || 0}
                   </div>
                </div>
                
@@ -211,7 +211,7 @@ export default function ClientRegistryPage() {
                   <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 block mb-1">Relationship Health</span>
                   <div className="flex gap-1">
                      {[1,2,3,4,5].map(i => (
-                       <div key={i} className="h-1.5 w-1.5 rounded-full bg-brand-green-deep" />
+                       <div key={i} className="h-1.5 w-1.5 rounded-full bg-brand-blue-deep" />
                      ))}
                   </div>
                </div>
@@ -256,16 +256,16 @@ export default function ClientRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Entity / Company Name</label>
-                   <input name="company_name" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="company_name" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Representative</label>
-                      <input name="contact_person" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="contact_person" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Industry Sector</label>
-                      <select name="industry" className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                      <select name="industry" className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                          <option value="Tech">Technology</option>
                          <option value="Mining">Mining & Industrial</option>
                          <option value="Retail">Retail & Trade</option>
@@ -281,11 +281,11 @@ export default function ClientRegistryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Email Coordinates</label>
-                   <input name="email" type="email" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="email" type="email" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Direct Phone</label>
-                   <input name="phone" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="phone" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
            </div>
@@ -295,12 +295,12 @@ export default function ClientRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">ZRA TPIN (Tax Identifier)</label>
-                   <input name="tpin" required pattern="[0-9]{10}" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="tpin" required pattern="[0-9]{10}" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    <p className="text-[9px] font-black text-slate-400 mt-1 pl-1 italic">10-digit numeric pattern required.</p>
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Headquarters Address</label>
-                   <textarea name="address" rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                   <textarea name="address" rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
                 </div>
              </div>
            </div>
@@ -332,16 +332,16 @@ export default function ClientRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Entity / Company Name</label>
-                   <input name="company_name" defaultValue={selectedClient?.company_name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="company_name" defaultValue={selectedClient?.company_name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Representative</label>
-                      <input name="contact_person" defaultValue={selectedClient?.contact_person} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="contact_person" defaultValue={selectedClient?.contact_person} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Industry Sector</label>
-                      <select name="industry" defaultValue={selectedClient?.industry} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                      <select name="industry" defaultValue={selectedClient?.industry} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                          <option value="Tech">Technology</option>
                          <option value="Mining">Mining & Industrial</option>
                          <option value="Retail">Retail & Trade</option>
@@ -357,11 +357,11 @@ export default function ClientRegistryPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Email Coordinates</label>
-                   <input name="email" type="email" defaultValue={selectedClient?.email} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="email" type="email" defaultValue={selectedClient?.email} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Direct Phone</label>
-                   <input name="phone" defaultValue={selectedClient?.phone} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="phone" defaultValue={selectedClient?.phone} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
            </div>
@@ -371,11 +371,11 @@ export default function ClientRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">ZRA TPIN (Tax Identifier)</label>
-                   <input name="tpin" required pattern="[0-9]{10}" defaultValue={selectedClient?.tpin} placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="tpin" required pattern="[0-9]{10}" defaultValue={selectedClient?.tpin} placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Headquarters Address</label>
-                   <textarea name="address" rows={2} defaultValue={selectedClient?.address} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                   <textarea name="address" rows={2} defaultValue={selectedClient?.address} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
                 </div>
              </div>
            </div>

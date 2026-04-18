@@ -1076,3 +1076,52 @@ create policy "Owners can manage recruitment." on public.hr_jobs
 
 create policy "Owners can manage applicants." on public.hr_applicants
   for all using (public.is_org_owner(org_id));
+
+-- MODULES MARKETPLACE
+create table if not exists public.modules (
+  id uuid default gen_random_uuid() primary key,
+  slug text unique not null,
+  name text not null,
+  description text,
+  category text,
+  price decimal(15, 2) default 0,
+  created_at timestamptz default now()
+);
+
+alter table public.modules enable row level security;
+
+create policy "Anyone can view modules." on public.modules
+  for select using (true);
+
+create table if not exists public.org_modules (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  module_id uuid references public.modules(id) on delete cascade,
+  is_active boolean default true,
+  created_at timestamptz default now(),
+  unique(org_id, module_id)
+);
+
+alter table public.org_modules enable row level security;
+
+create policy "Org members can view their activated modules." on public.org_modules
+  for select using (public.is_org_member(org_id));
+
+create policy "Org owners can manage their modules." on public.org_modules
+  for all using (public.is_org_owner(org_id));
+
+-- SEED DATA FOR MODULES
+insert into public.modules (slug, name, description, category, price)
+values 
+  ('finance-accounting', 'Finance & Accounting', 'General ledger, budgeting, ZRA compliance', 'Core', 1200),
+  ('payroll-management', 'Payroll Management', 'PAYE, NAPSA, NHIMA, payslip automation', 'Core', 800),
+  ('leave-management', 'Leave Management', 'Leave tracking, approvals, balances', 'Core', 400),
+  ('performance-management', 'Performance Management', 'KPI tracking, appraisals, 360 feedback', 'Core', 600),
+  ('procurement-management', 'Procurement Management', 'Requisitions, approvals, supplier tracking', 'Core', 700),
+  ('inventory-management', 'Inventory Management', 'Stock tracking, alerts, warehouse mgmt', 'Core', 700),
+  ('fleet-management', 'Fleet Management', 'Fuel tracking, maintenance, vehicle usage', 'Core', 600),
+  ('hris-suite', 'HRIS Full Suite', 'Employee records, onboarding, contracts', 'Add-On', 1000),
+  ('project-management', 'Project Management', 'Task tracking, timelines, donor reporting', 'Add-On', 800),
+  ('crm', 'CRM', 'Sales pipeline, customer tracking', 'Add-On', 900),
+  ('asset-management', 'Asset Management', 'Fixed asset tracking, depreciation tracking', 'Add-On', 500)
+on conflict (slug) do nothing;

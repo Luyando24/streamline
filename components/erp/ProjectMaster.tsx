@@ -72,17 +72,17 @@ export function ProjectMaster({ initialProjects }: { initialProjects: any[] }) {
     <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
       <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
         <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-          <Target className="h-5 w-5 text-brand-green-deep" /> Portfolio Registry
+          <Target className="h-5 w-5 text-brand-blue-deep" /> Portfolio Registry
         </h2>
         <div className="flex gap-2">
            <div className="relative group">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 group-focus-within:text-brand-blue-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Find Engagement..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="pl-9 pr-4 py-2 text-[10px] border border-slate-200 rounded-xl focus:outline-none focus:border-brand-green-deep w-48 font-bold transition-all bg-white"
+                className="pl-9 pr-4 py-2 text-[10px] border border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue-deep w-48 font-bold transition-all bg-white"
               />
            </div>
         </div>
@@ -92,8 +92,8 @@ export function ProjectMaster({ initialProjects }: { initialProjects: any[] }) {
         {filtered.length > 0 ? (
           <div className="grid sm:grid-cols-2 gap-4">
             {filtered.map((project: any) => (
-              <div key={project.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 relative overflow-hidden">
-                <div className="absolute top-0 right-0 h-24 w-24 bg-slate-50/80 rounded-full -mr-12 -mt-12 group-hover:bg-brand-green-pale transition-colors duration-500" />
+              <div key={project.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 h-24 w-24 bg-slate-50/80 rounded-full -mr-12 -mt-12 group-hover:bg-brand-blue-pale transition-colors duration-500" />
                 <div className="relative z-10 space-y-6">
                   <div className="flex justify-between items-start">
                     <div className="h-12 w-12 rounded-2xl bg-white border-2 border-slate-200 flex items-center justify-center shadow-sm group-hover:bg-brand-navy group-hover:text-white transition-all">
@@ -116,7 +116,7 @@ export function ProjectMaster({ initialProjects }: { initialProjects: any[] }) {
                   </div>
 
                   <div>
-                    <h3 className="text-base font-black text-brand-navy mb-1 group-hover:text-brand-green-deep transition-colors line-clamp-1">{project.title}</h3>
+                    <h3 className="text-base font-black text-brand-navy mb-1 group-hover:text-brand-blue-deep transition-colors line-clamp-1">{project.title}</h3>
                     <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest flex items-center gap-2">
                       <Users className="h-3.5 w-3.5 opacity-50" /> {project.client?.company_name || "Internal Portfolio"}
                     </p>
@@ -161,16 +161,16 @@ export function ProjectMaster({ initialProjects }: { initialProjects: any[] }) {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Project Title / Designation</label>
-                   <input name="title" defaultValue={selectedProject?.title} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="title" defaultValue={selectedProject?.title} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Financial Allocation (Budget)</label>
-                      <input name="budget" type="number" defaultValue={selectedProject?.budget} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="budget" type="number" defaultValue={selectedProject?.budget} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Engagement Status</label>
-                      <select name="status" defaultValue={selectedProject?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                      <select name="status" defaultValue={selectedProject?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                          <option value="active">Active High-Velocity</option>
                          <option value="planning">Pre-Execution Planning</option>
                          <option value="completed">Completed / Archive</option>
@@ -185,7 +185,7 @@ export function ProjectMaster({ initialProjects }: { initialProjects: any[] }) {
              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Scope Specifications</h3>
              <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Brief Description / Mission</label>
-                <textarea name="description" rows={3} defaultValue={selectedProject?.description} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                <textarea name="description" rows={3} defaultValue={selectedProject?.description} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
              </div>
            </div>
 

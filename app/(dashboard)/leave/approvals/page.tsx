@@ -81,7 +81,7 @@ export default async function LeaveApprovalsPage() {
                          </div>
                          <div className="flex items-center gap-4 text-sm font-black text-brand-navy">
                             <span>{new Date(request.start_date).toLocaleDateString()}</span>
-                            <ArrowRight className="h-4 w-4 text-brand-green-deep" />
+                            <ArrowRight className="h-4 w-4 text-brand-blue-deep" />
                             <span>{new Date(request.end_date).toLocaleDateString()}</span>
                          </div>
                       </div>
@@ -96,12 +96,12 @@ export default async function LeaveApprovalsPage() {
                       </div>
 
                       {/* Overlap Detector Visual */}
-                      <div className="p-6 bg-brand-green-pale/30 border border-brand-green-deep/10 rounded-[28px] flex items-start gap-4">
+                      <div className="p-6 bg-brand-blue-pale/30 border border-brand-blue-deep/10 rounded-[28px] flex items-start gap-4">
                          <div className="h-10 w-10 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-                            <ShieldCheck className="h-5 w-5 text-brand-green-deep" />
+                            <ShieldCheck className="h-5 w-5 text-brand-blue-deep" />
                          </div>
                          <div className="space-y-1">
-                            <h4 className="text-[11px] font-black uppercase tracking-widest text-brand-green-deep">Smart Conflict Detector</h4>
+                            <h4 className="text-[11px] font-black uppercase tracking-widest text-brand-blue-deep">Smart Conflict Detector</h4>
                             <p className="text-[10px] text-brand-navy/60 font-medium">No other employees in this department are scheduled away during these dates.</p>
                          </div>
                       </div>
@@ -114,7 +114,7 @@ export default async function LeaveApprovalsPage() {
                       }}>
                         <input type="hidden" name="note" value="Approved by Management" />
                         <button 
-                          className="w-full py-4 bg-brand-green-deep text-white rounded-[20px] text-[10px] font-black uppercase tracking-widest hover:bg-brand-green-deep-light shadow-xl shadow-brand-green-deep/20 transition-all active:scale-[0.98]"
+                          className="w-full py-4 bg-brand-blue-deep text-white rounded-[20px] text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue-deep-light shadow-xl shadow-brand-blue-deep/20 transition-all active:scale-[0.98]"
                         >
                           Approve Request
                         </button>
@@ -150,14 +150,14 @@ export default async function LeaveApprovalsPage() {
         {/* Action Sidebar */}
         <div className="space-y-8">
            <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Manager Overview</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-6">Manager Overview</h3>
               
               <div className="space-y-6 mb-8">
                  <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold opacity-60">Avg Response Time</span>
-                    <span className="text-xs font-black text-brand-green-deep">4.2 hrs</span>
+                    <span className="text-xs font-black text-brand-blue-deep">4.2 hrs</span>
                  </div>
                  <div className="flex items-center justify-between">
                     <span className="text-[11px] font-bold opacity-60">Team on Leave</span>
@@ -167,7 +167,7 @@ export default async function LeaveApprovalsPage() {
 
               <Link 
                 href="/leave/calendar" 
-                className="flex items-center justify-center gap-2 w-full py-4 bg-brand-green-deep rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-brand-green-deep-light shadow-xl transition-all"
+                className="flex items-center justify-center gap-2 w-full py-4 bg-brand-blue-deep rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-brand-blue-deep-light shadow-xl transition-all"
               >
                 Access Team Calendar <ChevronRight className="h-3 w-3" />
               </Link>

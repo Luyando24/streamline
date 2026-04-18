@@ -75,17 +75,17 @@ export function InventoryMaster({ initialItems }: { initialItems: any[] }) {
     <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
       <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
         <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-          <Boxes className="h-5 w-5 text-brand-green-deep" /> SKU Master List
+          <Boxes className="h-5 w-5 text-brand-blue-deep" /> SKU Master List
         </h2>
         <div className="flex gap-2">
           <div className="relative group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 group-focus-within:text-brand-green-deep transition-colors" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 group-focus-within:text-brand-blue-deep transition-colors" />
             <input 
               type="text" 
               placeholder="Find SKU..." 
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="pl-9 pr-4 py-2 text-[10px] border border-slate-200 rounded-xl focus:outline-none focus:border-brand-green-deep w-48 font-bold transition-all bg-white"
+              className="pl-9 pr-4 py-2 text-[10px] border border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue-deep w-48 font-bold transition-all bg-white"
             />
           </div>
         </div>
@@ -112,7 +112,7 @@ export function InventoryMaster({ initialItems }: { initialItems: any[] }) {
                       <div className="flex items-center gap-3">
                         <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{item.sku}</span>
                         <span className="h-1 w-1 rounded-full bg-slate-200" />
-                        <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">{item.category || "General"}</span>
+                        <span className="text-[10px] font-black text-brand-blue-deep uppercase tracking-widest">{item.category || "General"}</span>
                       </div>
                     </div>
                   </div>
@@ -177,16 +177,16 @@ export function InventoryMaster({ initialItems }: { initialItems: any[] }) {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Product Designation / Name</label>
-                   <input name="name" defaultValue={selectedItem?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="name" defaultValue={selectedItem?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Master SKU / Code</label>
-                      <input name="sku" defaultValue={selectedItem?.sku} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="sku" defaultValue={selectedItem?.sku} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Product Category</label>
-                      <input name="category" defaultValue={selectedItem?.category} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="category" defaultValue={selectedItem?.category} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                 </div>
              </div>
@@ -197,16 +197,16 @@ export function InventoryMaster({ initialItems }: { initialItems: any[] }) {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Unit of Measure</label>
-                   <input name="unit" defaultValue={selectedItem?.unit} placeholder="e.g. KG, PCS, LTR" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="unit" defaultValue={selectedItem?.unit} placeholder="e.g. KG, PCS, LTR" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Critical Reorder Level</label>
-                   <input name="reorder_level" type="number" defaultValue={selectedItem?.reorder_level} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="reorder_level" type="number" defaultValue={selectedItem?.reorder_level} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
              <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Technical Notes / Description</label>
-                <textarea name="description" rows={2} defaultValue={selectedItem?.description} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                <textarea name="description" rows={2} defaultValue={selectedItem?.description} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
              </div>
            </div>
 

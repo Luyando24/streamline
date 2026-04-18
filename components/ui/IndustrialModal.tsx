@@ -56,7 +56,7 @@ export function IndustrialModal({
         <div className="flex items-start justify-between p-10 pb-6 border-b border-slate-50 bg-slate-50/30">
           <div className="space-y-1">
             {subtitle && (
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep">
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep">
                 {icon} {subtitle}
               </div>
             )}

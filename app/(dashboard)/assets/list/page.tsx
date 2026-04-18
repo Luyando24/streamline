@@ -118,7 +118,7 @@ export default function AssetListPage() {
           onClick={() => setShowAdd(true)}
           className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10"
         >
-          <Plus className="h-4 w-4 text-brand-green-deep" /> Register New Asset
+          <Plus className="h-4 w-4 text-brand-blue-deep" /> Register New Asset
         </button>
       </div>
 
@@ -132,7 +132,7 @@ export default function AssetListPage() {
                 placeholder="Find by Tag or Name..." 
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[350px] font-bold"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-slate-50/80 lg:w-[350px] font-bold"
               />
            </div>
            <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700">
@@ -149,11 +149,11 @@ export default function AssetListPage() {
       <div className="grid gap-4">
         {isLoading ? (
           <div className="py-32 flex flex-col items-center justify-center space-y-4">
-             <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+             <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Auditing Physical Capital Registry...</p>
           </div>
         ) : filtered.length > 0 ? filtered.map((a) => (
-          <div key={a.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-2xl transition-all duration-500 overflow-hidden relative flex flex-wrap items-center justify-between gap-8">
+          <div key={a.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-2xl transition-all duration-500 overflow-hidden relative flex flex-wrap items-center justify-between gap-8">
             <div className="flex items-center gap-8">
                <div className="h-16 w-16 rounded-[24px] bg-slate-50/80 border-2 border-slate-200 text-brand-navy flex items-center justify-center text-lg font-black shadow-sm group-hover:scale-110 group-hover:bg-brand-navy group-hover:text-white transition-all duration-500">
                   {a.category?.name[0] || 'A'}
@@ -161,7 +161,7 @@ export default function AssetListPage() {
                
                <div className="space-y-1">
                   <div className="flex items-center gap-3">
-                     <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-green-deep transition-colors">{a.name}</h3>
+                     <h3 className="text-xl font-black text-brand-navy group-hover:text-brand-blue-deep transition-colors">{a.name}</h3>
                      <span className="px-3 py-0.5 rounded-full bg-slate-50/80 text-slate-600 text-[9px] font-black uppercase tracking-widest border border-slate-200">
                         {a.asset_tag}
                      </span>
@@ -193,7 +193,7 @@ export default function AssetListPage() {
                <div className="flex items-center gap-3">
                   <button 
                   onClick={() => handleDepreciate(a.id, a.name)}
-                  className="h-12 px-6 rounded-2xl bg-brand-green-pale text-brand-green-deep text-[10px] font-black uppercase tracking-widest hover:bg-brand-green-deep hover:text-white transition-all shadow-sm flex items-center gap-2"
+                  className="h-12 px-6 rounded-2xl bg-brand-blue-pale text-brand-blue-deep text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue-deep hover:text-white transition-all shadow-sm flex items-center gap-2"
                   >
                      <Calculator className="h-4 w-4" /> Depreciate
                   </button>
@@ -228,16 +228,16 @@ export default function AssetListPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Asset Name</label>
-                   <input name="name" required placeholder="e.g. 2024 Toyota Hilux" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 placeholder:text-slate-300" />
+                   <input name="name" required placeholder="e.g. 2024 Toyota Hilux" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 placeholder:text-slate-300" />
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Unique Asset Tag</label>
-                      <input name="asset_tag" required placeholder="TAG-1001" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 placeholder:text-slate-300" />
+                      <input name="asset_tag" required placeholder="TAG-1001" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 placeholder:text-slate-300" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Category Registry</label>
-                      <select name="category_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                      <select name="category_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                          {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                          {categories.length === 0 && <option value="">No categories defined</option>}
                       </select>
@@ -251,21 +251,21 @@ export default function AssetListPage() {
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Purchase Date</label>
-                   <input name="purchase_date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="purchase_date" type="date" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Historical Cost (K)</label>
-                   <input name="purchase_cost" type="number" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="purchase_cost" type="number" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
              <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Salvage Value (K)</label>
-                   <input name="salvage_value" type="number" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="salvage_value" type="number" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Location Node</label>
-                   <input name="location" placeholder="Site Alpha" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 placeholder:text-slate-300" />
+                   <input name="location" placeholder="Site Alpha" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 placeholder:text-slate-300" />
                 </div>
              </div>
            </div>

@@ -113,7 +113,7 @@ export default function NewJournalPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-1">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-green-deep">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-blue-deep">
              <ArrowRightLeft className="h-3.5 w-3.5" /> High-Precision Posting
           </div>
           <h1 className="text-3xl font-black tracking-tight text-brand-navy">New Journal Entry</h1>
@@ -147,7 +147,7 @@ export default function NewJournalPage() {
                   type="date" 
                   value={date}
                   onChange={e => setDate(e.target.value)}
-                  className="w-full pl-11 pr-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all"
+                  className="w-full pl-11 pr-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm transition-all"
                 />
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function NewJournalPage() {
                 placeholder="INV-001 or Receipt #"
                 value={reference}
                 onChange={e => setReference(e.target.value)}
-                className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all"
+                className="w-full px-5 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm transition-all"
               />
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function NewJournalPage() {
                 placeholder="Purpose of this entry..."
                 value={description}
                 onChange={e => setDescription(e.target.value)}
-                className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all resize-none"
+                className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm transition-all resize-none"
               />
             </div>
 
@@ -190,7 +190,7 @@ export default function NewJournalPage() {
                       <select 
                         value={entry.account_id}
                         onChange={e => updateLine(i, 'account_id', e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-[12px] truncate transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-[12px] truncate transition-all appearance-none bg-white"
                       >
                         <option value="">Select Account...</option>
                         {accounts.map(acc => (
@@ -204,7 +204,7 @@ export default function NewJournalPage() {
                         placeholder="0.00"
                         value={entry.amount}
                         onChange={e => updateLine(i, 'amount', e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-black text-[12px] transition-all"
+                        className="w-full px-4 py-3 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-black text-[12px] transition-all"
                       />
 
                       <select 
@@ -231,7 +231,7 @@ export default function NewJournalPage() {
 
                <button 
                  onClick={addLine}
-                 className="flex items-center gap-2 px-6 py-4 rounded-2xl border-2 border-dashed border-slate-200 text-slate-600 hover:text-brand-green-deep hover:border-brand-green-deep/30 transition-all font-black text-[10px] uppercase tracking-widest w-full justify-center"
+                 className="flex items-center gap-2 px-6 py-4 rounded-2xl border-2 border-dashed border-slate-200 text-slate-600 hover:text-brand-blue-deep hover:border-brand-blue-deep/30 transition-all font-black text-[10px] uppercase tracking-widest w-full justify-center"
                >
                  <Plus className="h-4 w-4" /> Add Journal Line
                </button>
@@ -254,21 +254,21 @@ export default function NewJournalPage() {
         {/* Sidebar Info */}
         <div className="space-y-6">
            <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Posting Rules</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-6">Posting Rules</h3>
               
               <ul className="space-y-4 text-[11px] font-medium leading-relaxed mb-10">
                  <li className="flex gap-3">
-                   <div className="h-2 w-2 rounded-full bg-brand-green-deep mt-1 transition-all group-hover:scale-150 shadow-[0_0_10px_rgba(34,197,94,1)]" />
+                   <div className="h-2 w-2 rounded-full bg-brand-blue-deep mt-1 transition-all group-hover:scale-150 shadow-[0_0_10px_rgba(34,197,94,1)]" />
                    Debits must exactly equal Credits before posting.
                  </li>
                  <li className="flex gap-3">
-                   <div className="h-2 w-2 rounded-full bg-brand-green-deep mt-1 transition-all group-hover:scale-150 shadow-[0_0_10px_rgba(34,197,94,1)]" />
+                   <div className="h-2 w-2 rounded-full bg-brand-blue-deep mt-1 transition-all group-hover:scale-150 shadow-[0_0_10px_rgba(34,197,94,1)]" />
                    Each entry requires at least two lines for balance.
                  </li>
                  <li className="flex gap-3">
-                   <div className="h-2 w-2 rounded-full bg-brand-green-deep mt-1 transition-all group-hover:scale-150 shadow-[0_0_10px_rgba(34,197,94,1)]" />
+                   <div className="h-2 w-2 rounded-full bg-brand-blue-deep mt-1 transition-all group-hover:scale-150 shadow-[0_0_10px_rgba(34,197,94,1)]" />
                    Once posted, journals are immutable. Corrections require adjustment entries.
                  </li>
               </ul>
@@ -276,7 +276,7 @@ export default function NewJournalPage() {
               <button 
                 disabled={!isBalanced || isSubmitting}
                 onClick={handlePost}
-                className="w-full flex items-center justify-center gap-3 py-5 bg-brand-green-deep rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-white hover:bg-brand-green-deep-light shadow-2xl shadow-brand-green-deep/20 transition-all disabled:opacity-50 disabled:grayscale active:scale-[0.98]"
+                className="w-full flex items-center justify-center gap-3 py-5 bg-brand-blue-deep rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-white hover:bg-brand-blue-deep-light shadow-2xl shadow-brand-blue-deep/20 transition-all disabled:opacity-50 disabled:grayscale active:scale-[0.98]"
               >
                 {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin" /> : "Post to Ledger"}
               </button>

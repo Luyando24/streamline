@@ -100,7 +100,7 @@ export default function PerformanceAppraisalsPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <Zap className="h-3 w-3" /> Professional Growth Audit
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Appraisals</h1>
@@ -112,14 +112,14 @@ export default function PerformanceAppraisalsPage() {
             onClick={() => setShowInitiate(true)}
             className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-95 shadow-brand-navy/10"
           >
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Initiate Cycle
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> Initiate Cycle
           </button>
         </div>
       </div>
 
       {/* Intelligence Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 shadow-sm">
                   <TrendingUp className="h-6 w-6" />
@@ -128,7 +128,7 @@ export default function PerformanceAppraisalsPage() {
                <h3 className="text-2xl font-black text-brand-navy mb-2">{avgRating} <span className="text-slate-300 text-sm">/ 5.0</span></h3>
             </div>
          </div>
-         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 shadow-sm">
                   <Activity className="h-6 w-6" />
@@ -137,7 +137,7 @@ export default function PerformanceAppraisalsPage() {
                <h3 className="text-2xl font-black text-brand-navy mb-2">{appraisals.length} <span className="text-slate-300 text-sm">Audits</span></h3>
             </div>
          </div>
-         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+         <div className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 shadow-sm">
                   <AlertCircle className="h-6 w-6" />
@@ -147,12 +147,12 @@ export default function PerformanceAppraisalsPage() {
             </div>
          </div>
          <div className="group p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 h-24 w-24 bg-brand-green-deep rounded-full -mr-12 -mt-12 opacity-20" />
+            <div className="absolute top-0 right-0 h-24 w-24 bg-brand-blue-deep rounded-full -mr-12 -mt-12 opacity-20" />
             <div className="relative z-10">
                <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/10">
-                  <ShieldCheck className="h-6 w-6 text-brand-green-deep" />
+                  <ShieldCheck className="h-6 w-6 text-brand-blue-deep" />
                </div>
-               <p className="text-[10px] font-black uppercase tracking-widest text-brand-green-pale mb-1">System Status</p>
+               <p className="text-[10px] font-black uppercase tracking-widest text-brand-blue-pale mb-1">System Status</p>
                <h3 className="text-2xl font-black text-white mb-2 tracking-tight">Governance</h3>
             </div>
          </div>
@@ -162,12 +162,12 @@ export default function PerformanceAppraisalsPage() {
       <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
          <div className="p-8 border-b border-slate-200 flex flex-wrap items-center justify-between gap-6 bg-slate-50/80">
             <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-               <Award className="h-6 w-6 text-brand-green-deep" /> Growth Audit Ledger
+               <Award className="h-6 w-6 text-brand-blue-deep" /> Growth Audit Ledger
             </h2>
             <div className="flex items-center gap-4">
                <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                  <input type="text" placeholder="Filter by talent..." className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-white font-bold w-64" />
+                  <input type="text" placeholder="Filter by talent..." className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-blue-deep focus:outline-none bg-white font-bold w-64" />
                </div>
             </div>
          </div>
@@ -175,13 +175,13 @@ export default function PerformanceAppraisalsPage() {
          <div className="p-4">
             {isLoading ? (
                <div className="py-32 flex flex-col items-center justify-center space-y-4">
-                  <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+                  <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Decrypting Talent Audits...</p>
                </div>
             ) : appraisals.length > 0 ? (
                <div className="grid gap-2">
                   {appraisals.map((rev) => (
-                     <div key={rev.id} className="group p-8 flex flex-wrap items-center justify-between gap-8 hover:bg-slate-50/80 rounded-2xl transition-all border-b-2 border-transparent hover:border-brand-green-deep/20">
+                     <div key={rev.id} className="group p-8 flex flex-wrap items-center justify-between gap-8 hover:bg-slate-50/80 rounded-2xl transition-all border-b-2 border-transparent hover:border-brand-blue-deep/20">
                         <div className="flex items-center gap-8">
                            <div className="h-14 w-14 rounded-2xl bg-white border-2 border-slate-200 flex items-center justify-center font-black text-xl text-brand-navy shadow-sm group-hover:bg-brand-navy group-hover:text-white transition-all">
                               {rev.rating}<span className="text-[10px] opacity-40">/5</span>
@@ -189,7 +189,7 @@ export default function PerformanceAppraisalsPage() {
                            <div className="space-y-1">
                               <h3 className="text-lg font-black text-brand-navy leading-tight">{rev.employee?.profile?.full_name}</h3>
                               <div className="flex items-center gap-3">
-                                 <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">{new Date(rev.period_start).getFullYear()} Cycle</span>
+                                 <span className="text-[10px] font-black text-brand-blue-deep uppercase tracking-widest">{new Date(rev.period_start).getFullYear()} Cycle</span>
                                  <span className="h-1 w-1 rounded-full bg-slate-300" />
                                  <span className="text-[10px] font-bold text-slate-400 italic">Reviewed by {rev.reviewer?.full_name}</span>
                               </div>
@@ -244,8 +244,8 @@ export default function PerformanceAppraisalsPage() {
         maxWidth="max-w-xl"
       >
         <div className="space-y-8">
-           <div className="p-8 bg-brand-green-pale/30 border-2 border-brand-green-deep/20 rounded-3xl">
-              <div className="flex items-center gap-3 text-brand-green-deep font-black uppercase tracking-widest text-[10px] mb-2">
+           <div className="p-8 bg-brand-blue-pale/30 border-2 border-brand-blue-deep/20 rounded-3xl">
+              <div className="flex items-center gap-3 text-brand-blue-deep font-black uppercase tracking-widest text-[10px] mb-2">
                  <AlertCircle className="h-4 w-4" /> Industrial Governance Note
               </div>
               <p className="text-[11px] text-slate-700 font-bold leading-relaxed">
@@ -256,16 +256,16 @@ export default function PerformanceAppraisalsPage() {
            <div className="space-y-6">
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Cycle Title</label>
-                 <input placeholder="e.g. FY26 Q1 Annual Performance Growth" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                 <input placeholder="e.g. FY26 Q1 Annual Performance Growth" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
               </div>
               <div className="grid grid-cols-2 gap-6">
                  <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Start Date</label>
-                    <input type="date" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
+                    <input type="date" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Deadline</label>
-                    <input type="date" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
+                    <input type="date" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 cursor-pointer" />
                  </div>
               </div>
            </div>
@@ -299,13 +299,13 @@ export default function PerformanceAppraisalsPage() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Performance Rating</label>
-                   <select name="rating" defaultValue={selectedAppraisal?.rating} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                   <select name="rating" defaultValue={selectedAppraisal?.rating} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
                       {[1,2,3,4,5].map(v => <option key={v} value={v}>{v} Stars</option>)}
                    </select>
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Audit Status</label>
-                   <select name="status" defaultValue={selectedAppraisal?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                   <select name="status" defaultValue={selectedAppraisal?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
                       <option value="draft">Draft</option>
                       <option value="published">Published</option>
                    </select>
@@ -315,12 +315,12 @@ export default function PerformanceAppraisalsPage() {
 
            <div className="space-y-4">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Qualitative Feedback</label>
-              <textarea name="feedback" defaultValue={selectedAppraisal?.feedback} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm min-h-[120px] bg-slate-50" />
+              <textarea name="feedback" defaultValue={selectedAppraisal?.feedback} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm min-h-[120px] bg-slate-50" />
            </div>
 
            <div className="space-y-4">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Future Growth Goals</label>
-              <textarea name="goals" defaultValue={selectedAppraisal?.goals} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm min-h-[100px] bg-slate-50" />
+              <textarea name="goals" defaultValue={selectedAppraisal?.goals} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm min-h-[100px] bg-slate-50" />
            </div>
 
            <div className="pt-6 space-y-4">

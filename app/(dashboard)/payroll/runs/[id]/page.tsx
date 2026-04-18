@@ -101,7 +101,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
                 type="submit"
                 className="flex items-center gap-2 px-8 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg active:scale-[0.98]"
               >
-                <Lock className="h-4 w-4 text-brand-green-deep" /> Finalize & Post Ledger
+                <Lock className="h-4 w-4 text-brand-blue-deep" /> Finalize & Post Ledger
               </button>
             </form>
           ) : (
@@ -117,11 +117,11 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
 
       {/* Totals Summary Card */}
       <div className="bg-brand-navy p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden group">
-         <div className="absolute top-0 right-0 h-40 w-40 bg-brand-green-deep rounded-full -mr-20 -mt-20 opacity-20 transition-transform group-hover:scale-150 duration-700" />
+         <div className="absolute top-0 right-0 h-40 w-40 bg-brand-blue-deep rounded-full -mr-20 -mt-20 opacity-20 transition-transform group-hover:scale-150 duration-700" />
          
          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             <div className="space-y-4">
-               <div className="text-[10px] font-black uppercase tracking-widest text-brand-green-pale">Gross Wage Bill</div>
+               <div className="text-[10px] font-black uppercase tracking-widest text-brand-blue-pale">Gross Wage Bill</div>
                <div className="text-2xl font-black">ZMW {totals.gross.toLocaleString()}</div>
             </div>
             <div className="space-y-4">
@@ -137,8 +137,8 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
                <div className="text-2xl font-black">ZMW {totals.nhima.toLocaleString()}</div>
             </div>
             <div className="space-y-4 border-l border-white/10 pl-10">
-               <div className="text-[10px] font-black uppercase tracking-widest text-brand-green-deep">Net Disbursement</div>
-               <div className="text-2xl font-black text-brand-green-deep">ZMW {totals.net.toLocaleString()}</div>
+               <div className="text-[10px] font-black uppercase tracking-widest text-brand-blue-deep">Net Disbursement</div>
+               <div className="text-2xl font-black text-brand-blue-deep">ZMW {totals.net.toLocaleString()}</div>
             </div>
          </div>
       </div>
@@ -148,7 +148,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
          <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
             <h2 className="text-lg font-black text-brand-navy">Detailed Payslips</h2>
             <div className="flex items-center gap-2 text-[10px] font-bold text-slate-600">
-               <Sparkles className="h-3 w-3 text-brand-green-deep" /> Zambian Statutory Calculations applied
+               <Sparkles className="h-3 w-3 text-brand-blue-deep" /> Zambian Statutory Calculations applied
             </div>
          </div>
 
@@ -188,7 +188,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
                           <div className="font-bold text-slate-600">ZMW {(Number(p.napsa_deduction) + Number(p.nhima_deduction)).toLocaleString()}</div>
                           <div className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">NAPSA + NHIMA</div>
                        </td>
-                       <td className="px-8 py-5 text-right font-black text-brand-green-deep text-sm">
+                       <td className="px-8 py-5 text-right font-black text-brand-blue-deep text-sm">
                           ZMW {Number(p.net_pay).toLocaleString()}
                        </td>
                        <td className="px-8 py-5 text-right">

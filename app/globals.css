@@ -3,11 +3,11 @@
 /* ===== Custom Theme (Tailwind v4 CSS-based config) ===== */
 @theme {
   /* Brand Colors */
-  --color-brand-teal: #00D639;
-  --color-brand-teal-light: #00ea3f;
-  --color-brand-green-deep: #009929;
-  --color-brand-green-deep-light: #00b330;
-  --color-brand-green-pale: #E8F9ED;
+  --color-brand-blue: #2563EB;
+  --color-brand-blue-light: #3B82F6;
+  --color-brand-blue-deep: #1E40AF;
+  --color-brand-blue-deep-light: #1D4ED8;
+  --color-brand-blue-pale: #F0F7FF;
   --color-brand-navy: #1A2B3C;
   --color-brand-navy-light: #253D55;
 
@@ -29,7 +29,7 @@
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
 
-  --primary: 165 76% 25%;
+  --primary: 221.2 83.2% 53.3%;
   --primary-foreground: 210 40% 98%;
 
   --secondary: 215 39% 17%;
@@ -46,14 +46,14 @@
 
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 165 76% 25%;
+  --ring: 221.2 83.2% 53.3%;
   --radius: 0.5rem;
 }
 
 .dark {
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
-  --primary: 165 76% 25%;
+  --primary: 221.2 83.2% 53.3%;
   --primary-foreground: 210 40% 98%;
   --secondary: 215 39% 17%;
   --secondary-foreground: 210 40% 98%;
@@ -65,7 +65,7 @@
   --destructive-foreground: 210 40% 98%;
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
-  --ring: 165 76% 25%;
+  --ring: 221.2 83.2% 53.3%;
 }
 
 /* ===== Base styles ===== */
@@ -86,14 +86,14 @@ body {
   border-radius: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  background-color: var(--color-brand-teal);
+  background-color: var(--color-brand-blue);
   color: white;
   height: 2.5rem;
   padding: 0.5rem 1rem;
   transition: background-color 0.15s ease;
 }
 .btn-primary:hover {
-  background-color: var(--color-brand-teal-light);
+  background-color: var(--color-brand-blue-light);
 }
 .btn-primary:disabled {
   pointer-events: none;

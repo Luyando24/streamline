@@ -53,7 +53,7 @@ export default async function PipelineBoardPage() {
             <ArrowLeft className="h-3 w-3" /> Back to Growth Board
           </Link>
           <div className="flex items-center gap-4">
-             <div className="h-12 w-12 rounded-2xl bg-brand-green-deep text-white flex items-center justify-center shadow-lg shadow-brand-green-deep/20">
+             <div className="h-12 w-12 rounded-2xl bg-brand-blue-deep text-white flex items-center justify-center shadow-lg shadow-brand-blue-deep/20">
                 <TargetIcon className="h-6 w-6" />
              </div>
              <div>
@@ -68,7 +68,7 @@ export default async function PipelineBoardPage() {
              <Filter className="h-4 w-4" /> Filter Funnel
           </button>
           <button className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10">
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Launch Opportunity
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> Launch Opportunity
           </button>
         </div>
       </div>
@@ -99,7 +99,7 @@ export default async function PipelineBoardPage() {
                         <button className="text-slate-200 hover:text-brand-navy transition-all"><MoreVertical className="h-4 w-4" /></button>
                      </div>
 
-                     <h3 className="text-sm font-black text-brand-navy leading-tight mb-2 group-hover:text-brand-green-deep transition-colors line-clamp-2">
+                     <h3 className="text-sm font-black text-brand-navy leading-tight mb-2 group-hover:text-brand-blue-deep transition-colors line-clamp-2">
                         {deal.title}
                      </h3>
                      
@@ -113,7 +113,7 @@ export default async function PipelineBoardPage() {
                            <div className="text-sm font-black text-brand-navy">K {Number(deal.value).toLocaleString()}</div>
                         </div>
                         <div className="flex -space-x-2">
-                           <div className="h-7 w-7 rounded-full bg-brand-green-deep border-2 border-white flex items-center justify-center text-white text-[9px] font-black">
+                           <div className="h-7 w-7 rounded-full bg-brand-blue-deep border-2 border-white flex items-center justify-center text-white text-[9px] font-black">
                               {(deal.probability || 0)}%
                            </div>
                            <div className="h-7 w-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-slate-600">
@@ -139,24 +139,24 @@ export default async function PipelineBoardPage() {
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-fit bg-brand-navy text-white px-10 py-6 rounded-2xl shadow-2xl shadow-brand-navy/20 flex items-center gap-16 backdrop-blur-xl border border-white/10 z-50">
          <div className="flex items-center gap-4">
             <div className="h-10 w-10 rounded-2xl bg-white/5 flex items-center justify-center">
-               <TrendingUp className="h-5 w-5 text-brand-green-deep" />
+               <TrendingUp className="h-5 w-5 text-brand-blue-deep" />
             </div>
             <div>
                <div className="text-[10px] font-black uppercase tracking-widest opacity-40">Weighted Forecast</div>
-               <div className="text-lg font-black tracking-tight text-brand-green-deep">K 452,000</div>
+               <div className="text-lg font-black tracking-tight text-brand-blue-deep">K 452,000</div>
             </div>
          </div>
          <div className="h-10 w-px bg-white/10" />
          <div className="flex items-center gap-4">
             <div className="h-10 w-10 rounded-2xl bg-white/5 flex items-center justify-center">
-               <Sparkles className="h-5 w-5 text-brand-green-deep" />
+               <Sparkles className="h-5 w-5 text-brand-blue-deep" />
             </div>
             <div>
                <div className="text-[10px] font-black uppercase tracking-widest opacity-40">Conversion Rate</div>
                <div className="text-lg font-black tracking-tight">14.2%</div>
             </div>
          </div>
-         <button className="flex items-center gap-2 px-6 py-3 bg-brand-green-deep rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-green-deep-light transition-all shadow-lg active:scale-95">
+         <button className="flex items-center gap-2 px-6 py-3 bg-brand-blue-deep rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue-deep-light transition-all shadow-lg active:scale-95">
            Export Report <ChevronRight className="h-3 w-3" />
          </button>
       </div>

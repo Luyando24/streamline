@@ -144,15 +144,15 @@ export default function TripLogbookPage() {
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setShowFuel(true)}
-            className="flex items-center gap-2 px-6 py-4 bg-white border-2 border-slate-200 text-brand-navy rounded-2xl text-[11px] font-black uppercase tracking-widest hover:border-brand-green-deep transition-all shadow-sm"
+            className="flex items-center gap-2 px-6 py-4 bg-white border-2 border-slate-200 text-brand-navy rounded-2xl text-[11px] font-black uppercase tracking-widest hover:border-brand-blue-deep transition-all shadow-sm"
           >
-            <Fuel className="h-4 w-4 text-brand-green-deep" /> Record Fuel
+            <Fuel className="h-4 w-4 text-brand-blue-deep" /> Record Fuel
           </button>
           <button 
             onClick={() => setShowAdd(true)}
             className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10"
           >
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Authorize Trip
+            <Plus className="h-4 w-4 text-brand-blue-deep" /> Authorize Trip
           </button>
         </div>
       </div>
@@ -162,14 +162,14 @@ export default function TripLogbookPage() {
         <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
            <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
               <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                 <History className="h-5 w-5 text-brand-green-deep" /> Mobility History
+                 <History className="h-5 w-5 text-brand-blue-deep" /> Mobility History
               </h2>
            </div>
 
            <div className="p-4">
               {isLoading ? (
                 <div className="py-32 flex flex-col items-center justify-center space-y-4">
-                   <Loader2 className="h-10 w-10 animate-spin text-brand-green-deep" />
+                   <Loader2 className="h-10 w-10 animate-spin text-brand-blue-deep" />
                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Synchronizing Logistics Logbook...</p>
                 </div>
               ) : trips.length > 0 ? (
@@ -188,7 +188,7 @@ export default function TripLogbookPage() {
                               <div className="flex items-center gap-3">
                                  <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{new Date(trip.start_time).toLocaleString()}</span>
                                  <span className="h-1 w-1 rounded-full bg-slate-300" />
-                                 <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">{trip.purpose}</span>
+                                 <span className="text-[10px] font-black text-brand-blue-deep uppercase tracking-widest">{trip.purpose}</span>
                               </div>
                            </div>
                         </div>
@@ -256,14 +256,14 @@ export default function TripLogbookPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Target Vehicle</label>
-                   <select name="vehicle_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                   <select name="vehicle_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                       <option value="">Select unit from deck</option>
                       {vehicles.map(v => <option key={v.id} value={v.id}>{v.plate_number} — {v.model}</option>)}
                    </select>
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Starting Mileage (km)</label>
-                   <input name="start_mileage" type="number" required placeholder="Checking odometer..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="start_mileage" type="number" required placeholder="Checking odometer..." className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
            </div>
@@ -273,11 +273,11 @@ export default function TripLogbookPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Logistics Purpose</label>
-                   <input name="purpose" required placeholder="e.g. Client Delivery, Site Visit" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="purpose" required placeholder="e.g. Client Delivery, Site Visit" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Destination Node</label>
-                   <input name="destination" required placeholder="e.g. Lusaka East, Copperbelt" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="destination" required placeholder="e.g. Lusaka East, Copperbelt" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                 </div>
              </div>
            </div>
@@ -309,7 +309,7 @@ export default function TripLogbookPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Operational Unit</label>
-                   <select name="vehicle_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                   <select name="vehicle_id" required className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
                       <option value="">Select unit from deck</option>
                       {vehicles.map(v => <option key={v.id} value={v.id}>{v.plate_number} — {v.model}</option>)}
                    </select>
@@ -317,11 +317,11 @@ export default function TripLogbookPage() {
                 <div className="grid grid-cols-2 gap-6">
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Volume (Liters)</label>
-                      <input name="liters" type="number" step="0.01" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="liters" type="number" step="0.01" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                    <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Total Cost (K)</label>
-                      <input name="cost" type="number" step="0.01" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                      <input name="cost" type="number" step="0.01" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
                 </div>
              </div>
@@ -330,11 +330,11 @@ export default function TripLogbookPage() {
            <div className="space-y-6">
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Mileage at Fill-up (km)</label>
-                 <input name="mileage_at_fill" type="number" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                 <input name="mileage_at_fill" type="number" required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
               </div>
               <div className="space-y-2">
                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Fuel Card / ID</label>
-                 <input name="fuel_card_no" placeholder="e.g. PumaCard 4492" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                 <input name="fuel_card_no" placeholder="e.g. PumaCard 4492" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-blue-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
               </div>
            </div>
 

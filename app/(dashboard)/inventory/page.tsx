@@ -41,7 +41,7 @@ export default async function InventoryDashboardPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-green-deep bg-brand-green-pale w-fit px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-deep bg-brand-blue-pale w-fit px-3 py-1 rounded-full">
             <Zap className="h-3 w-3" /> Commercial Logistics
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Inventory</h1>
@@ -64,7 +64,7 @@ export default async function InventoryDashboardPage() {
         {summaryCards.map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
+            <div key={s.label} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-blue-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
               <div 
                 className={cn(
                   "absolute top-0 right-0 h-24 w-24 rounded-full -mr-12 -mt-12 opacity-5 transition-transform group-hover:scale-150 duration-700",
@@ -98,9 +98,9 @@ export default async function InventoryDashboardPage() {
         {/* Sidebar Mini-Ops */}
         <div className="space-y-8">
            <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group border border-white/5">
-              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-brand-blue-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Stock Movements</h3>
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-blue-pale mb-8">Stock Movements</h3>
               
               <div className="space-y-8 mb-10">
                  <div className="flex items-center gap-5">
@@ -132,14 +132,14 @@ export default async function InventoryDashboardPage() {
                  </div>
               </div>
 
-              <button className="w-full py-5 bg-brand-green-deep rounded-[24px] text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-brand-green-deep-light shadow-xl transition-all shadow-brand-green-deep/20 active:scale-95 group">
+              <button className="w-full py-5 bg-brand-blue-deep rounded-[24px] text-[10px] font-black uppercase tracking-[0.2em] text-white hover:bg-brand-blue-deep-light shadow-xl transition-all shadow-brand-blue-deep/20 active:scale-95 group">
                 <span className="flex items-center justify-center gap-3">Register Movement <Sparkles className="h-4 w-4 group-hover:rotate-12 transition-transform" /></span>
               </button>
            </div>
 
            <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
               <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6 flex items-center gap-2">
-                 <History className="h-4 w-4 text-brand-green-deep" /> Warehouse Nodes
+                 <History className="h-4 w-4 text-brand-blue-deep" /> Warehouse Nodes
               </h3>
               <div className="space-y-4">
                  {['Lusaka Main', 'Copperbelt Site', 'Transit Hub'].map(hub => (
