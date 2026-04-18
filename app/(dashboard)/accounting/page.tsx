@@ -70,11 +70,11 @@ export default async function AccountingPage() {
             <Sparkles className="h-3 w-3" /> Double-Entry Core
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Finance & Accounting</h1>
-          <p className="text-slate-500 font-medium">Real-time professional ledger and financial intelligence.</p>
+          <p className="text-slate-700 font-medium">Real-time professional ledger and financial intelligence.</p>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
+          <button className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-700 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
             <Calendar className="h-4 w-4" /> Period: April 2026
           </button>
           <button className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg hover:shadow-brand-navy/20 active:scale-[0.98]">
@@ -88,7 +88,7 @@ export default async function AccountingPage() {
         {metrics.map((m) => {
           const Icon = m.icon
           return (
-            <div key={m.label} className="group relative p-6 bg-white border-2 border-slate-100 rounded-[32px] hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div key={m.label} className="group relative p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
               <div className="flex justify-between items-start mb-6">
                 <div className={cn(
                   "h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-500 items-center justify-center",
@@ -106,9 +106,9 @@ export default async function AccountingPage() {
                   {m.trend}
                 </div>
               </div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{m.label}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-1">{m.label}</p>
               <h3 className="text-2xl font-black text-brand-navy mb-2">{m.value}</h3>
-              <p className="text-[10px] text-slate-400 font-medium leading-relaxed">{m.desc}</p>
+              <p className="text-[10px] text-slate-600 font-medium leading-relaxed">{m.desc}</p>
             </div>
           )
         })}
@@ -117,40 +117,40 @@ export default async function AccountingPage() {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Core Sections List */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm relative overflow-hidden group">
+          <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm relative overflow-hidden group">
             <div className="absolute top-0 right-0 h-40 w-40 bg-brand-green-pale rounded-full -mr-20 -mt-20 opacity-50 group-hover:scale-110 transition-transform duration-700" />
             
             <div className="relative z-10 space-y-6">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-black text-brand-navy">Financial Statements</h2>
                 <div className="flex gap-2">
-                  <button className="p-2 hover:bg-slate-50 rounded-xl transition-colors text-slate-400"><Filter className="h-4 w-4" /></button>
-                  <button className="p-2 hover:bg-slate-50 rounded-xl transition-colors text-slate-400"><Search className="h-4 w-4" /></button>
+                  <button className="p-2 hover:bg-slate-50/80 rounded-xl transition-colors text-slate-600"><Filter className="h-4 w-4" /></button>
+                  <button className="p-2 hover:bg-slate-50/80 rounded-xl transition-colors text-slate-600"><Search className="h-4 w-4" /></button>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Link href="/accounting/ledger" className="group/item p-6 rounded-[28px] border-2 border-slate-50 hover:border-brand-green-deep/20 hover:bg-brand-green-pale/30 transition-all">
+                <Link href="/accounting/ledger" className="group/item p-6 rounded-[28px] border-2 border-slate-200 hover:border-brand-green-deep/20 hover:bg-brand-green-pale/30 transition-all">
                   <div className="flex items-center gap-4 mb-3">
                     <div className="h-10 w-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-lg group-hover/item:bg-brand-green-deep group-hover/item:scale-110 transition-all">
                       <Receipt className="h-5 w-5" />
                     </div>
                     <span className="font-black text-brand-navy">General Ledger</span>
                   </div>
-                  <p className="text-[10px] text-slate-500 font-bold leading-relaxed mb-4">Complete chronological record of all balanced journal entries.</p>
+                  <p className="text-[10px] text-slate-700 font-bold leading-relaxed mb-4">Complete chronological record of all balanced journal entries.</p>
                   <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-green-deep">
                     View Ledger <ChevronRight className="h-3 w-3 ml-1 group-hover/item:translate-x-1 transition-transform" />
                   </div>
                 </Link>
 
-                <Link href="/accounting/reports" className="group/item p-6 rounded-[28px] border-2 border-slate-50 hover:border-brand-green-deep/20 hover:bg-brand-green-pale/30 transition-all">
+                <Link href="/accounting/reports" className="group/item p-6 rounded-[28px] border-2 border-slate-200 hover:border-brand-green-deep/20 hover:bg-brand-green-pale/30 transition-all">
                   <div className="flex items-center gap-4 mb-3">
                     <div className="h-10 w-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-lg group-hover/item:bg-brand-green-deep group-hover/item:scale-110 transition-all">
                       <BarChart3 className="h-5 w-5" />
                     </div>
                     <span className="font-black text-brand-navy">Profit & Loss</span>
                   </div>
-                  <p className="text-[10px] text-slate-500 font-bold leading-relaxed mb-4">Revenue and expense statements for ZRA tax readiness.</p>
+                  <p className="text-[10px] text-slate-700 font-bold leading-relaxed mb-4">Revenue and expense statements for ZRA tax readiness.</p>
                   <div className="flex items-center text-[10px] font-black uppercase tracking-widest text-brand-green-deep">
                     Generate Report <ChevronRight className="h-3 w-3 ml-1 group-hover/item:translate-x-1 transition-transform" />
                   </div>
@@ -160,10 +160,10 @@ export default async function AccountingPage() {
           </div>
 
           {/* Recent Activity Mini-Table */}
-          <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
+          <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
             <h2 className="text-lg font-black text-brand-navy mb-6">Recent Journal Postings</h2>
             <div className="space-y-4">
-               <div className="flex items-center justify-center h-40 bg-slate-50 rounded-[32px] border-2 border-dashed border-slate-100 italic text-[10px] text-slate-400 font-bold">
+               <div className="flex items-center justify-center h-40 bg-slate-50/80 rounded-2xl border-2 border-dashed border-slate-200 italic text-[10px] text-slate-600 font-bold">
                  No recent postings found for this period.
                </div>
             </div>
@@ -172,7 +172,7 @@ export default async function AccountingPage() {
 
         {/* Sidebar: Chart of Accounts Snippet */}
         <div className="space-y-6">
-           <div className="p-8 bg-brand-navy rounded-[40px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Chart of Accounts</h3>
@@ -181,7 +181,7 @@ export default async function AccountingPage() {
                  {accounts.slice(0, 6).map(acc => (
                    <div key={acc.id} className="flex items-center justify-between pb-3 border-b border-white/5">
                       <div className="flex items-center gap-3">
-                         <span className="text-[10px] font-black text-slate-400">{acc.code}</span>
+                         <span className="text-[10px] font-black text-slate-600">{acc.code}</span>
                          <span className="text-xs font-bold truncate max-w-[120px]">{acc.name}</span>
                       </div>
                       <span className={cn(
@@ -198,25 +198,25 @@ export default async function AccountingPage() {
            </div>
 
            {/* Quick Stats */}
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Cash Flow Radar</h3>
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6">Cash Flow Radar</h3>
               <div className="space-y-6">
                  <div>
                    <div className="flex justify-between text-xs mb-2">
-                     <span className="text-slate-500 font-bold">Inflow Confidence</span>
+                     <span className="text-slate-700 font-bold">Inflow Confidence</span>
                      <span className="font-black text-brand-navy">92%</span>
                    </div>
-                   <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
+                   <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
                      <div className="h-full bg-brand-green-deep rounded-full" style={{ width: '92%' }} />
                    </div>
                  </div>
                  
                  <div>
                    <div className="flex justify-between text-xs mb-2">
-                     <span className="text-slate-500 font-bold">Burn Rate Stability</span>
+                     <span className="text-slate-700 font-bold">Burn Rate Stability</span>
                      <span className="font-black text-brand-navy">Safe</span>
                    </div>
-                   <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
+                   <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
                      <div className="h-full bg-blue-500 rounded-full" style={{ width: '75%' }} />
                    </div>
                  </div>
@@ -227,3 +227,4 @@ export default async function AccountingPage() {
     </div>
   )
 }
+

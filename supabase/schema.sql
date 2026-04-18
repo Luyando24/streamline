@@ -7,6 +7,11 @@ create table if not exists public.profiles (
   avatar_url text,
   org_id uuid references public.organizations(id), -- Reference to active organization
   role text, -- Global or current role
+  nrc_number text, -- Identity coordinate
+  date_of_birth date, -- Age coordinate
+  phone text, -- Contact coordinate
+  is_public_talent boolean default false, -- Independent candidate flag
+  profile_locked boolean default false, -- Integrity lock after application
   created_at timestamptz default now()
 );
 
@@ -610,4 +615,464 @@ create policy "Members can view transactions." on public.inventory_transactions
   for select using (public.is_org_member(org_id));
 
 create policy "Owners can manage transactions." on public.inventory_transactions
+  for all using (public.is_org_owner(org_id));
+
+-- CRM MANAGEMENT MODULE: GROWTH & PIPELINE
+
+-- 1. Leads (Prospects)
+create table if not exists public.crm_leads (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  name text not null,
+  company text,
+  email text,
+  phone text,
+  source text, -- e.g. Website, Referral
+  status text default 'new' check (status in ('new', 'contacted', 'qualified', 'converted', 'rejected')),
+  notes text,
+  created_at timestamptz default now()
+);
+
+alter table public.crm_leads enable row level security;
+
+create policy "Members can view leads." on public.crm_leads
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage leads." on public.crm_leads
+  for all using (public.is_org_owner(org_id));
+
+-- 2. Clients (Master Registry)
+create table if not exists public.crm_clients (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  company_name text not null,
+  contact_person text,
+  email text,
+  phone text,
+  tpin text, -- For futuras invoicing integration
+  address text,
+  industry text,
+  is_active boolean default true,
+  created_at timestamptz default now(),
+  unique(org_id, company_name)
+);
+
+alter table public.crm_clients enable row level security;
+
+create policy "Members can view clients." on public.crm_clients
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage clients." on public.crm_clients
+  for all using (public.is_org_owner(org_id));
+
+-- 3. Deals (Sales Pipeline)
+create table if not exists public.crm_deals (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  client_id uuid references public.crm_clients(id) on delete cascade,
+  title text not null,
+  value decimal(15, 2) not null default 0,
+  stage text default 'prospecting' check (stage in ('prospecting', 'qualification', 'proposal', 'negotiation', 'closed_won', 'closed_lost')),
+  expected_close_date date,
+  probability integer default 0, -- 0-100 percentage
+  owner_id uuid references public.profiles(id),
+  created_at timestamptz default now()
+);
+
+alter table public.crm_deals enable row level security;
+
+create policy "Members can view deals." on public.crm_deals
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage deals." on public.crm_deals
+  for all using (public.is_org_owner(org_id));
+
+-- 4. Interactions (Touchpoint Timeline)
+create table if not exists public.crm_interactions (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  client_id uuid references public.crm_clients(id) on delete cascade,
+  lead_id uuid references public.crm_leads(id) on delete cascade,
+  type text not null check (type in ('call', 'email', 'meeting', 'note')),
+  notes text,
+  performed_by uuid references public.profiles(id),
+  created_at timestamptz default now()
+);
+
+alter table public.crm_interactions enable row level security;
+
+create policy "Members can view interactions." on public.crm_interactions
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage interactions." on public.crm_interactions
+  for all using (public.is_org_owner(org_id));
+
+-- ASSET MANAGEMENT MODULE: PHYSICAL CAPITAL
+
+-- 1. Asset Categories (e.g. Vehicles, IT Equipment)
+create table if not exists public.asset_categories (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  name text not null,
+  useful_life_years integer default 5,
+  depreciation_method text default 'straight_line',
+  created_at timestamptz default now(),
+  unique(org_id, name)
+);
+
+alter table public.asset_categories enable row level security;
+
+create policy "Members can view categories." on public.asset_categories
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage categories." on public.asset_categories
+  for all using (public.is_org_owner(org_id));
+
+-- 2. Fixed Assets (Master Registry)
+create table if not exists public.fixed_assets (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  asset_tag text not null,
+  name text not null,
+  serial_no text,
+  category_id uuid references public.asset_categories(id),
+  purchase_date date not null,
+  purchase_cost decimal(15, 2) not null,
+  salvage_value decimal(15, 2) default 0,
+  current_value decimal(15, 2),
+  custodian_id uuid references public.profiles(id),
+  location text,
+  status text default 'active' check (status in ('active', 'maintenance', 'disposed', 'written_off')),
+  created_at timestamptz default now(),
+  unique(org_id, asset_tag)
+);
+
+alter table public.fixed_assets enable row level security;
+
+create policy "Members can view assets." on public.fixed_assets
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage assets." on public.fixed_assets
+  for all using (public.is_org_owner(org_id));
+
+-- 3. Asset Maintenance (Service Logs)
+create table if not exists public.asset_maintenance (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  asset_id uuid references public.fixed_assets(id) on delete cascade,
+  service_date date not null,
+  description text not null,
+  cost decimal(15, 2) default 0,
+  performed_by text,
+  next_service_date date,
+  notes text,
+  created_at timestamptz default now()
+);
+
+alter table public.asset_maintenance enable row level security;
+
+create policy "Members can view maintenance." on public.asset_maintenance
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage maintenance." on public.asset_maintenance
+  for all using (public.is_org_owner(org_id));
+
+-- 4. Asset Depreciation Logs
+create table if not exists public.asset_depreciation (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  asset_id uuid references public.fixed_assets(id) on delete cascade,
+  period_date date not null, -- Month-end date
+  depreciation_amount decimal(15, 2) not null,
+  accumulated_depreciation decimal(15, 2) not null,
+  book_value decimal(15, 2) not null,
+  journal_id uuid references public.journal_entries(id), -- Link to general ledger
+  created_at timestamptz default now()
+);
+
+alter table public.asset_depreciation enable row level security;
+
+create policy "Members can view depreciation." on public.asset_depreciation
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage depreciation." on public.asset_depreciation
+  for all using (public.is_org_owner(org_id));
+
+-- PROJECT MANAGEMENT MODULE: SERVICE DELIVERY
+
+-- 1. Projects (Master Records)
+create table if not exists public.projects (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  client_id uuid references public.crm_clients(id) on delete set null,
+  title text not null,
+  description text,
+  budget decimal(15, 2) default 0,
+  status text default 'planning' check (status in ('planning', 'active', 'on_hold', 'completed', 'cancelled')),
+  start_date date,
+  end_date date,
+  created_at timestamptz default now()
+);
+
+alter table public.projects enable row level security;
+
+create policy "Members can view projects." on public.projects
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage projects." on public.projects
+  for all using (public.is_org_owner(org_id));
+
+-- 2. Project Tasks (Kanban Deliverables)
+create table if not exists public.project_tasks (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  project_id uuid references public.projects(id) on delete cascade,
+  title text not null,
+  description text,
+  assigned_to uuid references public.profiles(id),
+  status text default 'todo' check (status in ('todo', 'in_progress', 'review', 'done')),
+  priority text default 'medium' check (priority in ('low', 'medium', 'high', 'critical')),
+  due_date date,
+  created_at timestamptz default now()
+);
+
+alter table public.project_tasks enable row level security;
+
+create policy "Members can view tasks." on public.project_tasks
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage tasks." on public.project_tasks
+  for all using (public.is_org_owner(org_id));
+
+-- 3. Timesheets (Time Tracking)
+create table if not exists public.timesheets (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  project_id uuid references public.projects(id) on delete cascade,
+  task_id uuid references public.project_tasks(id) on delete set null,
+  employee_id uuid references public.profiles(id) on delete cascade,
+  hours decimal(5, 2) not null,
+  date date not null,
+  notes text,
+  is_billable boolean default true,
+  is_invoiced boolean default false,
+  status text default 'draft' check (status in ('draft', 'submitted', 'approved', 'rejected')),
+  created_at timestamptz default now()
+);
+
+alter table public.timesheets enable row level security;
+
+create policy "Users can view their own timesheets." on public.timesheets
+  for select using (employee_id = (select id from public.profiles where user_id = auth.uid()));
+
+create policy "Managers can view all org timesheets." on public.timesheets
+  for select using (public.is_org_member(org_id));
+
+create policy "Users can manage their own draft timesheets." on public.timesheets
+  for all using (
+    employee_id = (select id from public.profiles where user_id = auth.uid())
+    and (status = 'draft' or status = 'submitted')
+  );
+
+create policy "Owners can manage all timesheets." on public.timesheets
+  for all using (public.is_org_owner(org_id));
+
+-- FLEET MANAGEMENT MODULE: MOBILITY & LOGISTICS
+
+-- 1. Vehicles (Operational Units)
+create table if not exists public.fleet_vehicles (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  asset_id uuid references public.fixed_assets(id) on delete set null, -- Link to fixed assets register
+  plate_number text not null,
+  model text not null,
+  year integer,
+  type text check (type in ('truck', 'suv', 'sedan', 'van', 'motorcycle')),
+  status text default 'available' check (status in ('available', 'active', 'maintenance', 'out_of_service')),
+  current_mileage decimal(12, 2) default 0,
+  fuel_type text default 'diesel' check (fuel_type in ('diesel', 'petrol', 'electric')),
+  created_at timestamptz default now(),
+  unique(org_id, plate_number)
+);
+
+alter table public.fleet_vehicles enable row level security;
+
+create policy "Members can view fleet." on public.fleet_vehicles
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage fleet." on public.fleet_vehicles
+  for all using (public.is_org_owner(org_id));
+
+-- 2. Trip Logs (Logbook Hub)
+create table if not exists public.fleet_trips (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  vehicle_id uuid references public.fleet_vehicles(id) on delete cascade,
+  driver_id uuid references public.profiles(id),
+  start_mileage decimal(12, 2) not null,
+  end_mileage decimal(12, 2),
+  start_time timestamptz not null default now(),
+  end_time timestamptz,
+  purpose text,
+  destination text,
+  status text default 'active' check (status in ('active', 'completed', 'cancelled')),
+  created_at timestamptz default now()
+);
+
+alter table public.fleet_trips enable row level security;
+
+create policy "Members can view trips." on public.fleet_trips
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage trips." on public.fleet_trips
+  for all using (public.is_org_owner(org_id));
+
+-- 3. Fuel Logs (Efficiency Radar)
+create table if not exists public.fleet_fuel_logs (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  vehicle_id uuid references public.fleet_vehicles(id) on delete cascade,
+  liters decimal(10, 2) not null,
+  cost decimal(15, 2) not null,
+  mileage_at_fill decimal(12, 2) not null,
+  fuel_card_no text,
+  logged_by uuid references public.profiles(id),
+  date date not null default current_date,
+  created_at timestamptz default now()
+);
+
+alter table public.fleet_fuel_logs enable row level security;
+
+create policy "Members can view fuel logs." on public.fleet_fuel_logs
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage fuel logs." on public.fleet_fuel_logs
+  for all using (public.is_org_owner(org_id));
+
+-- 4. Maintenance Schedules (Preventative Services)
+create table if not exists public.fleet_maintenance_schedules (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  vehicle_id uuid references public.fleet_vehicles(id) on delete cascade,
+  service_type text not null, -- e.g. Major Service, Tire Rotation
+  interval_km decimal(10, 2) not null, -- Every 5000km
+  last_service_mileage decimal(12, 2) not null,
+  is_active boolean default true,
+  created_at timestamptz default now()
+);
+
+alter table public.fleet_maintenance_schedules enable row level security;
+
+create policy "Members can view schedules." on public.fleet_maintenance_schedules
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage schedules." on public.fleet_maintenance_schedules
+  for all using (public.is_org_owner(org_id));
+
+-- HR SUITE MODULE: HUMAN CAPITAL & TALENT
+
+-- 1. Employee Digital Personnel Files
+create table if not exists public.hr_employees (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  profile_id uuid references public.profiles(id) on delete cascade,
+  nrc_number text,
+  date_of_birth date,
+  join_date date not null default current_date,
+  contract_type text check (contract_type in ('permanent', 'contract', 'casual', 'intern')),
+  department text,
+  manager_id uuid references public.profiles(id), -- Self-ref to profile for Org Chart
+  salary_base decimal(15, 2) default 0, -- Linked to payroll default
+  status text default 'active' check (status in ('active', 'on_leave', 'suspended', 'terminated', 'resigned')),
+  created_at timestamptz default now(),
+  unique(org_id, profile_id)
+);
+
+alter table public.hr_employees enable row level security;
+
+create policy "Users can view their own HR file." on public.hr_employees
+  for select using (profile_id = (select id from public.profiles where user_id = auth.uid()));
+
+create policy "Owners can manage all HR files." on public.hr_employees
+  for all using (public.is_org_owner(org_id));
+
+-- 2. HR Documents (Personnel Vault)
+create table if not exists public.hr_documents (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  employee_id uuid references public.hr_employees(id) on delete cascade,
+  document_type text not null, -- NRC, Contract, Certificate, Medical
+  file_url text not null,
+  expiry_date date,
+  notes text,
+  created_at timestamptz default now()
+);
+
+alter table public.hr_documents enable row level security;
+
+create policy "Users can view their own documents." on public.hr_documents
+  for select using (employee_id in (select id from public.hr_employees where profile_id = (select id from public.profiles where user_id = auth.uid())));
+
+create policy "Owners can manage all HR documents." on public.hr_documents
+  for all using (public.is_org_owner(org_id));
+
+-- 3. Performance Appraisals
+create table if not exists public.hr_appraisals (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  employee_id uuid references public.hr_employees(id) on delete cascade,
+  reviewer_id uuid references public.profiles(id),
+  period_start date not null,
+  period_end date not null,
+  rating integer check (rating >= 1 and rating <= 5),
+  feedback text,
+  goals text,
+  status text default 'draft' check (status in ('draft', 'published', 'completed')),
+  created_at timestamptz default now()
+);
+
+alter table public.hr_appraisals enable row level security;
+
+create policy "Users can view their own appraisals." on public.hr_appraisals
+  for select using (employee_id in (select id from public.hr_employees where profile_id = (select id from public.profiles where user_id = auth.uid())));
+
+create policy "Owners can manage appraisals." on public.hr_appraisals
+  for all using (public.is_org_owner(org_id));
+
+-- 4. Recruitment Pipeline (Jobs & Applicants)
+create table if not exists public.hr_jobs (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  title text not null,
+  department text,
+  description text,
+  requirements text,
+  status text default 'open' check (status in ('open', 'internal_only', 'closed')),
+  created_at timestamptz default now()
+);
+
+create table if not exists public.hr_applicants (
+  id uuid default gen_random_uuid() primary key,
+  org_id uuid references public.organizations(id) on delete cascade,
+  job_id uuid references public.hr_jobs(id) on delete cascade,
+  profile_id uuid references public.profiles(id) on delete set null, -- Link to Talent Profile
+  full_name text not null,
+  email text not null,
+  phone text,
+  resume_url text,
+  status text default 'applied' check (status in ('applied', 'screening', 'interview', 'offer', 'hired', 'rejected')),
+  notes text,
+  created_at timestamptz default now()
+);
+
+alter table public.hr_jobs enable row level security;
+alter table public.hr_applicants enable row level security;
+
+create policy "Members can view jobs." on public.hr_jobs
+  for select using (public.is_org_member(org_id));
+
+create policy "Owners can manage recruitment." on public.hr_jobs
+  for all using (public.is_org_owner(org_id));
+
+create policy "Owners can manage applicants." on public.hr_applicants
   for all using (public.is_org_owner(org_id));

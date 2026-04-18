@@ -27,16 +27,16 @@ export default async function LedgerPage() {
         <div className="space-y-2">
           <Link 
             href="/accounting" 
-            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors mb-2"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors mb-2"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Finance
           </Link>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">General Ledger</h1>
-          <p className="text-slate-500 font-medium">Full audit trail of all balanced financial postings.</p>
+          <p className="text-slate-700 font-medium">Full audit trail of all balanced financial postings.</p>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-400 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
+          <button className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-600 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
             <Download className="h-5 w-5" />
           </button>
           <Link 
@@ -49,22 +49,22 @@ export default async function LedgerPage() {
       </div>
 
       {/* Filters Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white border-2 border-slate-100 rounded-[32px] shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-6 p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
         <div className="flex items-center gap-4">
            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-brand-green-deep transition-colors" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-green-deep transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search descriptions, refs..." 
-                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-50 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50 lg:w-[300px] font-bold transition-all"
+                className="pl-11 pr-5 py-2.5 text-xs border-2 border-slate-200 rounded-xl focus:border-brand-green-deep focus:outline-none bg-slate-50/80 lg:w-[300px] font-bold transition-all"
               />
            </div>
-           <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-500 hover:bg-white hover:border-slate-300 transition-all">
+           <button className="flex items-center gap-2 px-4 py-2.5 bg-slate-50/80 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-white hover:border-slate-300 transition-all">
              <Filter className="h-4 w-4" /> Filters
            </button>
         </div>
         
-        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
+        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600">
            Showing <span className="text-brand-navy">{journals.length}</span> Postings
         </div>
       </div>
@@ -72,8 +72,8 @@ export default async function LedgerPage() {
       {/* Ledger Table */}
       <div className="space-y-6">
         {journals.length > 0 ? journals.map((journal) => (
-          <div key={journal.id} className="bg-white border-2 border-slate-100 rounded-[32px] overflow-hidden shadow-sm hover:shadow-md transition-all group">
-            <div className="p-6 bg-slate-50/50 flex flex-wrap items-center justify-between gap-6 border-b border-slate-50">
+          <div key={journal.id} className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+            <div className="p-6 bg-slate-50/80/50 flex flex-wrap items-center justify-between gap-6 border-b border-slate-200">
                <div className="flex items-center gap-4">
                   <div className="h-10 w-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brand-navy font-black text-xs shadow-sm">
                      {new Date(journal.date).getDate()}
@@ -81,7 +81,7 @@ export default async function LedgerPage() {
                   <div>
                      <div className="text-sm font-black text-brand-navy">{journal.description}</div>
                      <div className="flex items-center gap-2 mt-0.5">
-                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{new Date(journal.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
+                        <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">{new Date(journal.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                         <span className="h-1 w-1 rounded-full bg-slate-200" />
                         <span className="text-[10px] text-brand-green-deep font-black uppercase tracking-widest">Ref: {journal.reference_no || 'N/A'}</span>
                      </div>
@@ -117,7 +117,7 @@ export default async function LedgerPage() {
                             entry.entry_type === 'debit' ? "bg-emerald-500" : "bg-brand-navy/20"
                           )} />
                           <div>
-                            <span className="text-[11px] font-black text-slate-400 mr-2">{(entry.accounts as any).code}</span>
+                            <span className="text-[11px] font-black text-slate-600 mr-2">{(entry.accounts as any).code}</span>
                             <span className="text-xs font-bold text-slate-700">{(entry.accounts as any).name}</span>
                           </div>
                        </div>
@@ -135,11 +135,11 @@ export default async function LedgerPage() {
             </div>
           </div>
         )) : (
-          <div className="flex flex-col items-center justify-center py-20 bg-white border-2 border-dashed border-slate-100 rounded-[40px] space-y-4">
-             <div className="h-16 w-16 rounded-[24px] bg-slate-50 flex items-center justify-center text-slate-300">
+          <div className="flex flex-col items-center justify-center py-20 bg-white border-2 border-dashed border-slate-200 rounded-2xl space-y-4">
+             <div className="h-16 w-16 rounded-[24px] bg-slate-50/80 flex items-center justify-center text-slate-300">
                 <Receipt className="h-8 w-8" />
              </div>
-             <p className="text-sm font-bold text-slate-400 italic">No ledger entries found for this organization.</p>
+             <p className="text-sm font-bold text-slate-600 italic">No ledger entries found for this organization.</p>
              <Link 
                href="/accounting/journals/new" 
                className="text-xs font-black uppercase tracking-widest text-brand-green-deep flex items-center gap-2 hover:gap-3 transition-all"
@@ -151,7 +151,7 @@ export default async function LedgerPage() {
       </div>
 
       {/* Safety Reminder */}
-      <div className="p-8 bg-brand-green-pale border-2 border-brand-green-deep/10 rounded-[40px] flex items-start gap-5">
+      <div className="p-8 bg-brand-green-pale border-2 border-brand-green-deep/10 rounded-2xl flex items-start gap-5">
          <div className="h-10 w-10 rounded-2xl bg-white flex items-center justify-center shadow-sm">
             <Sparkles className="h-5 w-5 text-brand-green-deep" />
          </div>
@@ -187,3 +187,4 @@ function ArrowRightLeft(props: any) {
     </svg>
   )
 }
+

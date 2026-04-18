@@ -82,7 +82,9 @@ export default function LandingPage() {
             <nav className="hidden lg:flex items-center gap-8">
               <Link href="#products" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Products & Solutions</Link>
               <Link href="#accountants" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Accountants</Link>
-              <Link href="#partners" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Partners</Link>
+              <Link href="/jobs" className="text-[15px] font-black text-brand-teal hover:text-white transition-colors flex items-center gap-1 group">
+                Jobs <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
               <Link href="#support" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Support</Link>
             </nav>
           </div>
@@ -334,7 +336,7 @@ export default function LandingPage() {
             <div className="flex flex-col gap-4">
               <h4 className="font-bold text-white mb-2">Company</h4>
               <Link href="#" className="text-slate-400 hover:text-white transition-colors">About Streamline</Link>
-              <Link href="#" className="text-slate-400 hover:text-white transition-colors">Careers</Link>
+              <Link href="/jobs" className="text-brand-teal font-black hover:text-white transition-colors">Careers & Jobs</Link>
               <Link href="#" className="text-slate-400 hover:text-white transition-colors">Press</Link>
               <Link href="#" className="text-slate-400 hover:text-white transition-colors">Partner Program</Link>
             </div>

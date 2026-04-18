@@ -37,7 +37,7 @@ export default async function ProcurementApprovalsPage() {
         <div className="space-y-2">
           <Link 
             href="/procurement" 
-            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors mb-2"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors mb-2"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Procurement
           </Link>
@@ -47,7 +47,7 @@ export default async function ProcurementApprovalsPage() {
                {pending.length} Pending Actions
              </span>
           </div>
-          <p className="text-slate-500 font-medium">Review, vet, and authorize organizational spending.</p>
+          <p className="text-slate-700 font-medium">Review, vet, and authorize organizational spending.</p>
         </div>
       </div>
 
@@ -61,7 +61,7 @@ export default async function ProcurementApprovalsPage() {
                  </h2>
                  <div className="grid gap-4">
                     {toPay.map((r: any) => (
-                      <div key={r.id} className="p-8 bg-emerald-50/30 border-2 border-emerald-100/50 rounded-[40px] flex items-center justify-between gap-8 group hover:shadow-xl transition-all duration-500">
+                      <div key={r.id} className="p-8 bg-emerald-50/30 border-2 border-emerald-100/50 rounded-2xl flex items-center justify-between gap-8 group hover:shadow-xl transition-all duration-500">
                          <div className="flex items-center gap-6">
                             <div className="h-14 w-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                <Zap className="h-6 w-6" />
@@ -73,7 +73,7 @@ export default async function ProcurementApprovalsPage() {
                          </div>
                          <div className="flex items-center gap-10">
                             <div className="text-right">
-                               <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-1">Total Payout</span>
+                               <span className="text-[9px] font-black uppercase tracking-widest text-slate-600 block mb-1">Total Payout</span>
                                <div className="text-xl font-black text-brand-navy">K {Number(r.total_amount).toLocaleString()}</div>
                             </div>
                             <form action={async () => {
@@ -93,12 +93,12 @@ export default async function ProcurementApprovalsPage() {
 
            {/* Section 2: Requisition Approvals */}
            <div className="space-y-6">
-              <h2 className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 flex items-center gap-2">
+              <h2 className="text-sm font-black uppercase tracking-[0.2em] text-slate-600 flex items-center gap-2">
                  <ShieldCheck className="h-4 w-4" /> Requisition Reviews
               </h2>
               {pending.length > 0 ? pending.map((r: any) => (
-                <div key={r.id} className="bg-white border-2 border-slate-100 rounded-[48px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
-                   <div className="p-8 border-b border-slate-50 bg-slate-50/50 flex flex-wrap items-center justify-between gap-8">
+                <div key={r.id} className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+                   <div className="p-8 border-b border-slate-200 bg-slate-50/80/50 flex flex-wrap items-center justify-between gap-8">
                       <div className="flex items-center gap-6">
                          <div className="h-16 w-16 rounded-[24px] bg-white border border-slate-200 flex items-center justify-center text-brand-navy font-black text-[10px] shadow-sm">
                             {r.requestor.full_name[0]}
@@ -106,7 +106,7 @@ export default async function ProcurementApprovalsPage() {
                          <div>
                             <div className="text-lg font-black text-brand-navy leading-tight">{r.title}</div>
                             <div className="flex items-center gap-3 mt-1">
-                               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Requested by {r.requestor.full_name}</span>
+                               <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Requested by {r.requestor.full_name}</span>
                                <span className="h-1 w-1 rounded-full bg-slate-200" />
                                <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">L{r.current_level} Pending</span>
                             </div>
@@ -136,12 +136,12 @@ export default async function ProcurementApprovalsPage() {
                             </div>
                          </div>
 
-                         <div className="p-6 bg-slate-50 rounded-[32px] border border-slate-100 flex items-center justify-between">
+                         <div className="p-6 bg-slate-50/80 rounded-2xl border border-slate-200 flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                <div className="h-10 w-10 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-                                  <FileText className="h-5 w-5 text-slate-400" />
+                                  <FileText className="h-5 w-5 text-slate-600" />
                                </div>
-                               <span className="text-xs font-bold text-slate-500">View detailed items & specifications</span>
+                               <span className="text-xs font-bold text-slate-700">View detailed items & specifications</span>
                             </div>
                             <button className="p-2.5 bg-white rounded-xl shadow-sm text-brand-navy hover:text-brand-green-deep transition-all">
                                <ExternalLink className="h-4 w-4" />
@@ -149,7 +149,7 @@ export default async function ProcurementApprovalsPage() {
                          </div>
                       </div>
 
-                      <div className="space-y-4 flex flex-col justify-end border-l border-slate-50 pl-10">
+                      <div className="space-y-4 flex flex-col justify-end border-l border-slate-200 pl-10">
                          <form action={async (formData) => {
                            "use server"
                            await approveRequisition(r.id, r.current_level, "Audited and approved.")
@@ -165,13 +165,13 @@ export default async function ProcurementApprovalsPage() {
                    </div>
                 </div>
               )) : (
-                <div className="py-24 bg-white border-2 border-dashed border-slate-100 rounded-[48px] flex flex-col items-center justify-center text-center space-y-6">
-                   <div className="h-20 w-20 rounded-[32px] bg-slate-50 flex items-center justify-center text-slate-200">
+                <div className="py-24 bg-white border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-6">
+                   <div className="h-20 w-20 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-200">
                       <CheckCircle2 className="h-10 w-10" />
                    </div>
                    <div className="space-y-1">
                       <h3 className="text-xl font-black text-brand-navy text-brand-navy">All Caught Up</h3>
-                      <p className="text-sm font-medium text-slate-400">Zero pending requisitions awaiting your review.</p>
+                      <p className="text-sm font-medium text-slate-600">Zero pending requisitions awaiting your review.</p>
                    </div>
                 </div>
               )}
@@ -180,7 +180,7 @@ export default async function ProcurementApprovalsPage() {
 
         {/* Action Sidebar */}
         <div className="space-y-8 animate-in slide-in-from-right duration-700">
-           <div className="p-8 bg-brand-navy rounded-[40px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Governance Map</h3>
@@ -211,14 +211,14 @@ export default async function ProcurementApprovalsPage() {
               </div>
            </div>
 
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6 flex items-center gap-2">
                  <Sparkles className="h-4 w-4 text-brand-green-deep" /> Spend Intelligence
               </h3>
               <div className="space-y-4">
-                 <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                 <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200">
                     <div className="text-xs font-black text-brand-navy mb-1">Budget Confidence</div>
-                    <div className="text-[10px] text-slate-500 font-medium">Your current pending requests are within the K250k quarterly budget.</div>
+                    <div className="text-[10px] text-slate-700 font-medium">Your current pending requests are within the K250k quarterly budget.</div>
                  </div>
               </div>
            </div>
@@ -248,3 +248,4 @@ function ExternalLink(props: any) {
     </svg>
   )
 }
+

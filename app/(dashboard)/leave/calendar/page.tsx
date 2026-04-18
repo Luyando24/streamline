@@ -62,16 +62,16 @@ export default async function AbsenceCalendarPage() {
         <div className="space-y-2">
           <Link 
             href="/leave" 
-            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors mb-2"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors mb-2"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Time & Absence
           </Link>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Absence Calendar</h1>
-          <p className="text-slate-500 font-medium">Global timeline of approved team time-off.</p>
+          <p className="text-slate-700 font-medium">Global timeline of approved team time-off.</p>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
+          <button className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-700 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
              <Filter className="h-4 w-4" /> Filter Team
           </button>
           <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-2xl">
@@ -93,9 +93,9 @@ export default async function AbsenceCalendarPage() {
 
                 <div className="grid gap-4">
                    {items.map((a: any) => (
-                     <div key={a.id} className="group p-8 bg-white border-2 border-slate-100 rounded-[40px] hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 flex items-center justify-between gap-8">
+                     <div key={a.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 flex items-center justify-between gap-8">
                         <div className="flex items-center gap-8">
-                           <div className="flex flex-col items-center justify-center p-3 bg-slate-50 border border-slate-100 rounded-[20px] w-20 shadow-inner group-hover:bg-brand-navy group-hover:text-white transition-colors duration-500">
+                           <div className="flex flex-col items-center justify-center p-3 bg-slate-50/80 border border-slate-200 rounded-[20px] w-20 shadow-inner group-hover:bg-brand-navy group-hover:text-white transition-colors duration-500">
                               <span className="text-[10px] font-black uppercase tracking-widest opacity-60">
                                  {new Date(a.start_date).toLocaleString('default', { month: 'short' })}
                               </span>
@@ -112,7 +112,7 @@ export default async function AbsenceCalendarPage() {
                                     {a.leave_types.name}
                                  </span>
                               </div>
-                              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest flex items-center gap-2">
+                              <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest flex items-center gap-2">
                                  <CalendarIcon className="h-3 w-3" /> {new Date(a.start_date).toLocaleDateString()} — {new Date(a.end_date).toLocaleDateString()}
                                  <span className="h-1 w-1 rounded-full bg-slate-300" />
                                  {Number(a.days_count)} Working Days
@@ -130,13 +130,13 @@ export default async function AbsenceCalendarPage() {
                 </div>
              </div>
            )) : (
-             <div className="py-40 bg-white border-2 border-dashed border-slate-100 rounded-[48px] flex flex-col items-center justify-center text-center space-y-6">
-                <div className="h-20 w-20 rounded-[32px] bg-slate-50 flex items-center justify-center text-slate-200">
+             <div className="py-40 bg-white border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-6">
+                <div className="h-20 w-20 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-200">
                    <CalendarIcon className="h-10 w-10" />
                 </div>
                 <div className="space-y-2">
                    <h3 className="text-xl font-black text-brand-navy">Quiet Period</h3>
-                   <p className="text-sm font-medium text-slate-400">No upcoming absences scheduled for this period.</p>
+                   <p className="text-sm font-medium text-slate-600">No upcoming absences scheduled for this period.</p>
                 </div>
              </div>
            )}
@@ -144,7 +144,7 @@ export default async function AbsenceCalendarPage() {
 
         {/* Sidebar Mini-Stats */}
         <div className="space-y-8">
-           <div className="p-8 bg-brand-navy rounded-[40px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Capacity Radar</h3>
@@ -177,8 +177,8 @@ export default async function AbsenceCalendarPage() {
               </div>
            </div>
 
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6 flex items-center gap-2">
                  <Users className="h-4 w-4" /> Team Breakdown
               </h3>
               <div className="space-y-4">
@@ -201,3 +201,4 @@ export default async function AbsenceCalendarPage() {
     </div>
   )
 }
+

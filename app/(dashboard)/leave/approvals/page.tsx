@@ -30,7 +30,7 @@ export default async function LeaveApprovalsPage() {
         <div className="space-y-2">
           <Link 
             href="/leave" 
-            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors mb-2"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors mb-2"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Time & Absence
           </Link>
@@ -40,7 +40,7 @@ export default async function LeaveApprovalsPage() {
                {pending.length} Pending
              </span>
           </div>
-          <p className="text-slate-500 font-medium">Review and resolve team time-off requests.</p>
+          <p className="text-slate-700 font-medium">Review and resolve team time-off requests.</p>
         </div>
       </div>
 
@@ -48,15 +48,15 @@ export default async function LeaveApprovalsPage() {
       <div className="grid lg:grid-cols-[1fr_320px] gap-10">
         <div className="space-y-6">
            {pending.length > 0 ? pending.map((request: any) => (
-             <div key={request.id} className="bg-white border-2 border-slate-100 rounded-[40px] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
-                <div className="p-8 border-b border-slate-50 flex flex-wrap items-center justify-between gap-8 bg-slate-50/50">
+             <div key={request.id} className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+                <div className="p-8 border-b border-slate-200 flex flex-wrap items-center justify-between gap-8 bg-slate-50/80/50">
                    <div className="flex items-center gap-6">
                       <div className="h-16 w-16 rounded-[24px] bg-white border border-slate-200 flex items-center justify-center text-brand-navy font-black text-xs shadow-sm shadow-slate-200/50">
                          {request.profiles.full_name.split(' ').map((n: string) => n[0]).join('')}
                       </div>
                       <div>
                          <div className="text-lg font-black text-brand-navy">{request.profiles.full_name}</div>
-                         <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{request.profiles.email}</div>
+                         <div className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{request.profiles.email}</div>
                       </div>
                    </div>
                    
@@ -75,7 +75,7 @@ export default async function LeaveApprovalsPage() {
                 <div className="p-10 grid md:grid-cols-[1fr_200px] gap-12">
                    <div className="space-y-8">
                       <div className="space-y-4">
-                         <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+                         <div className="text-[10px] font-black uppercase tracking-widest text-slate-600 flex items-center gap-2">
                             <Calendar className="h-4 w-4" /> Requested Period
                          </div>
                          <div className="flex items-center gap-4 text-sm font-black text-brand-navy">
@@ -86,10 +86,10 @@ export default async function LeaveApprovalsPage() {
                       </div>
 
                       <div className="space-y-4">
-                         <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+                         <div className="text-[10px] font-black uppercase tracking-widest text-slate-600 flex items-center gap-2">
                             <MessageSquare className="h-4 w-4" /> Employee Reason
                          </div>
-                         <p className="text-xs font-medium text-slate-600 leading-relaxed italic border-l-4 border-slate-100 pl-4">
+                         <p className="text-xs font-medium text-slate-600 leading-relaxed italic border-l-4 border-slate-200 pl-4">
                             "{request.reason || "No reason provided."}"
                          </p>
                       </div>
@@ -134,13 +134,13 @@ export default async function LeaveApprovalsPage() {
                 </div>
              </div>
            )) : (
-             <div className="py-32 bg-white border-2 border-dashed border-slate-100 rounded-[48px] flex flex-col items-center justify-center text-center space-y-6">
-                <div className="h-20 w-20 rounded-[32px] bg-slate-50 flex items-center justify-center text-slate-200">
+             <div className="py-32 bg-white border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-center space-y-6">
+                <div className="h-20 w-20 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-200">
                    <UserCheck className="h-10 w-10" />
                 </div>
                 <div className="space-y-2">
                    <h3 className="text-xl font-black text-brand-navy">All Clear!</h3>
-                   <p className="text-sm font-medium text-slate-400">You have zero pending leave requests to process.</p>
+                   <p className="text-sm font-medium text-slate-600">You have zero pending leave requests to process.</p>
                 </div>
              </div>
            )}
@@ -148,7 +148,7 @@ export default async function LeaveApprovalsPage() {
 
         {/* Action Sidebar */}
         <div className="space-y-8">
-           <div className="p-8 bg-brand-navy rounded-[40px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Manager Overview</h3>
@@ -172,8 +172,8 @@ export default async function LeaveApprovalsPage() {
               </Link>
            </div>
 
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6 flex items-center gap-2">
                  <LayoutDashboard className="h-4 w-4" /> Active Policies
               </h3>
               <div className="space-y-4">
@@ -190,3 +190,4 @@ export default async function LeaveApprovalsPage() {
     </div>
   )
 }
+

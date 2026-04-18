@@ -193,12 +193,12 @@ export default function MarketplacePage() {
             <Sparkles className="h-3 w-3" /> Marketplace
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Power up your Business</h1>
-          <p className="text-slate-500 font-medium">Select the precision tools your business needs to excel. Scaling made simple.</p>
+          <p className="text-slate-700 font-medium">Select the precision tools your business needs to excel. Scaling made simple.</p>
         </div>
 
         {/* Filter Bar content... same as before */}
-        <div className="flex flex-wrap items-center justify-between gap-6 py-4 border-b border-slate-100">
-          <div className="flex bg-slate-50 rounded-2xl p-1.5 border border-slate-200/50">
+        <div className="flex flex-wrap items-center justify-between gap-6 py-4 border-b border-slate-200">
+          <div className="flex bg-slate-50/80 rounded-2xl p-1.5 border border-slate-200/50">
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
@@ -207,7 +207,7 @@ export default function MarketplacePage() {
                   "px-5 py-2 text-xs font-black rounded-xl transition-all",
                   activeCategory === cat 
                     ? "bg-white text-brand-green-deep shadow-sm ring-1 ring-slate-100" 
-                    : "text-slate-500 hover:text-brand-navy"
+                    : "text-slate-700 hover:text-brand-navy"
                 )}
               >
                 {cat}
@@ -215,20 +215,20 @@ export default function MarketplacePage() {
             ))}
           </div>
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-brand-green-deep transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-brand-green-deep transition-colors" />
             <input 
               type="text" 
               placeholder="Find a module..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-11 pr-5 py-3 text-sm border-2 border-slate-100 rounded-2xl focus:border-brand-green-deep focus:outline-none bg-white lg:w-[300px] font-medium transition-all"
+              className="pl-11 pr-5 py-3 text-sm border-2 border-slate-200 rounded-2xl focus:border-brand-green-deep focus:outline-none bg-white lg:w-[300px] font-medium transition-all"
             />
           </div>
         </div>
 
         {/* Recommended Suites */}
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 flex items-center gap-3">
+          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-slate-600 flex items-center gap-3">
             <Zap className="h-4 w-4 text-brand-green-deep" /> Recommended Ecosystems
           </h2>
           <div className="grid gap-4 lg:grid-cols-3">
@@ -266,7 +266,7 @@ export default function MarketplacePage() {
                       className={cn(
                         "w-full py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-sm active:scale-95 transition-all",
                         isFullyActive 
-                          ? "bg-slate-200 text-slate-500 cursor-not-allowed" 
+                          ? "bg-slate-200 text-slate-700 cursor-not-allowed" 
                           : allInCartOrActive
                           ? "bg-brand-navy text-white"
                           : "bg-white text-slate-700 hover:text-brand-navy hover:shadow-md"
@@ -292,16 +292,16 @@ export default function MarketplacePage() {
               <div 
                 key={module.id} 
                 className={cn(
-                  "group relative flex flex-col p-6 rounded-[32px] border-2 transition-all duration-500",
+                  "group relative flex flex-col p-6 rounded-2xl border-2 transition-all duration-500",
                   isActive ? "bg-brand-green-pale/30 border-brand-green-deep/10 shadow-sm" : 
                   isInCart ? "bg-brand-green-pale border-brand-green-deep/20 shadow-md ring-1 ring-brand-green-deep/10" :
-                  "bg-white border-slate-100 hover:border-slate-200 hover:shadow-lg hover:-translate-y-1"
+                  "bg-white border-slate-200 hover:border-slate-200 hover:shadow-lg hover:-translate-y-1"
                 )}
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className={cn(
                     "h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-500",
-                    isActive || isInCart ? "bg-brand-green-deep text-white scale-110 shadow-lg shadow-brand-green-deep/20" : "bg-slate-50 text-slate-400 group-hover:bg-brand-green-pale group-hover:text-brand-green-deep"
+                    isActive || isInCart ? "bg-brand-green-deep text-white scale-110 shadow-lg shadow-brand-green-deep/20" : "bg-slate-50/80 text-slate-600 group-hover:bg-brand-green-pale group-hover:text-brand-green-deep"
                   )}>
                     <Icon className="h-6 w-6" />
                   </div>
@@ -309,7 +309,7 @@ export default function MarketplacePage() {
                   {/* Category Badge - Now at top right */}
                   <span className={cn(
                     "text-[10px] uppercase font-black px-3 py-1 rounded-full tracking-wider transition-all duration-500",
-                    module.category === 'Core' ? "bg-blue-50 text-blue-600" : module.category === 'Premium' ? "bg-purple-50 text-purple-600" : "bg-slate-50 text-slate-500"
+                    module.category === 'Core' ? "bg-blue-50 text-blue-600" : module.category === 'Premium' ? "bg-purple-50 text-purple-600" : "bg-slate-50/80 text-slate-700"
                   )}>
                     {module.category}
                   </span>
@@ -321,13 +321,13 @@ export default function MarketplacePage() {
                   {isInCart && <span className="text-[8px] font-black uppercase text-white bg-brand-green-deep px-1.5 py-0.5 rounded animate-pulse">In Cart</span>}
                 </div>
                 
-                <p className="text-sm text-slate-500 line-clamp-2 min-h-[40px] mb-6 font-medium leading-relaxed">
+                <p className="text-sm text-slate-700 line-clamp-2 min-h-[40px] mb-6 font-medium leading-relaxed">
                   {module.desc}
                 </p>
                 
-                <div className="mt-auto pt-5 border-t border-slate-100/50 flex items-center justify-between">
+                <div className="mt-auto pt-5 border-t border-slate-200/50 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest block mb-0.5">Price</span>
+                    <span className="text-[10px] text-slate-600 font-black uppercase tracking-widest block mb-0.5">Price</span>
                     <div className="text-lg font-black text-brand-green-deep">ZMW {module.price.toLocaleString()}</div>
                   </div>
 
@@ -361,11 +361,11 @@ export default function MarketplacePage() {
 
       {/* Sticky Cart Sidebar */}
       <div className="sticky top-24 space-y-8 self-start h-fit">
-        <div className="rounded-[40px] bg-white border-2 border-slate-100 p-8 shadow-xl shadow-slate-200/50 relative overflow-hidden">
+        <div className="rounded-2xl bg-white border-2 border-slate-200 p-8 shadow-xl shadow-slate-200/50 relative overflow-hidden">
           <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-pale rounded-full -mr-16 -mt-16 opacity-50" />
           
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 flex items-center gap-3">
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-600 flex items-center gap-3">
                <ShoppingCart className="h-4 w-4 text-brand-green-deep" /> Summary
             </h3>
             {cartItems.length > 0 && (
@@ -375,12 +375,12 @@ export default function MarketplacePage() {
             )}
           </div>
           
-          <div className="flex bg-slate-50 rounded-2xl p-1 mb-10 border border-slate-100">
+          <div className="flex bg-slate-50/80 rounded-2xl p-1 mb-10 border border-slate-200">
             <button 
               onClick={() => setBillingCycle('monthly')}
               className={cn(
                 "flex-1 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all",
-                billingCycle === 'monthly' ? "bg-white text-brand-navy shadow-sm" : "text-slate-400 hover:text-slate-600"
+                billingCycle === 'monthly' ? "bg-white text-brand-navy shadow-sm" : "text-slate-600 hover:text-slate-600"
               )}
             >
               Monthly
@@ -389,7 +389,7 @@ export default function MarketplacePage() {
               onClick={() => setBillingCycle('annual')}
               className={cn(
                 "flex-1 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-1.5",
-                billingCycle === 'annual' ? "bg-brand-green-deep text-white shadow-lg" : "text-slate-400 hover:text-slate-600"
+                billingCycle === 'annual' ? "bg-brand-green-deep text-white shadow-lg" : "text-slate-600 hover:text-slate-600"
               )}
             >
               Annual <span className="text-[9px] bg-white/20 px-1.5 py-0.5 rounded">-20%</span>
@@ -400,10 +400,10 @@ export default function MarketplacePage() {
             {/* Active Subscription Section */}
             <div>
               <div className="flex justify-between items-center mb-1">
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Current Monthly</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-600">Current Monthly</span>
                 <span className="font-bold text-brand-navy">ZMW {currentMonthlyTotal.toLocaleString()}</span>
               </div>
-              <p className="text-[10px] text-slate-400 font-medium">Business Tier + {activeModuleIds.length} Tools</p>
+              <p className="text-[10px] text-slate-600 font-medium">Business Tier + {activeModuleIds.length} Tools</p>
             </div>
 
             {/* Cart Items Section */}
@@ -429,21 +429,21 @@ export default function MarketplacePage() {
               </div>
             )}
             
-            <div className="pt-6 border-t-2 border-dashed border-slate-100 flex flex-col gap-1">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Total Investment</span>
+            <div className="pt-6 border-t-2 border-dashed border-slate-200 flex flex-col gap-1">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">Total Investment</span>
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-black text-brand-navy">ZMW {grandTotal.toLocaleString()}</span>
-                <span className="text-xs font-bold text-slate-400 uppercase">/ {billingCycle === 'annual' ? 'yr' : 'mo'}</span>
+                <span className="text-xs font-bold text-slate-600 uppercase">/ {billingCycle === 'annual' ? 'yr' : 'mo'}</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-[24px] p-5 border border-slate-100 mb-8">
+          <div className="bg-slate-50/80 rounded-[24px] p-5 border border-slate-200 mb-8">
              <div className="flex items-start gap-4">
                <div className="h-8 w-8 rounded-xl bg-white flex items-center justify-center shadow-sm">
                  <ShieldCheck className="h-4 w-4 text-brand-green-deep" />
                </div>
-               <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+               <p className="text-[11px] text-slate-700 font-medium leading-relaxed">
                  Pay once for activations. Subscription updates automatically on the 1st.
                </p>
              </div>
@@ -458,7 +458,7 @@ export default function MarketplacePage() {
           </button>
           
           {cartItemIds.length === 0 && (
-            <p className="text-[10px] text-center mt-4 text-slate-400 font-medium italic">Add modules to checkout</p>
+            <p className="text-[10px] text-center mt-4 text-slate-600 font-medium italic">Add modules to checkout</p>
           )}
         </div>
       </div>
@@ -474,3 +474,4 @@ export default function MarketplacePage() {
     </div>
   )
 }
+

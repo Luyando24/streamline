@@ -46,13 +46,13 @@ export default async function PayrollPage() {
             <Zap className="h-3 w-3" /> Statutory Compliance
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Payroll Management</h1>
-          <p className="text-slate-500 font-medium">Automated Zambian payroll with ZRA, NAPSA, and NHIMA integration.</p>
+          <p className="text-slate-700 font-medium">Automated Zambian payroll with ZRA, NAPSA, and NHIMA integration.</p>
         </div>
 
         <div className="flex items-center gap-3">
           <Link 
             href="/payroll/employees" 
-            className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm"
+            className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-700 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm"
           >
             <Users className="h-4 w-4" /> Setup Employees
           </Link>
@@ -67,7 +67,7 @@ export default async function PayrollPage() {
         {stats.map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className="group p-6 bg-white border-2 border-slate-100 rounded-[32px] hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div key={s.label} className="group p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
               <div className="flex justify-between items-start mb-6">
                 <div className={cn(
                   "h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-500",
@@ -79,9 +79,9 @@ export default async function PayrollPage() {
                   <Icon className="h-6 w-6" />
                 </div>
               </div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{s.label}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-1">{s.label}</p>
               <h3 className="text-2xl font-black text-brand-navy mb-2">{s.value}</h3>
-              <p className="text-[10px] text-slate-400 font-medium leading-relaxed">{s.desc}</p>
+              <p className="text-[10px] text-slate-600 font-medium leading-relaxed">{s.desc}</p>
             </div>
           )
         })}
@@ -90,14 +90,14 @@ export default async function PayrollPage() {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Process Area */}
         <div className="lg:col-span-2 space-y-8">
-           <div className="p-10 bg-white border-2 border-slate-100 rounded-[48px] shadow-sm relative overflow-hidden group">
+           <div className="p-10 bg-white border-2 border-slate-200 rounded-2xl shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 h-64 w-64 bg-brand-green-pale rounded-full -mr-32 -mt-32 opacity-30 group-hover:scale-110 transition-transform duration-1000" />
               
               <div className="relative z-10 grid md:grid-cols-[1.5fr_1fr] gap-12 items-center">
                  <div className="space-y-6">
                     <div className="space-y-2">
                        <h2 className="text-2xl font-black text-brand-navy">April 2026 Payroll Run</h2>
-                       <p className="text-sm font-medium text-slate-400 leading-relaxed">
+                       <p className="text-sm font-medium text-slate-600 leading-relaxed">
                           Your team is ready for month-end processing. All {activeHeadcount} active employees will have their payslips generated with automated tax calculations.
                        </p>
                     </div>
@@ -105,12 +105,12 @@ export default async function PayrollPage() {
                     <div className="flex items-center gap-4">
                        <div className="flex -space-x-3">
                           {[1,2,3,4].map(i => (
-                            <div key={i} className="h-10 w-10 rounded-full border-4 border-white bg-slate-100 flex items-center justify-center text-[10px] font-black text-slate-400">
+                            <div key={i} className="h-10 w-10 rounded-full border-4 border-white bg-slate-100 flex items-center justify-center text-[10px] font-black text-slate-600">
                                E{i}
                             </div>
                           ))}
                        </div>
-                       <div className="text-[11px] font-bold text-slate-500">
+                       <div className="text-[11px] font-bold text-slate-700">
                           + {activeHeadcount - 4} others ready to process
                        </div>
                     </div>
@@ -120,14 +120,14 @@ export default async function PayrollPage() {
                     </button>
                  </div>
 
-                 <div className="p-6 bg-slate-50 rounded-[32px] border border-slate-100 space-y-6">
-                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Statutory Health</div>
+                 <div className="p-6 bg-slate-50/80 rounded-2xl border border-slate-200 space-y-6">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-600">Statutory Health</div>
                     <div className="space-y-4">
-                       <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+                       <div className="flex justify-between items-center pb-3 border-b border-slate-200">
                           <span className="text-xs font-bold text-slate-600">PAYE Bands</span>
                           <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">2024 V1</span>
                        </div>
-                       <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+                       <div className="flex justify-between items-center pb-3 border-b border-slate-200">
                           <span className="text-xs font-bold text-slate-600">NAPSA Cap</span>
                           <span className="text-xs font-black text-brand-navy">ZMW 1,424</span>
                        </div>
@@ -141,14 +141,14 @@ export default async function PayrollPage() {
            </div>
 
            {/* Runs History */}
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
              <div className="flex items-center justify-between mb-8">
                 <h2 className="text-lg font-black text-brand-navy">Payroll History</h2>
-                <button className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors">View All</button>
+                <button className="text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors">View All</button>
              </div>
              
              <div className="space-y-4">
-                <div className="flex items-center justify-center h-48 bg-slate-50 rounded-[32px] border-2 border-dashed border-slate-100 italic text-[10px] text-slate-400 font-bold">
+                <div className="flex items-center justify-center h-48 bg-slate-50/80 rounded-2xl border-2 border-dashed border-slate-200 italic text-[10px] text-slate-600 font-bold">
                    No payroll runs recorded for this organization yet.
                 </div>
              </div>
@@ -157,7 +157,7 @@ export default async function PayrollPage() {
 
         {/* Sidebar */}
         <div className="space-y-6">
-           <div className="p-8 bg-brand-navy rounded-[40px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-8 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-6">Accounting Sync</h3>
@@ -183,24 +183,24 @@ export default async function PayrollPage() {
               </div>
            </div>
 
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Payroll Breakdown</h3>
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6">Payroll Breakdown</h3>
               <div className="space-y-6">
                  <div>
                     <div className="flex justify-between text-xs mb-2">
-                       <span className="text-slate-500 font-bold">Net Salaries</span>
+                       <span className="text-slate-700 font-bold">Net Salaries</span>
                        <span className="font-black text-brand-navy">~78%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
                        <div className="h-full bg-brand-green-deep rounded-full" style={{ width: '78%' }} />
                     </div>
                  </div>
                  <div>
                     <div className="flex justify-between text-xs mb-2">
-                       <span className="text-slate-500 font-bold">Tax & Statutory</span>
+                       <span className="text-slate-700 font-bold">Tax & Statutory</span>
                        <span className="font-black text-brand-navy">~22%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
                        <div className="h-full bg-orange-500 rounded-full" style={{ width: '22%' }} />
                     </div>
                  </div>
@@ -211,3 +211,4 @@ export default async function PayrollPage() {
     </div>
   )
 }
+

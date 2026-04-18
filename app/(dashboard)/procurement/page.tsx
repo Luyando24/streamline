@@ -44,13 +44,13 @@ export default async function ProcurementPage() {
             <Zap className="h-3 w-3" /> Enterprise Governance
           </div>
           <h1 className="text-4xl font-black tracking-tight text-brand-navy">Procurement</h1>
-          <p className="text-slate-500 font-medium">Multi-level approval workflows and automated spend management.</p>
+          <p className="text-slate-700 font-medium">Multi-level approval workflows and automated spend management.</p>
         </div>
 
         <div className="flex items-center gap-3">
           <Link 
             href="/procurement/vendors" 
-            className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm"
+            className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-700 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm"
           >
             <Building2 className="h-4 w-4" /> Vendors
           </Link>
@@ -68,7 +68,7 @@ export default async function ProcurementPage() {
         {stats.map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className="group p-6 bg-white border-2 border-slate-100 rounded-[32px] hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <div key={s.label} className="group p-6 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
               <div className="flex justify-between items-start mb-6">
                 <div className={cn(
                   "h-12 w-12 rounded-2xl flex items-center justify-center transition-all duration-500",
@@ -80,9 +80,9 @@ export default async function ProcurementPage() {
                   <Icon className="h-6 w-6" />
                 </div>
               </div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{s.label}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-1">{s.label}</p>
               <h3 className="text-2xl font-black text-brand-navy mb-2">{s.value}</h3>
-              <p className="text-[10px] text-slate-400 font-medium leading-relaxed">{s.desc}</p>
+              <p className="text-[10px] text-slate-600 font-medium leading-relaxed">{s.desc}</p>
             </div>
           )
         })}
@@ -91,14 +91,14 @@ export default async function ProcurementPage() {
       <div className="grid lg:grid-cols-3 gap-10">
         {/* Main Process Area */}
         <div className="lg:col-span-2 space-y-8">
-           <div className="bg-white border-2 border-slate-100 rounded-[48px] shadow-sm overflow-hidden">
-              <div className="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
+           <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+              <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
                  <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
                     <History className="h-5 w-5 text-brand-green-deep" /> Spend Activity
                  </h2>
                  <div className="flex gap-2">
-                    <button className="p-2.5 bg-white border border-slate-200 rounded-xl text-slate-400 hover:text-brand-navy transition-all"><Search className="h-4 w-4" /></button>
-                    <button className="p-2.5 bg-white border border-slate-200 rounded-xl text-slate-400 hover:text-brand-navy transition-all"><Filter className="h-4 w-4" /></button>
+                    <button className="p-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-brand-navy transition-all"><Search className="h-4 w-4" /></button>
+                    <button className="p-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-brand-navy transition-all"><Filter className="h-4 w-4" /></button>
                  </div>
               </div>
 
@@ -106,15 +106,15 @@ export default async function ProcurementPage() {
                  {requisitions.length > 0 ? (
                    <div className="space-y-3">
                       {requisitions.slice(0, 5).map((r: any) => (
-                        <div key={r.id} className="group p-6 flex flex-wrap items-center justify-between gap-6 hover:bg-slate-50 rounded-[32px] transition-all">
+                        <div key={r.id} className="group p-6 flex flex-wrap items-center justify-between gap-6 hover:bg-slate-50/80 rounded-2xl transition-all">
                            <div className="flex items-center gap-6">
-                              <div className="h-14 w-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-brand-navy font-black text-[10px] shadow-sm group-hover:scale-110 transition-transform">
+                              <div className="h-14 w-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-brand-navy font-black text-[10px] shadow-sm group-hover:scale-110 transition-transform">
                                  {r.title[0]}
                               </div>
                               <div className="space-y-1">
                                  <h3 className="text-base font-black text-brand-navy leading-tight">{r.title}</h3>
                                  <div className="flex items-center gap-3">
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{r.requestor.full_name}</span>
+                                    <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{r.requestor.full_name}</span>
                                     <span className="h-1 w-1 rounded-full bg-slate-200" />
                                     <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">{r.vendor?.name || "No Vendor"}</span>
                                  </div>
@@ -143,7 +143,7 @@ export default async function ProcurementPage() {
                    </div>
                  ) : (
                    <div className="py-24 flex flex-col items-center justify-center text-center space-y-6">
-                      <div className="h-20 w-20 rounded-[32px] bg-slate-50 flex items-center justify-center text-slate-200">
+                      <div className="h-20 w-20 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-200">
                          <ShoppingBag className="h-10 w-10" />
                       </div>
                       <div className="space-y-1">
@@ -160,7 +160,7 @@ export default async function ProcurementPage() {
 
         {/* Sidebar Mini-Analysis */}
         <div className="space-y-8">
-           <div className="p-10 bg-brand-navy rounded-[48px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute bottom-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mb-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Approval Inbox</h3>
@@ -184,26 +184,26 @@ export default async function ProcurementPage() {
               </Link>
            </div>
 
-           <div className="p-8 bg-white border-2 border-slate-100 rounded-[40px] shadow-sm">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+           <div className="p-8 bg-white border-2 border-slate-200 rounded-2xl shadow-sm">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mb-6 flex items-center gap-2">
                  <Sparkles className="h-4 w-4 text-brand-green-deep" /> Supplier Reliability
               </h3>
               <div className="space-y-6">
                  <div>
                     <div className="flex justify-between text-xs mb-2">
-                       <span className="text-slate-500 font-bold">Zambian Tech Hub</span>
+                       <span className="text-slate-700 font-bold">Zambian Tech Hub</span>
                        <span className="font-black text-brand-navy">98%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
                        <div className="h-full bg-brand-green-deep" style={{ width: '98%' }} />
                     </div>
                  </div>
                  <div>
                     <div className="flex justify-between text-xs mb-2">
-                       <span className="text-slate-500 font-bold">Lusaka Stationery</span>
+                       <span className="text-slate-700 font-bold">Lusaka Stationery</span>
                        <span className="font-black text-brand-navy">82%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
                        <div className="h-full bg-blue-500" style={{ width: '82%' }} />
                     </div>
                  </div>
@@ -235,3 +235,4 @@ function History(props: any) {
     </svg>
   )
 }
+

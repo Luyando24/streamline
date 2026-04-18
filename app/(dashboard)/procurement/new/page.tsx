@@ -105,7 +105,7 @@ export default function NewRequisitionPage() {
         <div className="space-y-1">
           <Link 
             href="/procurement" 
-            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors mb-2"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors mb-2"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Procurement
           </Link>
@@ -115,12 +115,12 @@ export default function NewRequisitionPage() {
              </div>
              <h1 className="text-3xl font-black tracking-tight text-brand-navy">New Purchase Requisition</h1>
           </div>
-          <p className="text-slate-400 text-xs font-bold font-medium pl-14">Initiate a formal request for goods or services.</p>
+          <p className="text-slate-600 text-xs font-bold font-medium pl-14">Initiate a formal request for goods or services.</p>
         </div>
 
-        <div className="px-6 py-3 rounded-2xl bg-white border-2 border-slate-50 flex items-center gap-6 shadow-sm">
-          <div className="text-right border-r border-slate-100 pr-6">
-             <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-0.5">Estimated Total</div>
+        <div className="px-6 py-3 rounded-2xl bg-white border-2 border-slate-200 flex items-center gap-6 shadow-sm">
+          <div className="text-right border-r border-slate-200 pr-6">
+             <div className="text-[9px] font-black uppercase tracking-widest text-slate-600 mb-0.5">Estimated Total</div>
              <div className="text-xl font-black text-brand-navy">K {total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
           </div>
           <div className="flex items-center gap-2">
@@ -132,26 +132,26 @@ export default function NewRequisitionPage() {
 
       {/* Main Form */}
       <div className="grid lg:grid-cols-[1fr_320px] gap-10 items-start">
-        <div className="bg-white border-2 border-slate-100 rounded-[48px] shadow-xl shadow-slate-200/50 overflow-hidden">
-          <div className="p-10 border-b border-slate-50 flex flex-wrap gap-8 bg-slate-50/30">
+        <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 overflow-hidden">
+          <div className="p-10 border-b border-slate-200 flex flex-wrap gap-8 bg-slate-50/80/30">
             <div className="space-y-2 flex-[2] min-w-[300px]">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Requisition Title / Purpose</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Requisition Title / Purpose</label>
               <input 
                 type="text" 
                 placeholder="e.g. Quarterly Office Stationery Supplies"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                className="w-full px-6 py-4 rounded-2xl border-2 border-slate-100 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all shadow-sm"
+                className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all shadow-sm"
               />
             </div>
             <div className="space-y-2 flex-1 min-w-[200px]">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Preferred Supplier</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Preferred Supplier</label>
               <div className="relative">
                 <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300" />
                 <select 
                   value={vendorId}
                   onChange={e => setVendorId(e.target.value)}
-                  className="w-full pl-11 pr-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all appearance-none bg-white shadow-sm"
+                  className="w-full pl-11 pr-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all appearance-none bg-white shadow-sm"
                 >
                   <option value="">Select Vendor...</option>
                   {vendors.map(v => (
@@ -164,7 +164,7 @@ export default function NewRequisitionPage() {
 
           <div className="p-10 space-y-8">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 flex items-center gap-2">
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-600 flex items-center gap-2">
                  <LayoutGrid className="h-4 w-4" /> Line Items
               </h3>
               <div className="flex gap-2">
@@ -172,14 +172,14 @@ export default function NewRequisitionPage() {
                   onClick={() => setType('goods')}
                   className={cn(
                     "px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all",
-                    type === 'goods' ? "bg-brand-navy text-white" : "text-slate-400 hover:text-brand-navy"
+                    type === 'goods' ? "bg-brand-navy text-white" : "text-slate-600 hover:text-brand-navy"
                   )}
                  >Goods</button>
                  <button 
                   onClick={() => setType('service')}
                   className={cn(
                     "px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all",
-                    type === 'service' ? "bg-brand-navy text-white" : "text-slate-400 hover:text-brand-navy"
+                    type === 'service' ? "bg-brand-navy text-white" : "text-slate-600 hover:text-brand-navy"
                   )}
                  >Services</button>
               </div>
@@ -193,7 +193,7 @@ export default function NewRequisitionPage() {
                         placeholder="Item description..."
                         value={item.description}
                         onChange={e => updateItem(i, 'description', e.target.value)}
-                        className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all bg-white shadow-sm"
+                        className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm transition-all bg-white shadow-sm"
                        />
                     </div>
                     <div className="space-y-1.5">
@@ -202,7 +202,7 @@ export default function NewRequisitionPage() {
                         placeholder="Qty"
                         value={item.quantity}
                         onChange={e => updateItem(i, 'quantity', e.target.value)}
-                        className="w-full px-4 py-4 rounded-2xl border-2 border-slate-100 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all text-center shadow-sm"
+                        className="w-full px-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all text-center shadow-sm"
                        />
                     </div>
                     <div className="space-y-1.5">
@@ -214,7 +214,7 @@ export default function NewRequisitionPage() {
                             placeholder="Unit Price"
                             value={item.unit_price}
                             onChange={e => updateItem(i, 'unit_price', e.target.value)}
-                            className="w-full pl-8 pr-4 py-4 rounded-2xl border-2 border-slate-100 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all shadow-sm"
+                            className="w-full pl-8 pr-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-black text-sm transition-all shadow-sm"
                           />
                        </div>
                     </div>
@@ -229,7 +229,7 @@ export default function NewRequisitionPage() {
 
                <button 
                 onClick={addItem}
-                className="flex items-center gap-3 px-8 py-5 rounded-2xl border-2 border-dashed border-slate-100 text-slate-400 hover:text-brand-green-deep hover:border-brand-green-deep/30 transition-all font-black text-[10px] uppercase tracking-widest w-full justify-center mt-4 group"
+                className="flex items-center gap-3 px-8 py-5 rounded-2xl border-2 border-dashed border-slate-200 text-slate-600 hover:text-brand-green-deep hover:border-brand-green-deep/30 transition-all font-black text-[10px] uppercase tracking-widest w-full justify-center mt-4 group"
                >
                  <Plus className="h-5 w-5 group-hover:scale-125 transition-transform" /> Add Purchase Line
                </button>
@@ -239,7 +239,7 @@ export default function NewRequisitionPage() {
 
         {/* Info Sidebar */}
         <div className="space-y-8 animate-in slide-in-from-right duration-700 delay-200">
-           <div className="p-10 bg-brand-navy rounded-[48px] text-white shadow-2xl relative overflow-hidden group">
+           <div className="p-10 bg-brand-navy rounded-2xl text-white shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 h-32 w-32 bg-brand-green-deep rounded-full -mr-16 -mt-16 opacity-20 group-hover:scale-150 transition-transform duration-700" />
               
               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-green-pale mb-8">Governance Rules</h3>
@@ -268,11 +268,11 @@ export default function NewRequisitionPage() {
               </button>
            </div>
 
-           <div className="p-8 bg-brand-green-pale/50 border-2 border-brand-green-deep/10 rounded-[40px] shadow-sm space-y-4">
+           <div className="p-8 bg-brand-green-pale/50 border-2 border-brand-green-deep/10 rounded-2xl shadow-sm space-y-4">
               <div className="flex items-center gap-3 text-brand-green-deep font-black text-[10px] uppercase tracking-widest">
                  <Sparkles className="h-4 w-4" /> Audit Complience
               </div>
-              <p className="text-[10px] font-medium text-slate-500 leading-relaxed italic">
+              <p className="text-[10px] font-medium text-slate-700 leading-relaxed italic">
                  "Every requisition is timestamped and tracked through your defined corporate hierarchy."
               </p>
            </div>
@@ -281,3 +281,4 @@ export default function NewRequisitionPage() {
     </div>
   )
 }
+

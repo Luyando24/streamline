@@ -72,7 +72,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
         <div className="space-y-2">
           <Link 
             href="/payroll" 
-            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-brand-navy transition-colors mb-2"
+            className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-brand-navy transition-colors mb-2"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Payroll
           </Link>
@@ -85,11 +85,11 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
                {run.status}
              </span>
           </div>
-          <p className="text-slate-500 font-medium">Period: {run.month}/{run.year} • {run.payslips.length} Payslips Generated</p>
+          <p className="text-slate-700 font-medium">Period: {run.month}/{run.year} • {run.payslips.length} Payslips Generated</p>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-400 hover:text-brand-navy transition-all">
+          <button className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-600 hover:text-brand-navy transition-all">
             <Printer className="h-5 w-5" />
           </button>
           {!isFinalized ? (
@@ -116,7 +116,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
       </div>
 
       {/* Totals Summary Card */}
-      <div className="bg-brand-navy p-10 rounded-[48px] text-white shadow-2xl relative overflow-hidden group">
+      <div className="bg-brand-navy p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden group">
          <div className="absolute top-0 right-0 h-40 w-40 bg-brand-green-deep rounded-full -mr-20 -mt-20 opacity-20 transition-transform group-hover:scale-150 duration-700" />
          
          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
@@ -144,10 +144,10 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
       </div>
 
       {/* Payslips Table */}
-      <div className="bg-white border-2 border-slate-100 rounded-[40px] shadow-sm overflow-hidden">
-         <div className="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
+      <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+         <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
             <h2 className="text-lg font-black text-brand-navy">Detailed Payslips</h2>
-            <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+            <div className="flex items-center gap-2 text-[10px] font-bold text-slate-600">
                <Sparkles className="h-3 w-3 text-brand-green-deep" /> Zambian Statutory Calculations applied
             </div>
          </div>
@@ -155,18 +155,18 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
          <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
                <thead>
-                  <tr className="border-b border-slate-50">
-                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400">Employee</th>
-                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Basic</th>
-                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">PAYE</th>
-                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Statutory</th>
-                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Net Pay</th>
-                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400"></th>
+                  <tr className="border-b border-slate-200">
+                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-600">Employee</th>
+                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-600 text-right">Basic</th>
+                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-600 text-right">PAYE</th>
+                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-600 text-right">Statutory</th>
+                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-600 text-right">Net Pay</th>
+                     <th className="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-slate-600"></th>
                   </tr>
                </thead>
                <tbody>
                   {run.payslips.map((p: any) => (
-                    <tr key={p.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors group">
+                    <tr key={p.id} className="border-b border-slate-200 hover:bg-slate-50/80/50 transition-colors group">
                        <td className="px-8 py-5">
                           <div className="flex items-center gap-4">
                              <div className="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center text-brand-navy font-black text-[10px]">
@@ -174,7 +174,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
                              </div>
                              <div>
                                 <div className="text-sm font-black text-brand-navy">{p.employee.full_name}</div>
-                                <div className="text-[10px] font-semibold text-slate-400">{p.employee.email}</div>
+                                <div className="text-[10px] font-semibold text-slate-600">{p.employee.email}</div>
                              </div>
                           </div>
                        </td>
@@ -186,7 +186,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
                        </td>
                        <td className="px-8 py-5 text-right text-sm">
                           <div className="font-bold text-slate-600">ZMW {(Number(p.napsa_deduction) + Number(p.nhima_deduction)).toLocaleString()}</div>
-                          <div className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">NAPSA + NHIMA</div>
+                          <div className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">NAPSA + NHIMA</div>
                        </td>
                        <td className="px-8 py-5 text-right font-black text-brand-green-deep text-sm">
                           ZMW {Number(p.net_pay).toLocaleString()}
@@ -205,8 +205,8 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
 
       {/* Accountability Banner */}
       <div className={cn(
-        "p-10 rounded-[48px] flex items-start gap-8 border-2 transition-all",
-        isFinalized ? "bg-emerald-50 border-emerald-100" : "bg-slate-50 border-slate-100"
+        "p-10 rounded-3xl flex items-start gap-8 border-2 transition-all",
+        isFinalized ? "bg-emerald-50 border-emerald-100" : "bg-slate-50/80 border-slate-200"
       )}>
          <div className="h-14 w-14 rounded-2xl bg-white flex items-center justify-center shadow-sm">
             {isFinalized ? <Sparkles className="h-8 w-8 text-emerald-600" /> : <Zap className="h-8 w-8 text-brand-navy" />}
@@ -215,7 +215,7 @@ export default async function PayrollRunPage({ params }: { params: { id: string 
             <h4 className="text-sm font-black uppercase tracking-widest text-brand-navy">
                {isFinalized ? "Ledger Posting Finalized" : "Ready for Ledger Posting"}
             </h4>
-            <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-2xl">
+            <p className="text-xs text-slate-700 font-medium leading-relaxed max-w-2xl">
                {isFinalized 
                  ? "This payroll run has been locked and posted to the General Ledger. The financial impact is now reflected in your profit & loss and balance sheet statements."
                  : "Finalizing this run will calculate net payouts and statutory obligations. Streamline will automatically create a balanced double-entry journal posting for your financial records."}
