@@ -75,11 +75,14 @@ export default async function AccountingPage() {
 
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-[11px] font-black uppercase tracking-widest text-slate-700 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
-            <Calendar className="h-4 w-4" /> Period: April 2026
+            <Calendar className="h-4 w-4" /> Period: {new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}
           </button>
-          <button className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg hover:shadow-brand-navy/20 active:scale-[0.98]">
+          <Link 
+            href="/accounting/journals/new"
+            className="flex items-center gap-2 px-6 py-3 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg hover:shadow-brand-navy/20 active:scale-[0.98]"
+          >
             <Plus className="h-4 w-4 text-brand-green-deep" /> New Transaction
-          </button>
+          </Link>
         </div>
       </div>
 

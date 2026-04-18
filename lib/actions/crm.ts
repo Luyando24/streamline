@@ -145,6 +145,21 @@ export async function convertLeadToClient(leadId: string) {
   return client
 }
 
+export async function createClient(data: any) {
+  const supabase = await getSupabase()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error("Unauthorized")
+
+  const { data: profile } = await supabase.from('profiles').select('org_id').eq('id', user.id).single()
+  
+  const { error } = await supabase
+    .from('crm_clients')
+    .insert({ ...data, org_id: profile?.org_id })
+
+  if (error) throw error
+  revalidatePath('/crm/clients')
+}
+
 export async function logInteraction(data: {
   client_id?: string,
   lead_id?: string,
@@ -176,6 +191,40 @@ export async function updateDealStage(id: string, stage: string) {
     .update({ stage })
     .eq('id', id)
 
+  if (error) throw error
+  revalidatePath('/crm')
+}
+
+export async function updateLead(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('crm_leads').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/crm')
+}
+
+export async function updateClient(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('crm_clients').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/crm/clients')
+}
+
+export async function updateDeal(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('crm_deals').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/crm')
+}
+
+export async function deleteCrmRecord(id: string, table: 'crm_leads' | 'crm_clients' | 'crm_deals') {
+  const supabase = await getSupabase()
+  // Non-destructive: update is_active or status
+  let updateData: any = { is_active: false }
+  
+  if (table === 'crm_leads') updateData = { status: 'rejected' }
+  if (table === 'crm_deals') updateData = { stage: 'closed_lost' }
+
+  const { error } = await supabase.from(table).update(updateData).eq('id', id)
   if (error) throw error
   revalidatePath('/crm')
 }

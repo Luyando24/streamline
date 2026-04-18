@@ -189,6 +189,9 @@ export default function HrDirectoryPage() {
                          <div className="flex items-center gap-3 text-xs font-medium text-slate-700">
                             <Briefcase className="h-3.5 w-3.5 opacity-50" /> {e.contract_type}
                          </div>
+                         <div className="flex items-center gap-3 text-xs font-medium text-slate-700">
+                            <Calendar className="h-3.5 w-3.5 opacity-50" /> Joined {new Date(e.join_date).toLocaleDateString('en-GB')}
+                         </div>
                       </div>
 
                       <Link href={`/hr/directory/${e.id}`} className="w-full py-4 bg-slate-50/80 group-hover:bg-brand-navy group-hover:text-white rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all">
@@ -239,14 +242,17 @@ export default function HrDirectoryPage() {
                    </select>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                   <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">NRC Number</label>
-                      <input 
-                        name="nrc_number" 
-                        defaultValue={selectedProfileData?.nrc_number || ""}
-                        placeholder="123456/78/1" 
-                        className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm" 
-                      />
+                    <div className="space-y-2">
+                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">NRC Number</label>
+                       <input 
+                         name="nrc_number" 
+                         required
+                         pattern="[0-9]{6}/[0-9]{2}/[0-9]{1}"
+                         defaultValue={selectedProfileData?.nrc_number || ""}
+                         placeholder="123456/78/1" 
+                         className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm" 
+                       />
+                       <p className="text-[9px] font-black text-slate-400 mt-1 pl-1 italic">Industrial Standard: xxxxxx/yy/z</p>
                       {selectedProfileData?.nrc_number && (
                          <p className="text-[9px] font-black text-emerald-600 uppercase tracking-widest pl-1 flex items-center gap-1"><Sparkles className="h-2.5 w-2.5" /> Source: Industrial Profile</p>
                        )}

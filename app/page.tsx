@@ -20,6 +20,7 @@ import {
 import { TestimonialSlider } from "@/components/landing/TestimonialSlider"
 import { HeroContent } from "@/components/landing/HeroContent"
 import { Reveal } from "@/components/landing/Reveal"
+import { createClient } from "@/lib/supabase/server"
 
 const InfinityLoopBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-30 select-none">
@@ -62,14 +63,30 @@ const MODULES_SHOWCASE = [
   { icon: <BarChart3 className="h-8 w-8" />, name: "BI & Analytics", desc: "Interactive executive dashboards and KPIs for data-driven decisions." },
 ]
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  
+  let hasOrg = false
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('org_id')
+      .eq('id', user.id)
+      .single()
+    hasOrg = !!profile?.org_id
+  }
+
+  const dashboardLink = hasOrg ? "/dashboard" : "/onboarding"
+  const getStartedLink = user ? dashboardLink : "/register"
+
   return (
     <div className="flex min-h-screen flex-col font-sans bg-black text-white selection:bg-brand-teal selection:text-white overflow-x-hidden">
       {/* ========== TOP PROMO BANNER ========== */}
-      <div className="bg-[#e6ffe6] text-black py-2.5 px-4 text-center text-sm font-semibold flex items-center justify-center gap-1 hover:underline cursor-pointer">
+      <Link href={getStartedLink} className="bg-[#e6ffe6] text-black py-2.5 px-4 text-center text-sm font-semibold flex items-center justify-center gap-1 hover:underline cursor-pointer">
         <span>Get started with 30 days free on Streamline Small Business</span>
         <ChevronRight className="h-4 w-4" />
-      </div>
+      </Link>
 
       {/* ========== NAVIGATION ========== */}
       <header className="w-full bg-black">
@@ -80,7 +97,7 @@ export default function LandingPage() {
               <span className="text-[28px] font-black tracking-tighter text-brand-teal">Streamline</span>
             </Link>
             <nav className="hidden lg:flex items-center gap-8">
-              <Link href="#products" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Products & Solutions</Link>
+              <Link href="/explore" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Products & Solutions</Link>
               <Link href="#accountants" className="text-[15px] font-bold text-white hover:text-slate-300 transition-colors">Accountants</Link>
               <Link href="/jobs" className="text-[15px] font-black text-brand-teal hover:text-white transition-colors flex items-center gap-1 group">
                 Jobs <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -91,18 +108,29 @@ export default function LandingPage() {
           
           {/* Right Nav */}
           <div className="flex items-center gap-6">
-            <Link 
-              href="/login" 
-              className="hidden sm:inline-flex items-center justify-center rounded-full border-2 border-white px-6 py-2 text-[15px] font-bold text-white hover:bg-white hover:text-black transition-colors"
-            >
-              Log in
-            </Link>
-            <Link 
-              href="/register" 
-              className="inline-flex items-center justify-center rounded-full bg-brand-teal px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-teal-light transition-colors"
-            >
-              Get started
-            </Link>
+            {!user ? (
+              <>
+                <Link 
+                  href="/login" 
+                  className="hidden sm:inline-flex items-center justify-center rounded-full border-2 border-white px-6 py-2 text-[15px] font-bold text-white hover:bg-white hover:text-black transition-colors"
+                >
+                  Log in
+                </Link>
+                <Link 
+                  href="/register" 
+                  className="inline-flex items-center justify-center rounded-full bg-brand-teal px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-teal-light transition-colors"
+                >
+                  Get started
+                </Link>
+              </>
+            ) : (
+              <Link 
+                href={dashboardLink}
+                className="inline-flex items-center justify-center rounded-full bg-brand-teal px-6 py-2.5 text-sm font-bold text-black shadow hover:bg-brand-teal-light transition-colors"
+              >
+                {hasOrg ? "Go to Dashboard" : "Complete Setup"}
+              </Link>
+            )}
           </div>
         </div>
       </header>
@@ -127,7 +155,7 @@ export default function LandingPage() {
 
           <Reveal delay={0.2}>
             <div className="flex flex-col items-center">
-              <HeroContent />
+              <HeroContent isLoggedIn={!!user} hasOrg={hasOrg} />
             </div>
           </Reveal>
         </section>
@@ -249,7 +277,7 @@ export default function LandingPage() {
                     </div>
                     <h3 className="mb-3 text-[24px] font-black text-white tracking-tight">{m.name}</h3>
                     <p className="text-[16px] text-slate-400 flex-1 mb-8">{m.desc}</p>
-                    <Link href="/register" className="mt-auto font-bold text-white hover:text-brand-teal flex items-center gap-1">
+                    <Link href="/explore" className="mt-auto font-bold text-white hover:text-brand-teal flex items-center gap-1">
                       Learn more <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -259,7 +287,7 @@ export default function LandingPage() {
             
             <div className="text-center mt-12">
                <Link 
-                 href="/register"
+                 href="/explore"
                  className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-bold text-black hover:bg-slate-200 transition-colors"
                >
                  View all 20+ modules

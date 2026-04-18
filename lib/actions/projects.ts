@@ -168,3 +168,25 @@ export async function getTimesheets() {
 
   return entries || []
 }
+
+export async function updateProject(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('projects').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/projects')
+}
+
+export async function updateTask(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('project_tasks').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/projects')
+}
+
+export async function deleteProjectRecord(id: string, table: 'projects' | 'project_tasks') {
+  const supabase = await getSupabase()
+  // Non-destructive: update status to 'cancelled'
+  const { error } = await supabase.from(table).update({ status: 'cancelled' }).eq('id', id)
+  if (error) throw error
+  revalidatePath('/projects')
+}

@@ -25,7 +25,7 @@ import {
   Loader2
 } from "lucide-react"
 import Link from "next/link"
-import { getAppraisals } from "@/lib/actions/hr"
+import { getAppraisals, updateAppraisal, deleteHrRecord } from "@/lib/actions/hr"
 import { cn } from "@/lib/utils"
 import { IndustrialModal } from "@/components/ui/IndustrialModal"
 import { toast } from "sonner"
@@ -34,6 +34,9 @@ export default function PerformanceAppraisalsPage() {
   const [appraisals, setAppraisals] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [showInitiate, setShowInitiate] = useState(false)
+  const [selectedAppraisal, setSelectedAppraisal] = useState<any>(null)
+  const [showEdit, setShowEdit] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     fetchData()
@@ -46,6 +49,45 @@ export default function PerformanceAppraisalsPage() {
       setAppraisals(data)
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const handleUpdateAppraisal = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedAppraisal) return
+    setIsSubmitting(true)
+    try {
+      const formData = new FormData(e.target as HTMLFormElement)
+      const data = {
+        rating: parseInt(formData.get("rating") as string),
+        feedback: formData.get("feedback"),
+        goals: formData.get("goals"),
+        status: formData.get("status")
+      }
+      await updateAppraisal(selectedAppraisal.id, data)
+      toast.success("Audit records synchronized.")
+      setShowEdit(false)
+      fetchData()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleDeleteAppraisal = async () => {
+    if (!selectedAppraisal) return
+    if (!confirm("Are you sure you want to purge this audit record?")) return
+    setIsSubmitting(true)
+    try {
+      await deleteHrRecord(selectedAppraisal.id, 'hr_appraisals')
+      toast.success("Audit record purged.")
+      setShowEdit(false)
+      fetchData()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -167,6 +209,12 @@ export default function PerformanceAppraisalsPage() {
                               )}>
                                  {rev.status}
                               </div>
+                              <button 
+                                onClick={() => { setSelectedAppraisal(rev); setShowEdit(true); }}
+                                className="p-2 text-slate-300 hover:text-brand-navy transition-all"
+                              >
+                                 <MoreVertical className="h-5 w-5" />
+                              </button>
                               <Link href={`/hr/directory/${rev.employee_id}`} className="p-2 text-slate-300 hover:text-brand-navy transition-all">
                                  <ChevronRight className="h-6 w-6" />
                               </Link>
@@ -234,6 +282,65 @@ export default function PerformanceAppraisalsPage() {
               </button>
            </div>
         </div>
+      </IndustrialModal>
+
+      {/* Edit Audit Centered Modal */}
+      <IndustrialModal
+        isOpen={showEdit}
+        onClose={() => setShowEdit(false)}
+        title="Edit Audit Record"
+        subtitle="Growth Metric Integrity"
+        icon={<Award className="h-4 w-4" />}
+        maxWidth="max-w-xl"
+      >
+        <form onSubmit={handleUpdateAppraisal} className="space-y-8">
+           <div className="space-y-6">
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 border-b border-slate-100 pb-4">Audit Parameters</h3>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Performance Rating</label>
+                   <select name="rating" defaultValue={selectedAppraisal?.rating} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                      {[1,2,3,4,5].map(v => <option key={v} value={v}>{v} Stars</option>)}
+                   </select>
+                </div>
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Audit Status</label>
+                   <select name="status" defaultValue={selectedAppraisal?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                      <option value="draft">Draft</option>
+                      <option value="published">Published</option>
+                   </select>
+                </div>
+              </div>
+           </div>
+
+           <div className="space-y-4">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Qualitative Feedback</label>
+              <textarea name="feedback" defaultValue={selectedAppraisal?.feedback} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm min-h-[120px] bg-slate-50" />
+           </div>
+
+           <div className="space-y-4">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Future Growth Goals</label>
+              <textarea name="goals" defaultValue={selectedAppraisal?.goals} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm min-h-[100px] bg-slate-50" />
+           </div>
+
+           <div className="pt-6 space-y-4">
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full py-5 bg-brand-navy text-white rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-slate-800 transition-all shadow-lg active:scale-95 disabled:opacity-50"
+              >
+                {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Authorize Audit Update"}
+              </button>
+              <button 
+                type="button"
+                onClick={handleDeleteAppraisal}
+                disabled={isSubmitting}
+                className="w-full py-5 bg-white border-2 border-orange-200 text-orange-600 rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-orange-50 transition-all active:scale-95 disabled:opacity-50"
+              >
+                Purge Audit Record
+              </button>
+           </div>
+        </form>
       </IndustrialModal>
     </div>
   )

@@ -22,6 +22,8 @@ import {
 import Link from "next/link"
 import { getProjectSummary, getProjects } from "@/lib/actions/projects"
 import { cn } from "@/lib/utils"
+import { ProjectMaster } from "@/components/erp/ProjectMaster"
+import { ProvisionProjectButton } from "@/components/erp/ProvisionProjectButton"
 
 export const dynamic = "force-dynamic"
 
@@ -55,9 +57,7 @@ export default async function ProjectDashboardPage() {
           >
             <Clock className="h-4 w-4" /> Weekly Timesheets
           </Link>
-          <button className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10">
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Provision Project
-          </button>
+          <ProvisionProjectButton />
         </div>
       </div>
 
@@ -93,72 +93,8 @@ export default async function ProjectDashboardPage() {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-10 px-4">
-        {/* Active Project Grid Overview */}
         <div className="lg:col-span-2 space-y-8">
-           <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-              <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
-                 <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                    <Target className="h-5 w-5 text-brand-green-deep" /> Active Workflows
-                 </h2>
-                 <Link href="/projects/kanban" className="text-[10px] font-black uppercase tracking-widest text-brand-green-deep flex items-center gap-2 hover:gap-3 transition-all">
-                    Visual Pipeline <ChevronRight className="h-3 w-3" />
-                 </Link>
-              </div>
-
-              <div className="p-4">
-                 {projects.length > 0 ? (
-                    <div className="grid sm:grid-cols-2 gap-4">
-                       {projects.map((project: any) => (
-                         <div key={project.id} className="group p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-brand-green-deep/20 hover:shadow-xl transition-all duration-500 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 h-24 w-24 bg-slate-50/80 rounded-full -mr-12 -mt-12 group-hover:bg-brand-green-pale transition-colors duration-500" />
-                            <div className="relative z-10 space-y-6">
-                               <div className="flex justify-between items-start">
-                                  <div className="h-12 w-12 rounded-2xl bg-white border-2 border-slate-200 flex items-center justify-center shadow-sm group-hover:bg-brand-navy group-hover:text-white transition-all">
-                                     <Briefcase className="h-5 w-5" />
-                                  </div>
-                                  <div className={cn(
-                                    "px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border",
-                                    project.status === 'active' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-slate-50/80 text-slate-600 border-slate-200"
-                                  )}>
-                                     {project.status}
-                                  </div>
-                               </div>
-
-                               <div>
-                                  <h3 className="text-base font-black text-brand-navy mb-1 group-hover:text-brand-green-deep transition-colors line-clamp-1">{project.title}</h3>
-                                  <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest flex items-center gap-2">
-                                     <Users className="h-3.5 w-3.5 opacity-50" /> {project.client?.company_name || "Internal"}
-                                  </p>
-                               </div>
-
-                               <div className="space-y-4 pt-6 border-t border-slate-200">
-                                  <div className="flex justify-between items-end">
-                                     <div className="space-y-1">
-                                        <div className="text-[9px] font-black uppercase tracking-widest text-slate-300">Budget Usage</div>
-                                        <div className="text-xs font-black text-brand-navy">K {Number(project.budget).toLocaleString()}</div>
-                                     </div>
-                                     <div className="text-[10px] font-black text-brand-green-deep">32%</div>
-                                  </div>
-                                  <div className="h-1.5 w-full bg-slate-50/80 rounded-full overflow-hidden">
-                                     <div className="h-full bg-brand-green-deep" style={{ width: '32%' }} />
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                       ))}
-                    </div>
-                 ) : (
-                    <div className="py-24 flex flex-col items-center justify-center text-center space-y-6 animate-in fade-in duration-1000">
-                       <div className="h-20 w-20 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-200">
-                          <Archive className="h-10 w-10" />
-                       </div>
-                       <div className="space-y-1">
-                         <p className="text-sm font-black text-brand-navy italic opacity-50">Empty hangar. No active projects provisioned.</p>
-                       </div>
-                    </div>
-                 )}
-              </div>
-           </div>
+           <ProjectMaster initialProjects={projects} />
         </div>
 
         {/* Sidebar Delivery Radar */}

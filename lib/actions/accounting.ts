@@ -183,3 +183,117 @@ export async function getLedgerEntries() {
 
   return journals || []
 }
+
+export async function createAccount(data: { code: string, name: string, type: string, normal_balance: 'debit' | 'credit', description?: string }) {
+  const supabase = await getSupabase()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error("Unauthorized")
+
+  const { data: profile } = await supabase.from('profiles').select('org_id').eq('id', user.id).single()
+  if (!profile?.org_id) throw new Error("No organization found")
+
+  const { error } = await supabase
+    .from('accounts')
+    .insert([{ ...data, org_id: profile.org_id }])
+
+  if (error) throw new Error(error.message)
+  
+  revalidatePath('/accounting/accounts')
+  return { success: true }
+}
+
+export async function updateAccount(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase
+    .from('accounts')
+    .update(data)
+    .eq('id', id)
+
+  if (error) throw new Error(error.message)
+  
+  revalidatePath('/accounting/accounts')
+  return { success: true }
+}
+
+export async function deleteAccount(id: string) {
+  const supabase = await getSupabase()
+  
+  // Check if system account
+  const { data: account } = await supabase.from('accounts').select('is_system').eq('id', id).single()
+  if (account?.is_system) throw new Error("System accounts cannot be deleted")
+
+  // Check if has ledger entries
+  const { data: hasEntries } = await supabase.from('ledger_entries').select('id').eq('account_id', id).limit(1)
+  if (hasEntries && hasEntries.length > 0) throw new Error("Cannot delete account with existing transactions")
+
+  const { error } = await supabase
+    .from('accounts')
+    .delete()
+    .eq('id', id)
+
+  if (error) throw new Error(error.message)
+  
+  revalidatePath('/accounting/accounts')
+  return { success: true }
+}
+
+export async function getFinancialReports(periodStart: string, periodEnd: string) {
+  const supabase = await getSupabase()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error("Unauthorized")
+
+  const { data: profile } = await supabase.from('profiles').select('org_id').eq('id', user.id).single()
+  if (!profile?.org_id) return null
+
+  // Fetch all ledger entries in period joined with account type
+  const { data: entries } = await supabase
+    .from('ledger_entries')
+    .select(`
+      amount,
+      entry_type,
+      journal_entries!inner(date),
+      accounts!inner(code, name, type)
+    `)
+    .eq('accounts.org_id', profile.org_id)
+    .gte('journal_entries.date', periodStart)
+    .lte('journal_entries.date', periodEnd)
+
+  const report = {
+    revenue: [] as any[],
+    expenses: [] as any[],
+    net_profit: 0,
+    total_revenue: 0,
+    total_expenses: 0
+  }
+
+  const accountMap: Record<string, any> = {}
+
+  entries?.forEach(e => {
+    const acc = e.accounts as any
+    const key = acc.code
+    if (!accountMap[key]) {
+      accountMap[key] = { code: acc.code, name: acc.name, type: acc.type, balance: 0 }
+    }
+    
+    const val = Number(e.amount)
+    if (acc.type === 'revenue') {
+      accountMap[key].balance += e.entry_type === 'credit' ? val : -val
+    } else if (acc.type === 'expense') {
+      accountMap[key].balance += e.entry_type === 'debit' ? val : -val
+    }
+  })
+
+  Object.values(accountMap).forEach((acc: any) => {
+    if (acc.type === 'revenue') {
+      report.revenue.push(acc)
+      report.total_revenue += acc.balance
+    } else if (acc.type === 'expense') {
+      report.expenses.push(acc)
+      report.total_expenses += acc.balance
+    }
+  })
+
+  report.net_profit = report.total_revenue - report.total_expenses
+
+  return report
+}

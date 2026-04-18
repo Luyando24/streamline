@@ -175,7 +175,7 @@ export default async function HrDashboardPage() {
                            <div className="flex items-center gap-12">
                               <div className="text-right hidden sm:block">
                                  <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 block mb-1">Join Date</span>
-                                 <div className="text-xs font-black text-brand-navy">{new Date(emp.join_date).toLocaleDateString()}</div>
+                                 <div className="text-xs font-black text-brand-navy">{new Date(emp.join_date).toLocaleDateString('en-GB')}</div>
                               </div>
                               
                               <div className="text-right hidden lg:block">

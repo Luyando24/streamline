@@ -58,8 +58,11 @@ const TAB_CONTENT = {
 type TabType = keyof typeof TAB_CONTENT;
 const TABS: TabType[] = ["Accounting", "HR & Payroll", "Inventory", "Tax & Compliance"]
 
-export function HeroContent() {
+export function HeroContent({ isLoggedIn, hasOrg }: { isLoggedIn: boolean, hasOrg: boolean }) {
   const [activeTab, setActiveTab] = useState<TabType>("Accounting")
+  const dashboardLink = hasOrg ? "/dashboard" : "/onboarding"
+  const ctaLink = isLoggedIn ? dashboardLink : "/register"
+
 
   return (
     <>
@@ -108,7 +111,7 @@ export function HeroContent() {
               <span className="font-bold">{TAB_CONTENT[activeTab].base.price.split(', ')[0]}</span>{TAB_CONTENT[activeTab].base.price.includes(',') ? ', ' + TAB_CONTENT[activeTab].base.price.split(', ')[1] : ''}
             </p>
             <Link 
-              href="/register"
+              href={ctaLink}
               className="relative overflow-hidden mt-auto inline-flex items-center justify-center rounded-full bg-black px-6 sm:px-8 py-3 sm:py-4 text-[14px] sm:text-[15px] font-bold text-white transition-all hover:scale-105 active:scale-95 group/btn"
             >
               <span className="relative z-10">Discover {TAB_CONTENT[activeTab].base.title}</span>
@@ -137,7 +140,7 @@ export function HeroContent() {
               {TAB_CONTENT[activeTab].pro.price}
             </p>
             <Link 
-              href="/register"
+              href={ctaLink}
               className="relative overflow-hidden mt-auto inline-flex items-center justify-center rounded-full bg-black px-6 sm:px-8 py-3 sm:py-4 text-[14px] sm:text-[15px] font-bold text-white transition-all hover:scale-105 active:scale-95 group/btn"
             >
               <span className="relative z-10">Discover {TAB_CONTENT[activeTab].pro.title}</span>

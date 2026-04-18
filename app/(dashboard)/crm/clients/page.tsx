@@ -25,7 +25,7 @@ import {
   Briefcase
 } from "lucide-react"
 import Link from "next/link"
-import { getClients, createClient } from "@/lib/actions/crm"
+import { getClients, createClient, updateClient, deleteCrmRecord } from "@/lib/actions/crm"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 import { IndustrialModal } from "@/components/ui/IndustrialModal"
@@ -34,6 +34,8 @@ export default function ClientRegistryPage() {
   const [clients, setClients] = useState<any[]>([])
   const [search, setSearch] = useState("")
   const [showAdd, setShowAdd] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
+  const [selectedClient, setSelectedClient] = useState<any>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -66,10 +68,49 @@ export default function ClientRegistryPage() {
         industry: formData.get("industry")
       }
 
-      // await createClient(data) // Need to add this to lib/actions/crm.ts or handle via client-side supabase if simple
-      // For now, I'll simulate it or assume createClient exists similarly to vendors
+      await createClient(data)
       toast.success("Client successfully onboarded to registry.")
       setShowAdd(false)
+      fetchClients()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedClient) return
+    setIsSubmitting(true)
+    try {
+      const formData = new FormData(e.target as HTMLFormElement)
+      const data = {
+        company_name: formData.get("company_name"),
+        contact_person: formData.get("contact_person"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        tpin: formData.get("tpin"),
+        address: formData.get("address"),
+        industry: formData.get("industry")
+      }
+      await updateClient(selectedClient.id, data)
+      toast.success("Client record synchronized.")
+      setShowEdit(false)
+      fetchClients()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to archive this client record? Historical deals will be preserved.")) return
+    setIsSubmitting(true)
+    try {
+      await deleteCrmRecord(id, 'crm_clients')
+      toast.success("Client record archived.")
       fetchClients()
     } catch (err: any) {
       toast.error(err.message)
@@ -175,9 +216,17 @@ export default function ClientRegistryPage() {
                   </div>
                </div>
 
-               <Link href={`/crm/clients/${c.id}`} className="h-12 w-12 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-300 hover:text-brand-navy hover:shadow-lg transition-all">
-                  <ChevronRight className="h-5 w-5" />
-               </Link>
+               <div className="flex items-center gap-3">
+                  <button 
+                    onClick={() => { setSelectedClient(c); setShowEdit(true); }}
+                    className="h-12 w-12 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-300 hover:text-brand-navy hover:shadow-lg transition-all"
+                  >
+                     <MoreVertical className="h-5 w-5" />
+                  </button>
+                  <Link href={`/crm/clients/${c.id}`} className="h-12 w-12 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-300 hover:text-brand-navy hover:shadow-lg transition-all">
+                     <ChevronRight className="h-5 w-5" />
+                  </Link>
+               </div>
             </div>
           </div>
         )) : (
@@ -246,7 +295,8 @@ export default function ClientRegistryPage() {
              <div className="space-y-4">
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">ZRA TPIN (Tax Identifier)</label>
-                   <input name="tpin" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <input name="tpin" required pattern="[0-9]{10}" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   <p className="text-[9px] font-black text-slate-400 mt-1 pl-1 italic">10-digit numeric pattern required.</p>
                 </div>
                 <div className="space-y-2">
                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Headquarters Address</label>
@@ -266,7 +316,89 @@ export default function ClientRegistryPage() {
            </div>
         </form>
       </IndustrialModal>
+
+      {/* Edit Client Centered Modal */}
+      <IndustrialModal
+        isOpen={showEdit}
+        onClose={() => setShowEdit(false)}
+        title="Update Record"
+        subtitle="Account Maintenance"
+        icon={<Briefcase className="h-4 w-4" />}
+        maxWidth="max-w-2xl"
+      >
+        <form onSubmit={handleUpdate} className="space-y-10">
+           <div className="space-y-6">
+             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Corporate Identity</h3>
+             <div className="space-y-4">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Entity / Company Name</label>
+                   <input name="company_name" defaultValue={selectedClient?.company_name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Representative</label>
+                      <input name="contact_person" defaultValue={selectedClient?.contact_person} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   </div>
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Industry Sector</label>
+                      <select name="industry" defaultValue={selectedClient?.industry} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50 appearance-none">
+                         <option value="Tech">Technology</option>
+                         <option value="Mining">Mining & Industrial</option>
+                         <option value="Retail">Retail & Trade</option>
+                         <option value="Agri">Agriculture</option>
+                      </select>
+                   </div>
+                </div>
+             </div>
+           </div>
+
+           <div className="space-y-6">
+             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Connectivity</h3>
+             <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Email Coordinates</label>
+                   <input name="email" type="email" defaultValue={selectedClient?.email} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Direct Phone</label>
+                   <input name="phone" defaultValue={selectedClient?.phone} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+             </div>
+           </div>
+
+           <div className="space-y-6">
+             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Billing Infrastructure</h3>
+             <div className="space-y-4">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">ZRA TPIN (Tax Identifier)</label>
+                   <input name="tpin" required pattern="[0-9]{10}" defaultValue={selectedClient?.tpin} placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Headquarters Address</label>
+                   <textarea name="address" rows={2} defaultValue={selectedClient?.address} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+                </div>
+             </div>
+           </div>
+
+           <div className="pt-6 space-y-4">
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full py-5 bg-brand-navy text-white rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-slate-800 transition-all shadow-lg shadow-brand-navy/10 hover:-translate-y-1 active:scale-[0.98] disabled:opacity-50"
+              >
+                {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Authorize Synchronization"}
+              </button>
+              <button 
+                type="button"
+                onClick={() => handleDelete(selectedClient.id)}
+                disabled={isSubmitting}
+                className="w-full py-5 bg-white border-2 border-orange-200 text-orange-600 rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-orange-50 transition-all active:scale-[0.98] disabled:opacity-50"
+              >
+                Archive Institutional Account
+              </button>
+           </div>
+        </form>
+      </IndustrialModal>
     </div>
   )
 }
-

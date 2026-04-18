@@ -22,7 +22,7 @@ import {
   ExternalLink
 } from "lucide-react"
 import Link from "next/link"
-import { getVendors, createVendor } from "@/lib/actions/procurement"
+import { getVendors, createVendor, updateVendor, deleteProcurementRecord } from "@/lib/actions/procurement"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 import { IndustrialModal } from "@/components/ui/IndustrialModal"
@@ -31,6 +31,8 @@ export default function VendorRegistryPage() {
   const [vendors, setVendors] = useState<any[]>([])
   const [search, setSearch] = useState("")
   const [showAdd, setShowAdd] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
+  const [selectedVendor, setSelectedVendor] = useState<any>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -67,6 +69,47 @@ export default function VendorRegistryPage() {
       await createVendor(data)
       toast.success("Vendor successfully registered.")
       setShowAdd(false)
+      fetchVendors()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedVendor) return
+    setIsSubmitting(true)
+    try {
+      const formData = new FormData(e.target as HTMLFormElement)
+      const data = {
+        name: formData.get("name"),
+        contact_person: formData.get("contact_person"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        tpin: formData.get("tpin"),
+        bank_name: formData.get("bank_name"),
+        bank_account_no: formData.get("bank_account_no"),
+        address: formData.get("address")
+      }
+      await updateVendor(selectedVendor.id, data)
+      toast.success("Vendor credentials synchronized.")
+      setShowEdit(false)
+      fetchVendors()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Deactivate this supplier? Existing procurement records will be preserved for audit.")) return
+    setIsSubmitting(true)
+    try {
+      await deleteProcurementRecord(id, 'vendors')
+      toast.success("Vendor archived.")
       fetchVendors()
     } catch (err: any) {
       toast.error(err.message)
@@ -142,9 +185,17 @@ export default function VendorRegistryPage() {
                   <div className="h-14 w-14 rounded-2xl bg-brand-navy text-white flex items-center justify-center text-lg font-black shadow-lg shadow-brand-navy/10 group-hover:scale-110 group-hover:bg-brand-green-deep transition-all duration-500">
                      {v.name[0]}
                   </div>
-                  <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border border-emerald-100/50">
-                     Verified
-                  </div>
+                   <div className="flex gap-2">
+                     <button 
+                       onClick={() => { setSelectedVendor(v); setShowEdit(true); }}
+                       className="h-10 w-10 rounded-xl bg-white/10 group-hover:bg-brand-navy flex items-center justify-center text-slate-400 group-hover:text-white transition-all shadow-sm"
+                     >
+                        <MoreVertical className="h-4 w-4" />
+                     </button>
+                      <div className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border border-emerald-100/50">
+                         Verified
+                      </div>
+                   </div>
                </div>
 
                <div>
@@ -207,10 +258,10 @@ export default function VendorRegistryPage() {
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Contact Person</label>
                       <input name="contact_person" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
                    </div>
-                   <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Tax TPIN</label>
-                      <input name="tpin" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
-                   </div>
+                    <div className="space-y-2">
+                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Tax TPIN</label>
+                       <input name="tpin" required pattern="[0-9]{10}" placeholder="1XXXXXXXXX" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                    </div>
                 </div>
              </div>
           </div>
@@ -258,7 +309,88 @@ export default function VendorRegistryPage() {
           </div>
         </form>
       </IndustrialModal>
+
+      {/* Edit Vendor Centered Modal */}
+      <IndustrialModal
+        isOpen={showEdit}
+        onClose={() => setShowEdit(false)}
+        title="Supplier Maintenance"
+        subtitle="Update Corporate Credentials"
+        icon={<Building2 className="h-4 w-4" />}
+        maxWidth="max-w-2xl"
+      >
+        <form onSubmit={handleUpdate} className="space-y-10">
+          <div className="space-y-6">
+             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Corporate Identity</h3>
+             <div className="space-y-4">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Registered Business Name</label>
+                   <input name="name" defaultValue={selectedVendor?.name} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Primary Contact Person</label>
+                      <input name="contact_person" defaultValue={selectedVendor?.contact_person} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   </div>
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Tax TPIN</label>
+                      <input name="tpin" defaultValue={selectedVendor?.tpin} required pattern="[0-9]{10}" className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                   </div>
+                </div>
+             </div>
+          </div>
+
+          <div className="space-y-6">
+             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Contact & Logistics</h3>
+             <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Email Address</label>
+                   <input name="email" type="email" defaultValue={selectedVendor?.email} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Phone Number</label>
+                   <input name="phone" defaultValue={selectedVendor?.phone} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+             </div>
+             <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Business Address</label>
+                <textarea name="address" defaultValue={selectedVendor?.address} rows={2} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm resize-none bg-slate-50" />
+             </div>
+          </div>
+
+          <div className="space-y-6">
+             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-300 border-b border-slate-100 pb-3">Banking & Disbursement</h3>
+             <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Institution Name</label>
+                   <input name="bank_name" defaultValue={selectedVendor?.bank_name} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 pl-1">Account Number</label>
+                   <input name="bank_account_no" defaultValue={selectedVendor?.bank_account_no} className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm shadow-sm bg-slate-50" />
+                </div>
+             </div>
+          </div>
+
+          <div className="pt-6 space-y-4">
+             <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="w-full py-5 bg-brand-navy text-white rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-slate-800 transition-all shadow-lg shadow-brand-navy/10 hover:-translate-y-1 active:scale-[0.98] disabled:opacity-50"
+             >
+               {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Authorize Synchronization"}
+             </button>
+             <button 
+              type="button"
+              onClick={() => handleDelete(selectedVendor.id)}
+              disabled={isSubmitting}
+              className="w-full py-5 bg-white border-2 border-orange-200 text-orange-600 rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-orange-50 transition-all active:scale-[0.98] disabled:opacity-50"
+             >
+               Deactivate Supplier Relations
+             </button>
+          </div>
+        </form>
+      </IndustrialModal>
     </div>
   )
 }
-

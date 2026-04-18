@@ -23,10 +23,11 @@ interface ModuleStore {
   setBillingCycle: (cycle: 'monthly' | 'quarterly' | 'annual') => void
   setUserTier: (tier: any) => void
   activateSuite: (ids: string[]) => void
+  hydrateActiveModules: (ids: string[]) => void
 }
 
 export const useModuleStore = create<ModuleStore>((set) => ({
-  activeModuleIds: ['finance-accounting', 'payroll-management'], // Initial mock defaults
+  activeModuleIds: [], // Initialized as empty, will be hydrated from DB
   cartItemIds: [],
   billingCycle: 'monthly',
   userTier: 'small',
@@ -63,5 +64,7 @@ export const useModuleStore = create<ModuleStore>((set) => ({
 
   activateSuite: (ids) => set((state) => ({
     activeModuleIds: Array.from(new Set([...state.activeModuleIds, ...ids]))
-  }))
+  })),
+
+  hydrateActiveModules: (ids) => set({ activeModuleIds: ids })
 }))

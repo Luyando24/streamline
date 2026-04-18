@@ -202,3 +202,21 @@ export async function disbursePayment(id: string) {
   revalidatePath('/procurement')
   return { success: true }
 }
+
+export async function updateVendor(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('vendors').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/procurement/vendors')
+}
+
+export async function deleteProcurementRecord(id: string, table: 'vendors' | 'purchase_requisitions') {
+  const supabase = await getSupabase()
+  // Non-destructive: update status if requisition, or is_active if vendor
+  let updateData: any = { is_active: false }
+  if (table === 'purchase_requisitions') updateData = { status: 'cancelled' }
+
+  const { error } = await supabase.from(table).update(updateData).eq('id', id)
+  if (error) throw error
+  revalidatePath('/procurement')
+}

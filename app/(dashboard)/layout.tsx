@@ -2,6 +2,8 @@ import { Sidebar } from "@/components/dashboard/sidebar"
 import { Bell, Search } from "lucide-react"
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
+import { getActiveModules } from "@/lib/actions/modules"
+import { StoreHydrator } from "@/components/dashboard/StoreHydrator"
 
 export default async function DashboardLayout({
   children,
@@ -31,8 +33,11 @@ export default async function DashboardLayout({
   const roleLabel = profile.role === 'owner' ? 'Org Owner' : profile.role === 'admin' ? 'Administrator' : 'Team Member'
   const initials = (profile.full_name || 'U').split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase()
 
+  const activeModules = await getActiveModules()
+
   return (
     <div className="flex min-h-screen bg-slate-50/80">
+      <StoreHydrator activeModuleSlugs={activeModules} />
       {/* Sidebar */}
       <Sidebar userRole={profile.role || 'member'} />
 

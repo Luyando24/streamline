@@ -349,7 +349,6 @@ export default function TripLogbookPage() {
            </div>
         </form>
       </IndustrialModal>
- )}
     </div>
   )
 }

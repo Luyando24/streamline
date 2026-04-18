@@ -25,10 +25,20 @@ export const dynamic = "force-dynamic"
 export default async function PayrollPage() {
   const employees = await getEmployeePayrollProfiles()
   
-  const activeHeadcount = employees.filter(e => e.employee_profiles?.is_active).length
+  const activeHeadcount = employees.filter(e => {
+    const profile = Array.isArray(e.employee_profiles) ? e.employee_profiles[0] : e.employee_profiles
+    return profile?.is_active
+  }).length
+
   const totalMonthlyWage = employees
-    .filter(e => e.employee_profiles?.is_active)
-    .reduce((acc, e) => acc + Number(e.employee_profiles?.basic_salary || 0), 0)
+    .filter(e => {
+      const profile = Array.isArray(e.employee_profiles) ? e.employee_profiles[0] : e.employee_profiles
+      return profile?.is_active
+    })
+    .reduce((acc, e) => {
+      const profile = Array.isArray(e.employee_profiles) ? e.employee_profiles[0] : e.employee_profiles
+      return acc + Number(profile?.basic_salary || 0)
+    }, 0)
 
   const stats = [
     { label: "Active Headcount", value: activeHeadcount, icon: Users, color: "blue", desc: "Total staff on payroll" },

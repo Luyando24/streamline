@@ -38,6 +38,7 @@ import { useModuleStore } from "@/lib/store/useModuleStore"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { PaymentModal } from "@/components/dashboard/PaymentModal"
+import { activateModules } from "@/lib/actions/modules"
 
 const CATEGORIES = ["All", "Active", "Core", "Add-On", "Premium"]
 
@@ -179,7 +180,12 @@ export default function MarketplacePage() {
     toast.success(`${suite.name} added to checkout queue`)
   }
 
-  const onPaymentSuccess = () => {
+  const onPaymentSuccess = async () => {
+    const { error } = await activateModules(cartItemIds)
+    if (error) {
+      toast.error(error)
+      return
+    }
     checkoutCart()
     toast.success("All items activated successfully!")
   }

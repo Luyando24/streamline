@@ -184,3 +184,18 @@ export async function getAssetCategories() {
 
   return categories || []
 }
+
+export async function updateAsset(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase.from('fixed_assets').update(data).eq('id', id)
+  if (error) throw error
+  revalidatePath('/assets')
+}
+
+export async function deleteAssetRecord(id: string) {
+  const supabase = await getSupabase()
+  // Non-destructive: update status to 'disposed'
+  const { error } = await supabase.from('fixed_assets').update({ status: 'disposed' }).eq('id', id)
+  if (error) throw error
+  revalidatePath('/assets')
+}

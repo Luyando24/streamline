@@ -32,7 +32,7 @@ import {
   MoreVertical
 } from "lucide-react"
 import Link from "next/link"
-import { getEmployeeFullDetails, uploadHrDocument, submitAppraisal } from "@/lib/actions/hr"
+import { getEmployeeFullDetails, uploadHrDocument, submitAppraisal, updateEmployee, deleteHrRecord } from "@/lib/actions/hr"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 import { IndustrialModal } from "@/components/ui/IndustrialModal"
@@ -44,6 +44,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
   const [activeTab, setActiveTab] = useState("overview")
   const [showDocUpload, setShowDocUpload] = useState(false)
   const [showReviewForm, setShowReviewForm] = useState(false)
+  const [showEditProfile, setShowEditProfile] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -102,6 +103,42 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
       toast.success("Performance audit published and archived.")
       setShowReviewForm(false)
       fetchData()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleUpdateProfile = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    try {
+      const formData = new FormData(e.target as HTMLFormElement)
+      const data = {
+        department: formData.get("department"),
+        contract_type: formData.get("contract_type"),
+        nrc_number: formData.get("nrc_number"),
+        status: formData.get("status")
+      }
+      await updateEmployee(id, data)
+      toast.success("Personnel file updated and synchronized.")
+      setShowEditProfile(false)
+      fetchData()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleTerminate = async () => {
+    if (!confirm("Are you sure you want to terminate this personnel file? This action will archive the record.")) return
+    setIsSubmitting(true)
+    try {
+      await deleteHrRecord(id, 'hr_employees')
+      toast.success("Personnel record archived.")
+      window.location.href = '/hr/directory'
     } catch (err: any) {
       toast.error(err.message)
     } finally {
@@ -170,7 +207,10 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                >
                  <TrendingUp className="h-4 w-4 text-brand-green-deep" /> New Review
                </button>
-               <button className="h-14 w-14 rounded-2xl border-2 border-slate-200 flex items-center justify-center text-slate-400 hover:text-brand-navy hover:border-brand-navy transition-all">
+               <button 
+                  onClick={() => setShowEditProfile(true)}
+                  className="h-14 w-14 rounded-2xl border-2 border-slate-200 flex items-center justify-center text-slate-400 hover:text-brand-navy hover:border-brand-navy transition-all"
+               >
                   <MoreVertical className="h-6 w-6" />
                </button>
             </div>
@@ -209,7 +249,7 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
                     <div className="grid sm:grid-cols-2 gap-10">
                        <div className="space-y-1">
                           <label className="text-[9px] font-black uppercase tracking-widest text-slate-400">Join Date</label>
-                          <div className="text-base font-black text-brand-navy">{new Date(employee.join_date).toLocaleDateString(undefined, { dateStyle: 'long' })}</div>
+                          <div className="text-base font-black text-brand-navy">{new Date(employee.join_date).toLocaleDateString('en-GB')}</div>
                        </div>
                        <div className="space-y-1">
                           <label className="text-[9px] font-black uppercase tracking-widest text-slate-400">NRC Number</label>
@@ -452,6 +492,72 @@ export default function EmployeeDetailsPage({ params }: { params: Promise<{ id: 
              >
                {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Publish Talent Audit"}
              </button>
+           </div>
+        </form>
+      </IndustrialModal>
+      {/* Edit Profile Centered Modal */}
+      <IndustrialModal
+        isOpen={showEditProfile}
+        onClose={() => setShowEditProfile(false)}
+        title="Edit Record"
+        subtitle="Personnel File Update"
+        icon={<ShieldCheck className="h-4 w-4" />}
+        maxWidth="max-w-xl"
+      >
+        <form onSubmit={handleUpdateProfile} className="space-y-8">
+           <div className="space-y-6">
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 border-b border-slate-100 pb-4">Core Metadata</h3>
+              <div className="grid grid-cols-2 gap-6">
+                 <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Department</label>
+                    <input name="department" defaultValue={employee?.department} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" />
+                 </div>
+                 <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Status</label>
+                    <select name="status" defaultValue={employee?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                       <option value="active">Active</option>
+                       <option value="on_leave">On Leave</option>
+                       <option value="terminated">Terminated</option>
+                       <option value="resigned">Resigned</option>
+                    </select>
+                 </div>
+              </div>
+              <div className="space-y-2">
+                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Contract Type</label>
+                 <select name="contract_type" defaultValue={employee?.contract_type} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                    <option value="permanent">Permanent</option>
+                    <option value="contract">Fixed Term Contract</option>
+                    <option value="intern">Internship</option>
+                    <option value="casual">Casual</option>
+                 </select>
+              </div>
+              <div className="space-y-2">
+                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">NRC Number</label>
+                 <input 
+                  name="nrc_number" 
+                  pattern="[0-9]{6}/[0-9]{2}/[0-9]{1}"
+                  defaultValue={employee?.nrc_number} 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" 
+                 />
+              </div>
+           </div>
+
+           <div className="pt-6 space-y-4">
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full py-5 bg-brand-navy text-white rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-slate-800 transition-all shadow-lg active:scale-95 disabled:opacity-50"
+              >
+                {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Synchronize Record"}
+              </button>
+              <button 
+                type="button"
+                onClick={handleTerminate}
+                disabled={isSubmitting}
+                className="w-full py-5 bg-white border-2 border-orange-200 text-orange-600 rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-orange-50 transition-all active:scale-95 disabled:opacity-50"
+              >
+                Terminate Personnel File
+              </button>
            </div>
         </form>
       </IndustrialModal>

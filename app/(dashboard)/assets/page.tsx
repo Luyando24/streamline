@@ -20,6 +20,8 @@ import {
 import Link from "next/link"
 import { getAssetSummary, getFixedAssets } from "@/lib/actions/assets"
 import { cn } from "@/lib/utils"
+import { AssetMaster } from "@/components/erp/AssetMaster"
+import { RegisterAssetButton } from "@/components/erp/RegisterAssetButton"
 
 export const dynamic = "force-dynamic"
 
@@ -53,9 +55,7 @@ export default async function AssetDashboardPage() {
           >
             <History className="h-4 w-4" /> Service Logs
           </Link>
-          <button className="flex items-center gap-2 px-6 py-4 bg-brand-navy text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl active:scale-[0.98] shadow-brand-navy/10">
-            <Plus className="h-4 w-4 text-brand-green-deep" /> Register Asset
-          </button>
+          <RegisterAssetButton />
         </div>
       </div>
 
@@ -93,70 +93,7 @@ export default async function AssetDashboardPage() {
       <div className="grid lg:grid-cols-3 gap-10 px-4">
         {/* Asset Master Registry Overview */}
         <div className="lg:col-span-2 space-y-8">
-           <div className="bg-white border-2 border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-              <div className="p-8 border-b border-slate-200 flex items-center justify-between bg-slate-50/80/50">
-                 <h2 className="text-lg font-black text-brand-navy flex items-center gap-3">
-                    <LayoutGrid className="h-5 w-5 text-brand-green-deep" /> Capital Registry
-                 </h2>
-                 <div className="flex gap-2">
-                    <button className="p-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-brand-navy transition-all"><SearchIcon className="h-4 w-4" /></button>
-                 </div>
-              </div>
-
-              <div className="p-4">
-                 {assets.length > 0 ? (
-                   <div className="space-y-2">
-                      {assets.slice(0, 8).map((asset: any) => (
-                        <div key={asset.id} className="group p-6 flex flex-wrap items-center justify-between gap-6 hover:bg-slate-50/80 rounded-2xl transition-all">
-                           <div className="flex items-center gap-6">
-                              <div className="h-14 w-14 rounded-2xl bg-white border-2 border-slate-200 flex items-center justify-center text-brand-navy text-lg font-black shadow-sm group-hover:scale-110 transition-all">
-                                 {asset.name[0]}
-                              </div>
-                              <div className="space-y-1">
-                                 <h3 className="text-base font-black text-brand-navy leading-tight">{asset.name}</h3>
-                                 <div className="flex items-center gap-3">
-                                    <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{asset.asset_tag}</span>
-                                    <span className="h-1 w-1 rounded-full bg-slate-200" />
-                                    <span className={cn(
-                                       "text-[10px] font-black uppercase tracking-widest",
-                                       asset.status === 'active' ? "text-brand-green-deep" : "text-orange-600"
-                                    )}>
-                                       {asset.status}
-                                    </span>
-                                 </div>
-                              </div>
-                           </div>
-                           
-                           <div className="flex items-center gap-12">
-                              <div className="text-right">
-                                 <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 block mb-1">Book Value</span>
-                                 <div className="text-xl font-black text-brand-navy">K {Number(asset.current_value || asset.purchase_cost).toLocaleString()}</div>
-                              </div>
-                              
-                              <div className="text-right hidden sm:block">
-                                 <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 block mb-1">Custodian</span>
-                                 <div className="text-[10px] font-black text-slate-600 uppercase tracking-widest italic flex items-center justify-end gap-2">
-                                   <UserIcon className="h-3 w-3" /> {asset.custodian?.full_name || "Unassigned"}
-                                 </div>
-                              </div>
-
-                              <Link href={`/assets/${asset.id}`} className="p-2 text-slate-200 hover:text-brand-navy transition-all">
-                                 <ChevronRight className="h-6 w-6" />
-                              </Link>
-                           </div>
-                        </div>
-                      ))}
-                   </div>
-                 ) : (
-                   <div className="py-24 flex flex-col items-center justify-center text-center space-y-6">
-                      <div className="h-20 w-20 rounded-2xl bg-slate-50/80 flex items-center justify-center text-slate-200">
-                         <Building2 className="h-10 w-10" />
-                      </div>
-                      <p className="text-sm font-black text-brand-navy italic opacity-50">Zero capitalized assets registered.</p>
-                   </div>
-                 )}
-              </div>
-           </div>
+           <AssetMaster initialAssets={assets} />
         </div>
 
         {/* Sidebar Lifecycle Radar */}
@@ -192,7 +129,7 @@ export default async function AssetDashboardPage() {
               <div className="space-y-4">
                  <div className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200">
                     <div className="text-xs font-black text-brand-navy mb-1">Upcoming Replacement</div>
-                    <div className="text-[10px] text-slate-700 font-medium italic">"Server Rack #002 is approaching year 5 of useful life. Valuation: K12k."</div>
+                    <div className="text-[10px] text-slate-700 font-medium italic">"Critical hardware approaching EOL. Valuation adjustment pending."</div>
                  </div>
               </div>
            </div>
@@ -241,4 +178,3 @@ function UserIcon(props: any) {
     </svg>
   )
 }
-

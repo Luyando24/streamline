@@ -92,6 +92,47 @@ export async function onboardEmployee(data: any) {
   revalidatePath('/hr/directory')
 }
 
+export async function updateEmployee(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase
+    .from('hr_employees')
+    .update(data)
+    .eq('id', id)
+
+  if (error) throw error
+  revalidatePath('/hr/directory')
+  revalidatePath(`/hr/directory/${id}`)
+}
+
+export async function deleteHrRecord(id: string, table: string) {
+  const supabase = await getSupabase()
+  
+  // For employees and jobs, we prefer archiving/status change over hard deleting
+  if (table === 'hr_employees') {
+    const { error } = await supabase
+      .from(table)
+      .update({ status: 'terminated' })
+      .eq('id', id)
+    if (error) throw error
+  } else if (table === 'hr_jobs') {
+    const { error } = await supabase
+      .from(table)
+      .update({ status: 'closed' })
+      .eq('id', id)
+    if (error) throw error
+  } else {
+    const { error } = await supabase
+      .from(table)
+      .delete()
+      .eq('id', id)
+    if (error) throw error
+  }
+  
+  revalidatePath('/hr/directory')
+  revalidatePath('/hr/recruitment')
+  revalidatePath('/hr/appraisals')
+}
+
 export async function getOrgChart() {
   const supabase = await getSupabase()
   const { data: { user } } = await supabase.auth.getUser()
@@ -149,6 +190,28 @@ export async function getRecruitmentStats() {
     .eq('org_id', profile?.org_id)
 
   return jobs || []
+}
+
+export async function updateJob(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase
+    .from('hr_jobs')
+    .update(data)
+    .eq('id', id)
+
+  if (error) throw error
+  revalidatePath('/hr/recruitment')
+}
+
+export async function getApplicantsForJob(jobId: string) {
+  const supabase = await getSupabase()
+  const { data: applicants } = await supabase
+    .from('hr_applicants')
+    .select('*')
+    .eq('job_id', jobId)
+    .order('created_at', { ascending: false })
+
+  return applicants || []
 }
 
 export async function getEmployeeFullDetails(employeeId: string) {
@@ -224,4 +287,15 @@ export async function updateApplicantStatus(applicantId: string, status: string,
 
   if (error) throw error
   revalidatePath('/hr/recruitment')
+}
+
+export async function updateAppraisal(id: string, data: any) {
+  const supabase = await getSupabase()
+  const { error } = await supabase
+    .from('hr_appraisals')
+    .update(data)
+    .eq('id', id)
+
+  if (error) throw error
+  revalidatePath('/hr/appraisals')
 }

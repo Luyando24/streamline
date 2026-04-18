@@ -117,6 +117,10 @@ export default async function ProcurementPage() {
                                     <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{r.requestor.full_name}</span>
                                     <span className="h-1 w-1 rounded-full bg-slate-200" />
                                     <span className="text-[10px] font-black text-brand-green-deep uppercase tracking-widest">{r.vendor?.name || "No Vendor"}</span>
+                                    <span className="h-1 w-1 rounded-full bg-slate-200" />
+                                    <span className="text-[10px] font-bold text-slate-400 italic">
+                                       Applied: {new Date(r.created_at).toLocaleDateString('en-GB')}
+                                    </span>
                                  </div>
                               </div>
                            </div>

@@ -27,7 +27,7 @@ import {
   AlertCircle
 } from "lucide-react"
 import Link from "next/link"
-import { getRecruitmentStats, postJob, updateApplicantStatus } from "@/lib/actions/hr"
+import { getRecruitmentStats, postJob, updateJob, deleteHrRecord } from "@/lib/actions/hr"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 import { IndustrialModal } from "@/components/ui/IndustrialModal"
@@ -35,6 +35,8 @@ import { IndustrialModal } from "@/components/ui/IndustrialModal"
 export default function HrRecruitmentPage() {
   const [jobs, setJobs] = useState<any[]>([])
   const [showAddJob, setShowAddJob] = useState(false)
+  const [selectedJob, setSelectedJob] = useState<any>(null)
+  const [showEditJob, setShowEditJob] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -67,6 +69,46 @@ export default function HrRecruitmentPage() {
       await postJob(data)
       toast.success("Industrial vacancy published and publicized.")
       setShowAddJob(false)
+      fetchData()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleUpdateJob = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedJob) return
+    setIsSubmitting(true)
+    try {
+      const formData = new FormData(e.target as HTMLFormElement)
+      const data = {
+        title: formData.get("title"),
+        department: formData.get("department"),
+        description: formData.get("description"),
+        requirements: formData.get("requirements"),
+        status: formData.get("status")
+      }
+      await updateJob(selectedJob.id, data)
+      toast.success("Vacancy metrics updated.")
+      setShowEditJob(false)
+      fetchData()
+    } catch (err: any) {
+      toast.error(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleArchiveJob = async () => {
+    if (!selectedJob) return
+    if (!confirm("Are you sure you want to close this vacancy?")) return
+    setIsSubmitting(true)
+    try {
+      await deleteHrRecord(selectedJob.id, 'hr_jobs')
+      toast.success("Vacancy archived.")
+      setShowEditJob(false)
       fetchData()
     } catch (err: any) {
       toast.error(err.message)
@@ -179,9 +221,20 @@ export default function HrRecruitmentPage() {
                            <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">Applications</div>
                            <div className="text-base font-black text-brand-navy">{job.applicants_count?.[0]?.count || 0} Pool</div>
                         </div>
-                        <button className="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:text-brand-navy hover:bg-slate-200 transition-all shadow-sm">
-                           <ArrowUpRight className="h-5 w-5" />
-                        </button>
+                        <div className="flex items-center gap-2">
+                           <button 
+                             onClick={() => { setSelectedJob(job); setShowEditJob(true); }}
+                             className="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:text-brand-navy hover:bg-slate-200 transition-all shadow-sm"
+                           >
+                              <MoreVertical className="h-4 w-4" />
+                           </button>
+                           <Link 
+                            href={`/hr/recruitment/${job.id}`}
+                            className="h-10 w-10 flex items-center justify-center rounded-xl bg-brand-navy text-white hover:bg-slate-800 transition-all shadow-lg active:scale-95 shadow-brand-navy/10"
+                           >
+                              <ArrowUpRight className="h-5 w-5" />
+                           </Link>
+                         </div>
                      </div>
                   </div>
                </div>
@@ -238,6 +291,63 @@ export default function HrRecruitmentPage() {
              >
                {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Authorize Vacancy Publication"}
              </button>
+           </div>
+        </form>
+      </IndustrialModal>
+
+      {/* Edit Job Centered Modal */}
+      <IndustrialModal
+        isOpen={showEditJob}
+        onClose={() => setShowEditJob(false)}
+        title="Edit Vacancy"
+        subtitle="Industrial Metric Update"
+        icon={<Briefcase className="h-4 w-4" />}
+        maxWidth="max-w-xl"
+      >
+        <form onSubmit={handleUpdateJob} className="space-y-8">
+           <div className="space-y-6">
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 border-b border-slate-100 pb-4">Position Metrics</h3>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Vacancy Title</label>
+                   <input name="title" defaultValue={selectedJob?.title} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" />
+                </div>
+                <div className="space-y-2">
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Status</label>
+                   <select name="status" defaultValue={selectedJob?.status} className="w-full px-5 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50 appearance-none">
+                      <option value="open">Open</option>
+                      <option value="closed">Closed / Internal</option>
+                      <option value="on_hold">On Hold</option>
+                   </select>
+                </div>
+              </div>
+              <div className="space-y-2">
+                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Department Registry</label>
+                 <input name="department" defaultValue={selectedJob?.department} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm bg-slate-50" />
+              </div>
+           </div>
+
+           <div className="space-y-4">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 pl-1">Position Description</label>
+              <textarea name="description" defaultValue={selectedJob?.description} required className="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-green-deep focus:outline-none font-bold text-sm min-h-[120px] bg-slate-50" />
+           </div>
+
+           <div className="pt-6 space-y-4">
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full py-5 bg-brand-navy text-white rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-slate-800 transition-all shadow-lg active:scale-95 disabled:opacity-50"
+              >
+                {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : "Update Publication"}
+              </button>
+              <button 
+                type="button"
+                onClick={handleArchiveJob}
+                disabled={isSubmitting}
+                className="w-full py-5 bg-white border-2 border-orange-200 text-orange-600 rounded-[24px] text-[11px] font-black uppercase tracking-[0.2em] hover:bg-orange-50 transition-all active:scale-95 disabled:opacity-50"
+              >
+                Archive / Close Vacancy
+              </button>
            </div>
         </form>
       </IndustrialModal>

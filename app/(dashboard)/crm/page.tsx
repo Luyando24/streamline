@@ -134,7 +134,7 @@ export default async function CRMDashboardPage() {
                                <div className="text-right">
                                   <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 block mb-1">Forecast Close</span>
                                   <div className="text-[10px] font-black text-slate-600 uppercase tracking-widest italic">
-                                    {new Date(deal.expected_close_date).toLocaleDateString()}
+                                    {new Date(deal.expected_close_date).toLocaleDateString('en-GB')}
                                   </div>
                                </div>
 

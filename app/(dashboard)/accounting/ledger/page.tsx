@@ -36,7 +36,22 @@ export default async function LedgerPage() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-600 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm">
+          <button 
+            onClick={() => {
+              const headers = "Date,Description,Reference,Total Amount\n";
+              const rows = journals.map(j => `${new Date(j.date).toLocaleDateString('en-GB')},"${j.description}",${j.reference_no || ''},${j.ledger_entries.reduce((acc: any, e: any) => e.entry_type === 'debit' ? acc + Number(e.amount) : acc, 0)}`).join("\n");
+              const blob = new Blob([headers + rows], { type: 'text/csv' });
+              const url = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.setAttribute('hidden', '');
+              a.setAttribute('href', url);
+              a.setAttribute('download', 'general_ledger.csv');
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }}
+            className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-600 hover:text-brand-navy hover:border-slate-300 transition-all shadow-sm"
+          >
             <Download className="h-5 w-5" />
           </button>
           <Link 
@@ -81,7 +96,7 @@ export default async function LedgerPage() {
                   <div>
                      <div className="text-sm font-black text-brand-navy">{journal.description}</div>
                      <div className="flex items-center gap-2 mt-0.5">
-                        <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">{new Date(journal.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
+                        <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">{new Date(journal.date).toLocaleDateString('en-GB')}</span>
                         <span className="h-1 w-1 rounded-full bg-slate-200" />
                         <span className="text-[10px] text-brand-green-deep font-black uppercase tracking-widest">Ref: {journal.reference_no || 'N/A'}</span>
                      </div>
