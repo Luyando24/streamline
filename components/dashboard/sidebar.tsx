@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
+import { createClient } from "@/lib/supabase/client"
 import { 
   LayoutDashboard, 
   Layers, 
@@ -54,8 +56,24 @@ const ADMIN_NAV = [
 
 export function Sidebar({ userRole }: { userRole: string }) {
   const pathname = usePathname()
+  const router = useRouter()
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const supabase = createClient()
   const { activeModuleIds } = useModuleStore()
   const isAuthorized = ['owner', 'admin'].includes(userRole)
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true)
+    try {
+      await supabase.auth.signOut()
+      router.push("/login")
+      router.refresh()
+    } catch (error) {
+      console.error("Logout error:", error)
+    } finally {
+      setIsLoggingOut(false)
+    }
+  }
 
   // Build the dynamic navigation list
   const navItems = [
@@ -138,9 +156,13 @@ export function Sidebar({ userRole }: { userRole: string }) {
 
         {/* User Footer */}
         <div className="mt-4 border-t border-slate-200 pt-4 px-2">
-          <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-bold text-slate-500 hover:bg-slate-50 hover:text-brand-navy transition-all">
+          <button 
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-bold text-slate-500 hover:bg-slate-50 hover:text-brand-navy transition-all disabled:opacity-50"
+          >
             <LogOut className="h-5 w-5" />
-            Sign Out
+            {isLoggingOut ? "Signing out..." : "Sign Out"}
           </button>
         </div>
       </div>
