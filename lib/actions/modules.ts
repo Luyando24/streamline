@@ -20,17 +20,17 @@ export async function getActiveModules() {
 
   // Get active modules for this org
   const { data: activeModules, error } = await supabase
-    .from('org_modules')
-    .select('modules(slug)')
+    .from('organization_modules')
+    .select('module_key')
     .eq('org_id', profile.org_id)
-    .eq('is_active', true)
+    .eq('status', 'active')
 
   if (error) {
-    console.error('Error fetching active modules:', error)
+    console.error('Error fetching active modules:', error.message, error.details)
     return []
   }
 
-  return activeModules.map((m: any) => m.modules.slug)
+  return activeModules.map((m: any) => m.module_key)
 }
 
 export async function activateModules(slugs: string[]) {
@@ -48,30 +48,19 @@ export async function activateModules(slugs: string[]) {
 
   if (!profile?.org_id) return { error: 'No organization found' }
 
-  // 2. Get module IDs for these slugs
-  const { data: modules, error: modulesError } = await supabase
-    .from('modules')
-    .select('id, slug')
-    .in('slug', slugs)
-
-  if (modulesError || !modules) {
-    console.error('Error fetching module IDs:', modulesError)
-    return { error: 'Error fetching module details' }
-  }
-
-  // 3. Insert into org_modules
-  const upsertData = modules.map(m => ({
+  // 2. Upsert into organization_modules
+  const upsertData = slugs.map(slug => ({
     org_id: profile.org_id,
-    module_id: m.id,
-    is_active: true
+    module_key: slug,
+    status: 'active'
   }))
 
   const { error: upsertError } = await supabase
-    .from('org_modules')
-    .upsert(upsertData, { onConflict: 'org_id,module_id' })
+    .from('organization_modules')
+    .upsert(upsertData, { onConflict: 'org_id,module_key' })
 
   if (upsertError) {
-    console.error('Error activating modules:', upsertError)
+    console.error('Error activating modules:', upsertError.message, upsertError.details)
     return { error: 'Error activating modules' }
   }
 
